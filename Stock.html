@@ -1,0 +1,1546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inventory Management Agent Dashboard | Real Email Dispatch System</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Font: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      background-color: #f8fafc;
+    }
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+    }
+    @keyframes pulse-subtle {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.85; transform: scale(0.98); }
+    }
+    .animate-pulse-subtle {
+      animation: pulse-subtle 2s infinite ease-in-out;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-900 antialiased p-3 sm:p-6 font-sans min-h-screen">
+  <div class="max-w-6xl mx-auto space-y-6">
+
+    <!-- ========================================================= -->
+    <!-- 1. HEADER                                                 -->
+    <!-- ========================================================= -->
+    <header class="bg-white rounded-2xl border border-slate-200/90 shadow-sm p-4 sm:p-5 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+      <div class="flex items-center gap-3.5">
+        <div class="relative flex-shrink-0">
+          <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-slate-900 via-indigo-950 to-blue-900 flex items-center justify-center text-white shadow-md shadow-indigo-950/20 ring-1 ring-white/20">
+            <!-- Box Icon -->
+            <svg class="w-6 h-6 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+            </svg>
+          </div>
+          <div class="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-emerald-500 ring-2 ring-white flex items-center justify-center shadow-xs">
+            <!-- Bot Icon -->
+            <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+            </svg>
+          </div>
+        </div>
+
+        <div>
+          <div class="flex items-center gap-2 flex-wrap">
+            <h1 class="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
+              Inventory Management Agent
+            </h1>
+            <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
+              <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+              Agent Online
+            </span>
+            <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-semibold bg-rose-50 text-rose-700 border border-rose-200">
+              ✉ To: pranavr26.04@gmail.com
+            </span>
+          </div>
+          <p class="text-xs sm:text-sm text-slate-500 font-medium">
+            AI Stock Analysis &bull; Dynamic Reorder Trigger &bull; Real Email Dispatch to Distributor
+          </p>
+        </div>
+      </div>
+
+      <!-- Right: Live Clock & Reset Button -->
+      <div class="flex items-center justify-between sm:justify-end gap-3 pt-3 md:pt-0 border-t md:border-t-0 border-slate-100">
+        <div class="flex items-center gap-2.5 px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-xl text-left shadow-2xs">
+          <div class="w-2.5 h-2.5 rounded-full bg-blue-600 animate-ping"></div>
+          <div class="text-xs">
+            <div id="header-clock-time" class="font-bold text-slate-900 tabular-nums">--:--:-- --</div>
+            <div id="header-clock-date" class="text-[11px] text-slate-500 font-medium">-- --- ----</div>
+          </div>
+        </div>
+
+        <button
+          onclick="resetDashboard()"
+          id="btn-reset-header"
+          class="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold text-slate-700 bg-white hover:bg-slate-50 border border-slate-300 rounded-xl shadow-2xs hover:border-slate-400 transition-all cursor-pointer"
+          title="Reset Dashboard to default state"
+        >
+          <svg class="w-3.5 h-3.5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+          </svg>
+          <span>Reset</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Context Banner -->
+    <div class="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 rounded-2xl p-4 text-white shadow-md flex flex-col sm:flex-row sm:items-center justify-between gap-3 border border-slate-800">
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-indigo-300 flex-shrink-0 font-bold">
+          ✉
+        </div>
+        <div class="text-xs leading-relaxed">
+          <strong class="text-white text-sm font-semibold">Active Email Routing Configured:</strong>
+          <span class="text-slate-300 block sm:inline sm:ml-1">
+            Sender: <strong>pranav.rawal12345@gmail.com</strong> &rarr; Distributor Recipient: <strong class="text-emerald-400">pranavr26.04@gmail.com</strong>.
+          </span>
+        </div>
+      </div>
+      <div class="text-[11px] bg-white/10 px-3 py-1 rounded-lg border border-white/10 font-mono text-indigo-200 self-end sm:self-center whitespace-nowrap">
+        Threshold: 20 Units | Target: 50
+      </div>
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- 2. TOP 4 KPI CARDS                                        -->
+    <!-- ========================================================= -->
+    <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <!-- KPI 1: Current Stock -->
+      <div class="bg-white rounded-xl p-5 border border-slate-200/90 shadow-xs hover:shadow-md transition-all duration-200">
+        <div class="flex items-start justify-between">
+          <div>
+            <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">1. Current Stock</span>
+            <div class="mt-2 flex items-baseline gap-2">
+              <span id="kpi-stock-val" class="text-3xl font-black text-slate-900 tabular-nums">15</span>
+              <span class="text-xs font-bold text-slate-500">Units</span>
+            </div>
+          </div>
+          <div class="w-10 h-10 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+            </svg>
+          </div>
+        </div>
+        <div class="mt-3 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+          <span id="kpi-stock-subtext" class="text-rose-600 font-semibold flex items-center gap-0.5">
+            5 units deficit
+          </span>
+          <span class="text-[11px] text-slate-400">Target: 50</span>
+        </div>
+      </div>
+
+      <!-- KPI 2: Reorder Threshold -->
+      <div class="bg-white rounded-xl p-5 border border-slate-200/90 shadow-xs hover:shadow-md transition-all duration-200">
+        <div class="flex items-start justify-between">
+          <div>
+            <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">2. Reorder Threshold</span>
+            <div class="mt-2 flex items-baseline gap-2">
+              <span class="text-3xl font-black text-slate-900 tabular-nums">20</span>
+              <span class="text-xs font-bold text-slate-500">Units</span>
+            </div>
+          </div>
+          <div class="w-10 h-10 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+            </svg>
+          </div>
+        </div>
+        <div class="mt-3 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+          <span class="font-medium text-slate-600">Fixed Baseline Trigger</span>
+          <span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800">Rule Base</span>
+        </div>
+      </div>
+
+      <!-- KPI 3: Stock Status -->
+      <div class="bg-white rounded-xl p-5 border border-slate-200/90 shadow-xs hover:shadow-md transition-all duration-200">
+        <div class="flex items-start justify-between">
+          <div>
+            <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">3. Stock Status</span>
+            <div class="mt-2">
+              <span id="kpi-status-val" class="text-2xl font-black text-rose-700 tracking-tight">Low Stock</span>
+            </div>
+          </div>
+          <div id="kpi-status-icon" class="w-10 h-10 rounded-lg bg-rose-50 text-rose-600 flex items-center justify-center">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </div>
+        </div>
+        <div class="mt-3 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+          <span id="kpi-status-subtext" class="text-rose-700 font-semibold">Below 20 Units</span>
+          <span class="text-[11px] text-slate-400">Inventory State</span>
+        </div>
+      </div>
+
+      <!-- KPI 4: Agent Decision -->
+      <div id="kpi-decision-card" class="bg-rose-50/70 border-rose-200 rounded-xl p-5 border shadow-xs hover:shadow-md transition-all duration-200">
+        <div class="flex items-start justify-between">
+          <div>
+            <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">4. Agent Decision</span>
+            <div class="mt-2">
+              <span id="kpi-decision-val" class="text-3xl font-black text-rose-700 tracking-tight">REORDER</span>
+            </div>
+          </div>
+          <div id="kpi-decision-icon" class="w-10 h-10 rounded-lg bg-rose-100 text-rose-700 flex items-center justify-center">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+        </div>
+        <div class="mt-3 pt-3 border-t border-slate-200/60 flex items-center justify-between text-xs">
+          <span id="kpi-decision-subtext" class="font-bold text-rose-700">Trigger Restock Order</span>
+          <span class="text-[11px] text-slate-500 font-medium">Live Directive</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- 3. MAIN SECTION: STOCK INPUT (LEFT) + DECISION (RIGHT)    -->
+    <!-- ========================================================= -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+
+      <!-- LEFT SIDE — STOCK INPUT PANEL (5 cols) -->
+      <div class="lg:col-span-5 bg-white rounded-2xl border border-slate-200/90 shadow-sm p-5 sm:p-6 flex flex-col justify-between">
+        <div>
+          <!-- Header -->
+          <div class="flex items-center justify-between pb-4 border-b border-slate-100">
+            <div class="flex items-center gap-2.5">
+              <div class="w-8 h-8 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold text-sm">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                </svg>
+              </div>
+              <div>
+                <h2 class="text-base sm:text-lg font-bold text-slate-900">Check Inventory Level</h2>
+                <p class="text-xs text-slate-500">Ask warehouse manager for current stock</p>
+              </div>
+            </div>
+            <span class="text-[11px] font-semibold text-slate-500 bg-slate-100 px-2 py-1 rounded">
+              Step 1: Input
+            </span>
+          </div>
+
+          <!-- Input Form -->
+          <div class="mt-5 space-y-4">
+            <div>
+              <div class="flex items-center justify-between mb-1.5">
+                <label for="stock-input" class="text-xs sm:text-sm font-semibold text-slate-700">
+                  Enter Current Stock Level
+                </label>
+                <span class="text-[11px] font-medium text-slate-500">
+                  Threshold: <strong class="text-indigo-600">20 Units</strong>
+                </span>
+              </div>
+
+              <div class="relative rounded-xl shadow-2xs">
+                <input
+                  id="stock-input"
+                  type="number"
+                  min="0"
+                  step="1"
+                  placeholder="e.g. 15"
+                  value="15"
+                  class="w-full px-4 py-3 text-base sm:text-lg font-bold text-slate-900 placeholder:text-slate-400 bg-slate-50/50 border border-slate-300 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-indigo-600 transition-all"
+                />
+                <div class="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-bold text-slate-400 uppercase tracking-wider select-none">
+                  Units
+                </div>
+              </div>
+
+              <!-- Error Box -->
+              <div id="input-error" class="hidden mt-2 p-2 rounded-lg bg-rose-50 border border-rose-200 text-xs font-semibold text-rose-700 flex items-center gap-1.5">
+                <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span id="input-error-msg">Please enter a valid non-negative number.</span>
+              </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-col sm:flex-row items-stretch gap-2.5 pt-2">
+              <button
+                id="btn-analyze"
+                onclick="handleAnalyzeClick()"
+                class="flex-1 inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-sm font-bold text-white bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-700 hover:to-blue-700 active:scale-[0.99] shadow-md shadow-indigo-600/20 hover:shadow-indigo-600/30 transition-all cursor-pointer"
+              >
+                <!-- Play Icon -->
+                <svg id="icon-analyze-play" class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
+                </svg>
+                <!-- Spinner Icon -->
+                <svg id="icon-analyze-spinner" class="hidden w-4 h-4 animate-spin text-white" fill="none" viewBox="0 0 24 24">
+                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                  <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+                </svg>
+                <span id="btn-analyze-text">Analyze Stock</span>
+              </button>
+
+              <button
+                type="button"
+                onclick="handleResetInput()"
+                class="inline-flex items-center justify-center gap-1.5 px-4 py-3 rounded-xl text-sm font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 active:bg-slate-200 transition-all cursor-pointer"
+              >
+                <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                </svg>
+                <span>Clear</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Quick Demo Presets -->
+          <div class="mt-6 pt-5 border-t border-slate-100">
+            <div class="flex items-center justify-between mb-3">
+              <div class="flex items-center gap-1.5 text-xs font-bold text-slate-700 uppercase tracking-wider">
+                <svg class="w-3.5 h-3.5 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+                <span>Quick Demo Presets</span>
+              </div>
+              <span class="text-[11px] text-slate-500">1-click test scenarios</span>
+            </div>
+
+            <div class="grid grid-cols-2 gap-2">
+              <button
+                type="button"
+                onclick="runPreset(5)"
+                class="flex items-center justify-between px-3 py-2.5 rounded-lg border border-rose-200 bg-rose-50/50 hover:bg-rose-100 text-left transition-all text-xs cursor-pointer group"
+              >
+                <div>
+                  <div class="font-bold text-rose-900 flex items-center gap-1">
+                    <span class="w-1.5 h-1.5 rounded-full bg-rose-600"></span>
+                    Critical Stock
+                  </div>
+                  <div class="text-[11px] text-rose-700">Enter 5 Units</div>
+                </div>
+                <span class="text-xs font-black text-rose-700 bg-white px-1.5 py-0.5 rounded border border-rose-200 shadow-2xs group-hover:scale-105 transition-transform">5</span>
+              </button>
+
+              <button
+                type="button"
+                onclick="runPreset(10)"
+                class="flex items-center justify-between px-3 py-2.5 rounded-lg border border-amber-200 bg-amber-50/50 hover:bg-amber-100 text-left transition-all text-xs cursor-pointer group"
+              >
+                <div>
+                  <div class="font-bold text-amber-900 flex items-center gap-1">
+                    <span class="w-1.5 h-1.5 rounded-full bg-amber-600"></span>
+                    Low Stock
+                  </div>
+                  <div class="text-[11px] text-amber-700">Enter 10 Units</div>
+                </div>
+                <span class="text-xs font-black text-amber-700 bg-white px-1.5 py-0.5 rounded border border-amber-200 shadow-2xs group-hover:scale-105 transition-transform">10</span>
+              </button>
+
+              <button
+                type="button"
+                onclick="runPreset(35)"
+                class="flex items-center justify-between px-3 py-2.5 rounded-lg border border-emerald-200 bg-emerald-50/50 hover:bg-emerald-100 text-left transition-all text-xs cursor-pointer group"
+              >
+                <div>
+                  <div class="font-bold text-emerald-900 flex items-center gap-1">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+                    Healthy Stock
+                  </div>
+                  <div class="text-[11px] text-emerald-700">Enter 35 Units</div>
+                </div>
+                <span class="text-xs font-black text-emerald-700 bg-white px-1.5 py-0.5 rounded border border-emerald-200 shadow-2xs group-hover:scale-105 transition-transform">35</span>
+              </button>
+
+              <button
+                type="button"
+                onclick="runPreset(50)"
+                class="flex items-center justify-between px-3 py-2.5 rounded-lg border border-blue-200 bg-blue-50/50 hover:bg-blue-100 text-left transition-all text-xs cursor-pointer group"
+              >
+                <div>
+                  <div class="font-bold text-blue-900 flex items-center gap-1">
+                    <span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>
+                    High Stock
+                  </div>
+                  <div class="text-[11px] text-blue-700">Enter 50 Units</div>
+                </div>
+                <span class="text-xs font-black text-blue-700 bg-white px-1.5 py-0.5 rounded border border-blue-200 shadow-2xs group-hover:scale-105 transition-transform">50</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer Help -->
+        <div class="mt-5 p-3 rounded-xl bg-slate-50 border border-slate-200/70 text-xs text-slate-600 flex items-start gap-2">
+          <svg class="w-4 h-4 text-indigo-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <div class="leading-relaxed">
+            <strong class="text-slate-800">Rule Logic:</strong> Input value is converted to integer and compared against threshold of 20 units.
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT SIDE — AGENT DECISION PANEL (7 cols) -->
+      <div id="panel-decision-container" class="lg:col-span-7 bg-white rounded-2xl border border-slate-200/90 shadow-sm p-5 sm:p-6 flex flex-col justify-between transition-all duration-300">
+        <div>
+          <!-- Header -->
+          <div class="flex items-center justify-between pb-4 border-b border-slate-100">
+            <div class="flex items-center gap-2.5">
+              <div id="decision-icon-badge" class="w-8 h-8 rounded-lg bg-rose-100 text-rose-700 flex items-center justify-center font-bold text-sm">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+                </svg>
+              </div>
+              <div>
+                <h2 class="text-base sm:text-lg font-bold text-slate-900">Agent Decision Panel</h2>
+                <p class="text-xs text-slate-500 font-medium">Autonomous evaluation &amp; operational directive</p>
+              </div>
+            </div>
+
+            <span id="decision-status-pill" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-rose-100 text-rose-800">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span>Action Required</span>
+            </span>
+          </div>
+
+          <!-- Thinking Spinner State -->
+          <div id="decision-thinking-state" class="hidden py-12 flex-col items-center justify-center text-center space-y-3">
+            <div class="w-12 h-12 border-4 border-indigo-200 border-t-indigo-600 rounded-full animate-spin"></div>
+            <div>
+              <div class="text-base font-bold text-slate-900">Agent is analyzing...</div>
+              <div class="text-xs text-slate-500">Comparing stock level against 20-unit threshold</div>
+            </div>
+          </div>
+
+          <!-- Decision Content Body -->
+          <div id="decision-content-body" class="mt-5 space-y-4">
+            <!-- Hero Decision Banner -->
+            <div id="decision-hero-banner" class="p-4 sm:p-5 rounded-xl border bg-rose-600 text-white border-rose-700 shadow-md flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-lg bg-white/20 flex items-center justify-center flex-shrink-0">
+                  <svg id="decision-hero-icon" class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <div>
+                  <div class="text-xs font-bold uppercase tracking-wider text-white/80">Recommendation</div>
+                  <div id="decision-hero-title" class="text-2xl sm:text-3xl font-black tracking-tight">REORDER REQUIRED</div>
+                </div>
+              </div>
+
+              <div class="flex items-center sm:flex-col sm:items-end justify-between border-t sm:border-t-0 border-white/20 pt-2 sm:pt-0">
+                <span class="text-[11px] font-semibold text-white/80 uppercase">Directive</span>
+                <span id="decision-hero-badge" class="text-sm font-black px-2.5 py-0.5 rounded-full bg-white/20">REORDER</span>
+              </div>
+            </div>
+
+            <!-- Visual Flow Indicator -->
+            <div class="bg-white rounded-xl p-3.5 border border-slate-200 shadow-2xs">
+              <div class="text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-2 flex items-center justify-between">
+                <span>Logic Decision Flow</span>
+                <span class="text-indigo-600 font-medium">Automated Pipeline</span>
+              </div>
+
+              <div class="flex items-center justify-between gap-2 text-xs font-bold">
+                <!-- Step A -->
+                <div class="flex-1 bg-slate-50 border border-slate-200 rounded-lg p-2 text-center">
+                  <div class="text-[10px] text-slate-500 font-medium">Current Stock</div>
+                  <div id="flow-stock-val" class="text-sm sm:text-base font-extrabold text-slate-900 tabular-nums">15 Units</div>
+                </div>
+
+                <svg class="w-4 h-4 text-slate-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+
+                <!-- Step B -->
+                <div class="flex-1 bg-slate-50 border border-slate-200 rounded-lg p-2 text-center">
+                  <div class="text-[10px] text-slate-500 font-medium">Threshold</div>
+                  <div class="text-sm sm:text-base font-extrabold text-indigo-700 tabular-nums">20 Units</div>
+                </div>
+
+                <svg class="w-4 h-4 text-slate-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+
+                <!-- Step C -->
+                <div id="flow-outcome-box" class="flex-1 rounded-lg p-2 text-center border bg-rose-50 border-rose-200 text-rose-800">
+                  <div class="text-[10px] opacity-80 font-medium">Outcome</div>
+                  <div id="flow-decision-val" class="text-sm sm:text-base font-black">REORDER</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Agent Reasoning Card -->
+            <div id="decision-reasoning-card" class="p-4 rounded-xl border bg-rose-50/60 border-rose-200 text-rose-950">
+              <div class="flex items-start gap-2.5">
+                <svg id="decision-reasoning-icon" class="w-4 h-4 flex-shrink-0 mt-0.5 text-rose-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <div>
+                  <div class="text-xs font-bold uppercase tracking-wider mb-0.5">Agent Reasoning</div>
+                  <p id="decision-reasoning-text" class="text-xs sm:text-sm font-medium leading-relaxed">
+                    Current stock (15) is below the threshold (20). Reorder recommended.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- ========================================================= -->
+            <!-- ⚡ REAL DISTRIBUTOR EMAIL DISPATCH TERMINAL               -->
+            <!-- ========================================================= -->
+            <div id="reorder-action-card" class="p-4 sm:p-5 rounded-2xl border-2 border-rose-400/90 bg-gradient-to-br from-rose-50 via-white to-orange-50/40 shadow-sm space-y-3.5">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-2.5">
+                  <div class="w-8 h-8 rounded-xl bg-rose-600 text-white flex items-center justify-center font-bold text-sm shadow-sm">
+                    ✉
+                  </div>
+                  <div>
+                    <div class="text-xs sm:text-sm font-black text-rose-950 uppercase tracking-wide">
+                      Distributor Restock Email Dispatch
+                    </div>
+                    <div class="text-[11px] text-rose-700 font-medium">
+                      Real purchase order delivery terminal
+                    </div>
+                  </div>
+                </div>
+                <span id="reorder-qty-tag" class="px-2.5 py-1 rounded-full text-xs font-black bg-rose-600 text-white shadow-2xs">
+                  Order: +35 Units
+                </span>
+              </div>
+
+              <!-- Reorder Spec Details with Configured Emails -->
+              <div class="p-3 rounded-xl bg-white/95 border border-rose-200/90 text-xs space-y-2 shadow-2xs">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                  <span class="text-slate-500 font-medium">Sender (Manager):</span>
+                  <span class="font-mono text-slate-800 font-bold bg-slate-100 px-2 py-0.5 rounded text-[11px] select-all">
+                    pranav.rawal12345@gmail.com
+                  </span>
+                </div>
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                  <span class="text-slate-500 font-medium">Distributor Recipient:</span>
+                  <span class="font-mono text-indigo-700 font-bold bg-indigo-50 px-2 py-0.5 rounded border border-indigo-200 text-[11px] select-all">
+                    pranavr26.04@gmail.com
+                  </span>
+                </div>
+                <div class="flex items-center justify-between pt-1.5 border-t border-slate-100 text-[11px]">
+                  <span class="text-slate-500 font-medium">Generated PO Code:</span>
+                  <span id="reorder-po-code" class="font-mono font-bold text-rose-700 bg-rose-50 px-2 py-0.5 rounded border border-rose-200">
+                    PO-8492-RESTOCK
+                  </span>
+                </div>
+              </div>
+
+              <!-- REAL EMAIL ACTION BUTTONS -->
+              <div class="space-y-2 pt-1">
+                <!-- 1. PRIMARY: 1-Click Send via Gmail Web (Opens pre-filled in Gmail) -->
+                <button
+                  type="button"
+                  id="btn-send-gmail-web"
+                  onclick="openGmailWebCompose()"
+                  class="w-full inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl text-xs sm:text-sm font-extrabold text-white bg-gradient-to-r from-red-600 via-rose-600 to-red-700 hover:from-red-700 hover:to-rose-700 active:scale-[0.99] shadow-md shadow-rose-600/25 transition-all cursor-pointer"
+                >
+                  <svg class="w-4 h-4 text-white flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/>
+                  </svg>
+                  <span>🚀 Open &amp; Send in Gmail (Pre-filled to pranavr26.04@gmail.com)</span>
+                </button>
+
+                <!-- Secondary Action Row -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  <!-- 2. Desktop Mail Client (mailto:) with fallback notification -->
+                  <button
+                    type="button"
+                    onclick="triggerNativeMailClient()"
+                    class="inline-flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl text-xs font-bold text-slate-700 bg-white hover:bg-slate-50 border border-slate-300 shadow-2xs transition-all cursor-pointer"
+                  >
+                    <svg class="w-3.5 h-3.5 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                    <span>Default Mail App (Outlook/Apple)</span>
+                  </button>
+
+                  <!-- 3. Copy Full Purchase Order to Clipboard -->
+                  <button
+                    type="button"
+                    id="btn-copy-email-text"
+                    onclick="copyEmailTextToClipboard()"
+                    class="inline-flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl text-xs font-bold text-slate-700 bg-white hover:bg-slate-50 border border-slate-300 shadow-2xs transition-all cursor-pointer"
+                  >
+                    <svg id="icon-copy-clipboard" class="w-3.5 h-3.5 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+                    </svg>
+                    <span id="text-copy-clipboard">📋 Copy PO Email Text</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Dispatch Status Confirmation Banner -->
+              <div id="email-sent-banner" class="hidden p-3.5 rounded-xl bg-emerald-50 border border-emerald-300 text-xs text-emerald-900 space-y-1 animate-in fade-in duration-300">
+                <div class="flex items-center gap-1.5 font-bold text-emerald-800">
+                  <svg class="w-4 h-4 text-emerald-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                  </svg>
+                  <span id="email-banner-heading">Purchase Order Dispatch Action Triggered!</span>
+                </div>
+                <p id="email-sent-details" class="text-[11px] text-emerald-700 leading-tight">
+                  Recipient: <strong>pranavr26.04@gmail.com</strong> &bull; From: <strong>pranav.rawal12345@gmail.com</strong>.
+                </p>
+              </div>
+
+              <!-- Preview PO Dropdown -->
+              <details class="text-xs bg-slate-50/80 rounded-xl border border-slate-200/80 p-2.5 group">
+                <summary class="font-bold text-slate-700 cursor-pointer flex items-center justify-between select-none">
+                  <span class="flex items-center gap-1.5">
+                    <svg class="w-3.5 h-3.5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                    </svg>
+                    Preview Formatted PO Email Message
+                  </span>
+                  <span class="text-[10px] text-indigo-600 group-open:rotate-180 transition-transform">▼</span>
+                </summary>
+                <pre id="email-raw-preview" class="mt-2 p-3 bg-white rounded-lg border border-slate-200 text-[11px] font-mono text-slate-700 whitespace-pre-wrap leading-relaxed overflow-x-auto select-all"></pre>
+              </details>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Dynamic Action Timestamp Section -->
+        <div class="mt-6 pt-4 border-t border-slate-200">
+          <div class="flex items-center justify-between mb-1.5">
+            <div class="flex items-center gap-1.5 text-xs font-bold text-slate-700">
+              <svg class="w-3.5 h-3.5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span>Agent Action Timestamp</span>
+            </div>
+            <span class="text-[11px] font-medium text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+              Dynamic System Time
+            </span>
+          </div>
+
+          <div class="bg-slate-50 rounded-xl p-3 border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+            <div class="flex items-center gap-2 text-xs sm:text-sm font-bold text-slate-800">
+              <svg class="w-4 h-4 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+              <span id="action-timestamp-date" class="tabular-nums">02 Sep 2026</span>
+              <span class="text-slate-300">•</span>
+              <span id="action-timestamp-time" class="tabular-nums text-indigo-700 font-black">09:52:31 AM</span>
+            </div>
+            <div class="text-[11px] text-slate-500 font-medium">
+              Action evaluated at current system time
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- 4. INVENTORY STATUS VISUALIZATION (PROGRESS BAR)          -->
+    <!-- ========================================================= -->
+    <section class="bg-white rounded-2xl border border-slate-200/90 shadow-sm p-5 sm:p-6">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 border-b border-slate-100">
+        <div class="flex items-center gap-2.5">
+          <div class="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center font-bold text-sm">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+            </svg>
+          </div>
+          <div>
+            <h3 class="text-base sm:text-lg font-bold text-slate-900">Inventory Status Visualization</h3>
+            <p class="text-xs text-slate-500 font-medium">Stock-level progress bar marked against 20-unit threshold</p>
+          </div>
+        </div>
+
+        <span id="gauge-zone-badge" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-rose-100 text-rose-800 border border-rose-200 self-start sm:self-center">
+          Zone: Low Stock (&lt; 20 Units)
+        </span>
+      </div>
+
+      <!-- Main Gauge Area -->
+      <div class="mt-8 mb-4 px-2 sm:px-4">
+        <!-- Floating Tooltip Marker for Current Stock -->
+        <div class="relative mb-3 h-8">
+          <div id="gauge-stock-pin" class="absolute -translate-x-1/2 transition-all duration-500 ease-out flex flex-col items-center z-20" style="left: 30%;">
+            <div id="gauge-pin-badge" class="px-2.5 py-1 rounded-lg text-xs font-extrabold text-white shadow-md bg-rose-600 whitespace-nowrap">
+              Current: <span id="gauge-pin-val">15</span> Units
+            </div>
+            <div id="gauge-pin-arrow" class="w-0 h-0 border-l-4 border-r-4 border-t-4 border-l-transparent border-r-transparent border-t-rose-600"></div>
+          </div>
+        </div>
+
+        <!-- Progress Bar Track -->
+        <div class="relative h-7 rounded-xl bg-slate-100 p-1 border border-slate-200 flex items-center shadow-inner overflow-hidden">
+          <!-- Danger Background Band (0-20) -->
+          <div class="h-full rounded-l-lg bg-rose-100 transition-all" style="width: 40%;"></div>
+          <!-- Healthy Background Band (20-50) -->
+          <div class="h-full rounded-r-lg bg-emerald-100 transition-all flex-1"></div>
+
+          <!-- Active Fill Bar -->
+          <div id="gauge-fill-bar" class="absolute left-1 top-1 bottom-1 rounded-lg transition-all duration-700 ease-out shadow-xs bg-rose-500" style="width: calc(30% - 8px);"></div>
+
+          <!-- Fixed Threshold Line at 20 (40% of 50 units) -->
+          <div class="absolute top-0 bottom-0 w-0.5 bg-slate-900 z-10 -translate-x-1/2" style="left: 40%;">
+            <div class="absolute -top-1 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-slate-900"></div>
+            <div class="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-slate-900"></div>
+          </div>
+        </div>
+
+        <!-- Scale Labels -->
+        <div class="relative mt-2.5 text-xs font-semibold text-slate-500 select-none">
+          <div class="absolute left-0">
+            <span class="font-mono text-slate-700">0</span>
+            <span class="text-[10px] text-slate-400 block">Min</span>
+          </div>
+
+          <div class="absolute -translate-x-1/2 text-center" style="left: 40%;">
+            <div class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-slate-900 text-white text-[11px] font-bold">
+              <span>Threshold: 20</span>
+            </div>
+            <div class="text-[10px] text-slate-500 font-semibold mt-0.5">Reorder Line</div>
+          </div>
+
+          <div class="absolute right-0 text-right">
+            <span class="font-mono text-slate-700">50+</span>
+            <span class="text-[10px] text-slate-400 block">Capacity</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Legend -->
+      <div class="mt-8 pt-4 border-t border-slate-100 grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <div class="p-3 rounded-xl bg-rose-50/60 border border-rose-100 flex items-center gap-3 text-xs">
+          <div class="w-3 h-3 rounded-full bg-rose-500 flex-shrink-0"></div>
+          <div>
+            <span class="font-bold text-rose-900">Stock Below 20 Units = Low Stock:</span>
+            <p class="text-rose-700 text-[11px]">Triggers automatic reorder &amp; distributor email.</p>
+          </div>
+        </div>
+
+        <div class="p-3 rounded-xl bg-emerald-50/60 border border-emerald-100 flex items-center gap-3 text-xs">
+          <div class="w-3 h-3 rounded-full bg-emerald-500 flex-shrink-0"></div>
+          <div>
+            <span class="font-bold text-emerald-900">Stock Equal or Above 20 Units = Healthy:</span>
+            <p class="text-emerald-700 text-[11px]">Sufficient reserve, triggers WAIT recommendation.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- 5. AGENT REASONING / PROCESS WORKFLOW                     -->
+    <!-- ========================================================= -->
+    <section class="bg-white rounded-2xl border border-slate-200/90 shadow-sm p-5 sm:p-6">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 border-b border-slate-100">
+        <div class="flex items-center gap-2.5">
+          <div class="w-8 h-8 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold text-sm">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+            </svg>
+          </div>
+          <div>
+            <h3 class="text-base sm:text-lg font-bold text-slate-900">Agent Reasoning &amp; Process Sequence</h3>
+            <p class="text-xs text-slate-500 font-medium">Transparent 5-stage rule execution cycle</p>
+          </div>
+        </div>
+        <span id="workflow-status-badge" class="text-xs font-semibold text-slate-600 bg-slate-100 px-2.5 py-1 rounded-full">
+          All 5 Steps Completed
+        </span>
+      </div>
+
+      <!-- 5-Step Cards Grid -->
+      <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-3">
+        <!-- Step 1: INPUT -->
+        <div id="step-card-1" class="p-4 rounded-xl border bg-slate-50 border-slate-200 transition-all flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-[10px] font-black uppercase text-slate-400">Step 1</span>
+              <span id="step-icon-1" class="text-emerald-600 text-xs font-bold">✓ Done</span>
+            </div>
+            <div class="text-xs font-black text-slate-900 uppercase tracking-wide">1. INPUT</div>
+            <div class="text-xs font-semibold text-slate-700 mt-0.5">Current Stock Level</div>
+          </div>
+          <div id="step-detail-1" class="mt-2 pt-2 border-t border-slate-200 text-[11px] text-slate-600">
+            Stock: 15 Units
+          </div>
+        </div>
+
+        <!-- Step 2: ANALYZE -->
+        <div id="step-card-2" class="p-4 rounded-xl border bg-slate-50 border-slate-200 transition-all flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-[10px] font-black uppercase text-slate-400">Step 2</span>
+              <span id="step-icon-2" class="text-emerald-600 text-xs font-bold">✓ Done</span>
+            </div>
+            <div class="text-xs font-black text-slate-900 uppercase tracking-wide">2. ANALYZE</div>
+            <div class="text-xs font-semibold text-slate-700 mt-0.5">Compare &lt; Threshold</div>
+          </div>
+          <div id="step-detail-2" class="mt-2 pt-2 border-t border-slate-200 text-[11px] text-slate-600">
+            15 &lt; 20 (True)
+          </div>
+        </div>
+
+        <!-- Step 3: REASON -->
+        <div id="step-card-3" class="p-4 rounded-xl border bg-slate-50 border-slate-200 transition-all flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-[10px] font-black uppercase text-slate-400">Step 3</span>
+              <span id="step-icon-3" class="text-emerald-600 text-xs font-bold">✓ Done</span>
+            </div>
+            <div class="text-xs font-black text-slate-900 uppercase tracking-wide">3. REASON</div>
+            <div class="text-xs font-semibold text-slate-700 mt-0.5">Determine Status</div>
+          </div>
+          <div id="step-detail-3" class="mt-2 pt-2 border-t border-slate-200 text-[11px] text-slate-600">
+            Low Stock
+          </div>
+        </div>
+
+        <!-- Step 4: DECIDE -->
+        <div id="step-card-4" class="p-4 rounded-xl border bg-slate-50 border-slate-200 transition-all flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-[10px] font-black uppercase text-slate-400">Step 4</span>
+              <span id="step-icon-4" class="text-emerald-600 text-xs font-bold">✓ Done</span>
+            </div>
+            <div class="text-xs font-black text-slate-900 uppercase tracking-wide">4. DECIDE</div>
+            <div class="text-xs font-semibold text-slate-700 mt-0.5">REORDER / WAIT</div>
+          </div>
+          <div id="step-detail-4" class="mt-2 pt-2 border-t border-slate-200 text-[11px] font-bold text-rose-700">
+            REORDER
+          </div>
+        </div>
+
+        <!-- Step 5: TIMESTAMP -->
+        <div id="step-card-5" class="p-4 rounded-xl border bg-slate-50 border-slate-200 transition-all flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-[10px] font-black uppercase text-slate-400">Step 5</span>
+              <span id="step-icon-5" class="text-emerald-600 text-xs font-bold">✓ Done</span>
+            </div>
+            <div class="text-xs font-black text-slate-900 uppercase tracking-wide">5. TIMESTAMP</div>
+            <div class="text-xs font-semibold text-slate-700 mt-0.5">Record Agent Action</div>
+          </div>
+          <div id="step-detail-5" class="mt-2 pt-2 border-t border-slate-200 text-[11px] text-slate-600 tabular-nums">
+            Logged at current time
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- 6. AGENT ACTIVITY LOG                                     -->
+    <!-- ========================================================= -->
+    <section class="bg-white rounded-2xl border border-slate-200/90 shadow-sm overflow-hidden">
+      <!-- Table Header & Controls -->
+      <div class="p-5 sm:p-6 border-b border-slate-100 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        <div class="flex items-center gap-2.5">
+          <div class="w-8 h-8 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold text-sm">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <h3 class="text-base sm:text-lg font-bold text-slate-900">Agent Activity Log</h3>
+              <span id="log-count-badge" class="px-2 py-0.5 rounded-full text-xs font-bold bg-slate-100 text-slate-700">
+                2 Records
+              </span>
+            </div>
+            <p class="text-xs text-slate-500 font-medium">Session audit history (latest action at top)</p>
+          </div>
+        </div>
+
+        <!-- Filter & CSV Export Controls -->
+        <div class="flex flex-wrap items-center gap-2">
+          <div class="inline-flex rounded-lg bg-slate-100 p-0.5 text-xs font-semibold">
+            <button onclick="setLogFilter('ALL')" id="filter-btn-all" class="px-2.5 py-1.5 rounded-md bg-white text-slate-900 shadow-2xs font-bold cursor-pointer">
+              All
+            </button>
+            <button onclick="setLogFilter('REORDER')" id="filter-btn-reorder" class="px-2.5 py-1.5 rounded-md text-slate-600 hover:text-slate-900 cursor-pointer">
+              Reorders
+            </button>
+            <button onclick="setLogFilter('WAIT')" id="filter-btn-wait" class="px-2.5 py-1.5 rounded-md text-slate-600 hover:text-slate-900 cursor-pointer">
+              Wait
+            </button>
+          </div>
+
+          <button onclick="exportToCSV()" class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-slate-700 bg-white hover:bg-slate-50 border border-slate-300 rounded-lg shadow-2xs cursor-pointer">
+            <svg class="w-3.5 h-3.5 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+            </svg>
+            <span>Export CSV</span>
+          </button>
+
+          <button onclick="clearActivityLogs()" class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-rose-700 bg-rose-50 hover:bg-rose-100 border border-rose-200 rounded-lg cursor-pointer">
+            <svg class="w-3.5 h-3.5 text-rose-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+            </svg>
+            <span>Clear</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Table -->
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-xs border-collapse">
+          <thead>
+            <tr class="bg-slate-50 border-b border-slate-200 text-slate-600 uppercase tracking-wider font-bold">
+              <th class="py-3 px-4 sm:px-6">Timestamp</th>
+              <th class="py-3 px-4 text-center">Stock Level</th>
+              <th class="py-3 px-4 text-center">Threshold</th>
+              <th class="py-3 px-4 text-left">Status</th>
+              <th class="py-3 px-4 text-left">Decision</th>
+              <th class="py-3 px-4 sm:px-6 text-left">Reasoning &amp; Dispatch Notes</th>
+            </tr>
+          </thead>
+          <tbody id="activity-log-tbody" class="divide-y divide-slate-100 font-medium">
+            <!-- Dynamic Log Rows -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Table Footer -->
+      <div class="p-3 sm:px-6 bg-slate-50 border-t border-slate-100 text-[11px] text-slate-500 flex flex-col sm:flex-row items-center justify-between gap-2">
+        <span>Latest agent decisions automatically appended to top.</span>
+        <span class="font-semibold text-slate-700">Reorder Threshold: 20 Units</span>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center text-xs text-slate-400 py-4 border-t border-slate-200/60">
+      Inventory Management Agent &bull; Sender: pranav.rawal12345@gmail.com &bull; Distributor: pranavr26.04@gmail.com
+    </footer>
+
+  </div>
+
+  <!-- ========================================================= -->
+  <!-- JAVASCRIPT LOGIC & REAL EMAIL DISPATCH ENGINE             -->
+  <!-- ========================================================= -->
+  <script>
+    const THRESHOLD = 20;
+    const TARGET_STOCK = 50;
+    
+    // Configured Real Email Addresses
+    const SENDER_EMAIL = "pranav.rawal12345@gmail.com";
+    const DISTRIBUTOR_EMAIL = "pranavr26.04@gmail.com";
+
+    let currentStock = 15;
+    let isAnalyzing = false;
+    let logFilter = 'ALL';
+    let currentPOCode = "PO-8492-RESTOCK";
+    let currentRequestedQty = 35;
+
+    // Activity Log history
+    let activityLogs = [
+      {
+        id: '1',
+        time: '09:54:12 AM',
+        date: '02 Sep 2026',
+        stock: 35,
+        threshold: 20,
+        status: 'Healthy Stock',
+        decision: 'WAIT',
+        reasoning: 'Current stock (35) is above threshold (20). Reserve optimal.'
+      },
+      {
+        id: '0',
+        time: '09:52:31 AM',
+        date: '02 Sep 2026',
+        stock: 15,
+        threshold: 20,
+        status: 'Low Stock',
+        decision: 'REORDER',
+        reasoning: 'Stock 15 < 20. PO-8492 prepared for distributor (pranavr26.04@gmail.com).'
+      }
+    ];
+
+    // Format current date and time
+    function getFormattedTimestamp(d = new Date()) {
+      const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+      const day = String(d.getDate()).padStart(2, '0');
+      const month = months[d.getMonth()];
+      const year = d.getFullYear();
+      
+      let hours = d.getHours();
+      const minutes = String(d.getMinutes()).padStart(2, '0');
+      const seconds = String(d.getSeconds()).padStart(2, '0');
+      const ampm = hours >= 12 ? 'PM' : 'AM';
+      hours = hours % 12;
+      hours = hours ? hours : 12;
+      const formattedHours = String(hours).padStart(2, '0');
+
+      return {
+        dateStr: `${day} ${month} ${year}`,
+        timeStr: `${formattedHours}:${minutes}:${seconds} ${ampm}`
+      };
+    }
+
+    // Live clock in header
+    function updateLiveClock() {
+      const { dateStr, timeStr } = getFormattedTimestamp();
+      const timeElem = document.getElementById('header-clock-time');
+      const dateElem = document.getElementById('header-clock-date');
+      if (timeElem) timeElem.textContent = timeStr;
+      if (dateElem) dateElem.textContent = dateStr;
+    }
+    setInterval(updateLiveClock, 1000);
+    updateLiveClock();
+
+    // Sound chime generator using Web Audio API
+    function playChime(type = 'success') {
+      try {
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        if (!AudioCtx) return;
+        const ctx = new AudioCtx();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sine';
+        
+        if (type === 'reorder') {
+          osc.frequency.setValueAtTime(440, ctx.currentTime);
+          osc.frequency.exponentialRampToValueAtTime(330, ctx.currentTime + 0.18);
+          gain.gain.setValueAtTime(0.08, ctx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.2);
+        } else if (type === 'email') {
+          osc.frequency.setValueAtTime(587.33, ctx.currentTime);
+          osc.frequency.exponentialRampToValueAtTime(880, ctx.currentTime + 0.25);
+          gain.gain.setValueAtTime(0.08, ctx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.3);
+        } else {
+          osc.frequency.setValueAtTime(523.25, ctx.currentTime);
+          osc.frequency.exponentialRampToValueAtTime(659.25, ctx.currentTime + 0.18);
+          gain.gain.setValueAtTime(0.06, ctx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.2);
+        }
+        
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start();
+        osc.stop(ctx.currentTime + 0.3);
+      } catch (e) {}
+    }
+
+    // Build the email text and subject dynamically
+    function buildEmailPayload(stockVal, poCode, reqQty) {
+      const { dateStr, timeStr } = getFormattedTimestamp();
+      const subject = `[URGENT RESTOCK PO] ${poCode} - Order Request from Pranav Rawal`;
+      const body = `Hello Distributor Team,
+
+Please process the following urgent inventory purchase order:
+
+PURCHASE ORDER SUMMARY:
+------------------------------------------
+Purchase Order Code : ${poCode}
+Sender / Manager    : Pranav Rawal (${SENDER_EMAIL})
+Distributor Email   : ${DISTRIBUTOR_EMAIL}
+Timestamp           : ${dateStr} • ${timeStr}
+
+INVENTORY METRICS:
+------------------------------------------
+Current Warehouse Stock : ${stockVal} Units
+Reorder Safety Trigger  : ${THRESHOLD} Units
+Target Buffer Stock     : ${TARGET_STOCK} Units
+REQUESTED REPLENISHMENT : +${reqQty} Units
+
+Delivery Destination: Main Warehouse Receiving Dock #2
+Urgency Level       : HIGH (Stock deficit below 20-unit safety threshold)
+
+Please reply to confirm delivery timeline and dispatch date.
+
+Best regards,
+Pranav Rawal
+Automated Inventory Management Agent`;
+
+      return { subject, body };
+    }
+
+    // Update Email Preview Panel
+    function refreshEmailPreview(stockVal, poCode, reqQty) {
+      const { subject, body } = buildEmailPayload(stockVal, poCode, reqQty);
+      const previewElem = document.getElementById('email-raw-preview');
+      if (previewElem) {
+        previewElem.textContent = `TO: ${DISTRIBUTOR_EMAIL}\nCC: ${SENDER_EMAIL}\nSUBJECT: ${subject}\n\n${body}`;
+      }
+    }
+
+    // =========================================================
+    // 1. OPEN GMAIL WEB COMPOSE DIRECTLY IN BROWSER
+    // =========================================================
+    function openGmailWebCompose() {
+      const { subject, body } = buildEmailPayload(currentStock, currentPOCode, currentRequestedQty);
+      
+      const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(DISTRIBUTOR_EMAIL)}&cc=${encodeURIComponent(SENDER_EMAIL)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+      // Open in a new tab/window
+      const win = window.open(gmailUrl, '_blank');
+      
+      // If popup blocker blocked the new tab, fallback to window location
+      if (!win || win.closed || typeof win.closed === 'undefined') {
+        window.location.href = gmailUrl;
+      }
+
+      // Show confirmation banner
+      showDispatchSuccessBanner(`Gmail Web Composer launched with pre-filled PO to ${DISTRIBUTOR_EMAIL}`);
+      playChime('email');
+
+      // Log in table
+      logEmailEvent(`⚡ Opened in Gmail Web Compose to distributor (${DISTRIBUTOR_EMAIL}) for +${currentRequestedQty} Units [${currentPOCode}].`);
+    }
+
+    // =========================================================
+    // 2. TRIGGER NATIVE DESKTOP MAIL APP (MAILTO)
+    // =========================================================
+    function triggerNativeMailClient() {
+      const { subject, body } = buildEmailPayload(currentStock, currentPOCode, currentRequestedQty);
+      const mailtoUrl = `mailto:${DISTRIBUTOR_EMAIL}?cc=${SENDER_EMAIL}&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+      window.location.href = mailtoUrl;
+
+      showDispatchSuccessBanner(`Triggered default mail app with PO to ${DISTRIBUTOR_EMAIL}`);
+      playChime('email');
+
+      logEmailEvent(`⚡ Triggered default mail client to ${DISTRIBUTOR_EMAIL} for +${currentRequestedQty} Units [${currentPOCode}].`);
+    }
+
+    // =========================================================
+    // 3. COPY FULL EMAIL TEXT TO CLIPBOARD
+    // =========================================================
+    function copyEmailTextToClipboard() {
+      const { subject, body } = buildEmailPayload(currentStock, currentPOCode, currentRequestedQty);
+      const fullCopyText = `TO: ${DISTRIBUTOR_EMAIL}\nCC: ${SENDER_EMAIL}\nSUBJECT: ${subject}\n\n${body}`;
+
+      navigator.clipboard.writeText(fullCopyText).then(() => {
+        const btnText = document.getElementById('text-copy-clipboard');
+        const origText = btnText.textContent;
+        btnText.textContent = '✓ Copied to Clipboard!';
+        showDispatchSuccessBanner(`Purchase Order email text copied to clipboard! You can paste directly into your email.`);
+        playChime('success');
+
+        setTimeout(() => {
+          btnText.textContent = origText;
+        }, 2000);
+      }).catch(err => {
+        alert('Could not auto-copy. Please select and copy from the preview box below.');
+      });
+    }
+
+    // Show banner helper
+    function showDispatchSuccessBanner(msg) {
+      const banner = document.getElementById('email-sent-banner');
+      const details = document.getElementById('email-sent-details');
+      const { dateStr, timeStr } = getFormattedTimestamp();
+
+      details.innerHTML = `<strong>${msg}</strong><br><span class="text-slate-500">From: ${SENDER_EMAIL} &bull; To: ${DISTRIBUTOR_EMAIL} &bull; ${dateStr} at ${timeStr}</span>`;
+      banner.classList.remove('hidden');
+    }
+
+    // Append email activity to log
+    function logEmailEvent(note) {
+      const { dateStr, timeStr } = getFormattedTimestamp();
+      activityLogs.unshift({
+        id: Date.now().toString(),
+        time: timeStr,
+        date: dateStr,
+        stock: currentStock,
+        threshold: THRESHOLD,
+        status: 'Low Stock',
+        decision: 'REORDER',
+        reasoning: note
+      });
+      renderActivityTable();
+    }
+
+    // Core Analysis Routine
+    function executeAnalysis(stockVal) {
+      if (isAnalyzing) return;
+      isAnalyzing = true;
+      currentStock = stockVal;
+
+      // Toggle UI to Analyzing State (500ms simulation)
+      const btnText = document.getElementById('btn-analyze-text');
+      const iconPlay = document.getElementById('icon-analyze-play');
+      const iconSpinner = document.getElementById('icon-analyze-spinner');
+      const decisionThinking = document.getElementById('decision-thinking-state');
+      const decisionContent = document.getElementById('decision-content-body');
+      const workflowBadge = document.getElementById('workflow-status-badge');
+
+      btnText.textContent = 'Agent is analyzing...';
+      iconPlay.classList.add('hidden');
+      iconSpinner.classList.remove('hidden');
+      decisionThinking.classList.remove('hidden');
+      decisionThinking.classList.add('flex');
+      decisionContent.classList.add('hidden');
+      workflowBadge.textContent = 'Agent Processing...';
+      workflowBadge.className = 'text-xs font-semibold text-indigo-700 bg-indigo-50 px-2.5 py-1 rounded-full animate-pulse';
+
+      setTimeout(() => {
+        // Calculate decision
+        const isReorder = stockVal < THRESHOLD;
+        const decision = isReorder ? 'REORDER' : 'WAIT';
+        const status = stockVal <= 5 ? 'Critical Stock' : isReorder ? 'Low Stock' : 'Healthy Stock';
+        const reasoning = isReorder
+          ? `Current stock (${stockVal}) is below the threshold (${THRESHOLD}). Reorder recommended.`
+          : `Current stock (${stockVal}) is above the threshold (${THRESHOLD}). Stock level is sufficient. No reorder required.`;
+
+        const { dateStr, timeStr } = getFormattedTimestamp();
+
+        // 1. Update KPI Cards
+        document.getElementById('kpi-stock-val').textContent = stockVal;
+        const stockSub = document.getElementById('kpi-stock-subtext');
+        if (isReorder) {
+          stockSub.textContent = `${THRESHOLD - stockVal} units deficit`;
+          stockSub.className = 'text-rose-600 font-semibold flex items-center gap-0.5';
+        } else {
+          stockSub.textContent = `${stockVal - THRESHOLD} units above threshold`;
+          stockSub.className = 'text-emerald-600 font-semibold flex items-center gap-0.5';
+        }
+
+        const statusVal = document.getElementById('kpi-status-val');
+        const statusIcon = document.getElementById('kpi-status-icon');
+        const statusSub = document.getElementById('kpi-status-subtext');
+        statusVal.textContent = status;
+        if (isReorder) {
+          statusVal.className = 'text-2xl font-black text-rose-700 tracking-tight';
+          statusIcon.className = 'w-10 h-10 rounded-lg bg-rose-50 text-rose-600 flex items-center justify-center';
+          statusSub.textContent = 'Below 20 Units';
+          statusSub.className = 'text-rose-700 font-semibold';
+        } else {
+          statusVal.className = 'text-2xl font-black text-emerald-700 tracking-tight';
+          statusIcon.className = 'w-10 h-10 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center';
+          statusSub.textContent = 'Healthy Stock Buffer';
+          statusSub.className = 'text-emerald-700 font-semibold';
+        }
+
+        const kpiDecCard = document.getElementById('kpi-decision-card');
+        const kpiDecVal = document.getElementById('kpi-decision-val');
+        const kpiDecIcon = document.getElementById('kpi-decision-icon');
+        const kpiDecSub = document.getElementById('kpi-decision-subtext');
+        kpiDecVal.textContent = decision;
+        if (isReorder) {
+          kpiDecCard.className = 'bg-rose-50/70 border-rose-200 rounded-xl p-5 border shadow-xs hover:shadow-md transition-all duration-200';
+          kpiDecVal.className = 'text-3xl font-black text-rose-700 tracking-tight';
+          kpiDecIcon.className = 'w-10 h-10 rounded-lg bg-rose-100 text-rose-700 flex items-center justify-center';
+          kpiDecSub.textContent = 'Trigger Restock Order';
+          kpiDecSub.className = 'font-bold text-rose-700';
+        } else {
+          kpiDecCard.className = 'bg-emerald-50/70 border-emerald-200 rounded-xl p-5 border shadow-xs hover:shadow-md transition-all duration-200';
+          kpiDecVal.className = 'text-3xl font-black text-emerald-700 tracking-tight';
+          kpiDecIcon.className = 'w-10 h-10 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center';
+          kpiDecSub.textContent = 'Maintain Current Stock';
+          kpiDecSub.className = 'font-bold text-emerald-700';
+        }
+
+        // 2. Update Right Decision Panel
+        const decHeroBanner = document.getElementById('decision-hero-banner');
+        const decHeroTitle = document.getElementById('decision-hero-title');
+        const decHeroBadge = document.getElementById('decision-hero-badge');
+        const decStatusPill = document.getElementById('decision-status-pill');
+        const decIconBadge = document.getElementById('decision-icon-badge');
+        const decReasonCard = document.getElementById('decision-reasoning-card');
+        const decReasonText = document.getElementById('decision-reasoning-text');
+        const decReasonIcon = document.getElementById('decision-reasoning-icon');
+        const reorderActionCard = document.getElementById('reorder-action-card');
+
+        if (isReorder) {
+          decHeroBanner.className = 'p-4 sm:p-5 rounded-xl border bg-rose-600 text-white border-rose-700 shadow-md flex flex-col sm:flex-row sm:items-center justify-between gap-3';
+          decHeroTitle.textContent = 'REORDER REQUIRED';
+          decHeroBadge.textContent = 'REORDER';
+          decStatusPill.className = 'inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-rose-100 text-rose-800';
+          decStatusPill.innerHTML = '<span>Action Required</span>';
+          decIconBadge.className = 'w-8 h-8 rounded-lg bg-rose-100 text-rose-700 flex items-center justify-center font-bold text-sm';
+          decReasonCard.className = 'p-4 rounded-xl border bg-rose-50/60 border-rose-200 text-rose-950';
+          decReasonIcon.className = 'w-4 h-4 flex-shrink-0 mt-0.5 text-rose-600';
+
+          // Show Reorder & Email card
+          reorderActionCard.classList.remove('hidden');
+          currentRequestedQty = Math.max(TARGET_STOCK - stockVal, 10);
+          currentPOCode = `PO-${Math.floor(1000 + Math.random() * 9000)}-RESTOCK`;
+          document.getElementById('reorder-qty-tag').textContent = `Order: +${currentRequestedQty} Units`;
+          document.getElementById('reorder-po-code').textContent = currentPOCode;
+          document.getElementById('email-sent-banner').classList.add('hidden');
+          
+          refreshEmailPreview(stockVal, currentPOCode, currentRequestedQty);
+        } else {
+          decHeroBanner.className = 'p-4 sm:p-5 rounded-xl border bg-emerald-600 text-white border-emerald-700 shadow-md flex flex-col sm:flex-row sm:items-center justify-between gap-3';
+          decHeroTitle.textContent = 'NO REORDER REQUIRED';
+          decHeroBadge.textContent = 'WAIT';
+          decStatusPill.className = 'inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800';
+          decStatusPill.innerHTML = '<span>Optimal State</span>';
+          decIconBadge.className = 'w-8 h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-sm';
+          decReasonCard.className = 'p-4 rounded-xl border bg-emerald-50/60 border-emerald-200 text-emerald-950';
+          decReasonIcon.className = 'w-4 h-4 flex-shrink-0 mt-0.5 text-emerald-600';
+
+          // Hide Reorder & Email card when stock is healthy
+          reorderActionCard.classList.add('hidden');
+        }
+
+        decReasonText.textContent = reasoning;
+        document.getElementById('flow-stock-val').textContent = `${stockVal} Units`;
+        const flowOutcome = document.getElementById('flow-outcome-box');
+        const flowDec = document.getElementById('flow-decision-val');
+        flowDec.textContent = decision;
+        flowOutcome.className = isReorder
+          ? 'flex-1 rounded-lg p-2 text-center border bg-rose-50 border-rose-200 text-rose-800'
+          : 'flex-1 rounded-lg p-2 text-center border bg-emerald-50 border-emerald-200 text-emerald-800';
+
+        // 3. Dynamic Action Timestamps
+        document.getElementById('action-timestamp-date').textContent = dateStr;
+        document.getElementById('action-timestamp-time').textContent = timeStr;
+
+        // 4. Update Gauge / Progress Bar
+        const maxScale = Math.max(50, Math.ceil((stockVal + 10) / 10) * 10);
+        const percent = Math.min(100, Math.max(0, (stockVal / maxScale) * 100));
+
+        const pin = document.getElementById('gauge-stock-pin');
+        const pinBadge = document.getElementById('gauge-pin-badge');
+        const pinArrow = document.getElementById('gauge-pin-arrow');
+        const fillBar = document.getElementById('gauge-fill-bar');
+        const zoneBadge = document.getElementById('gauge-zone-badge');
+
+        pin.style.left = `${percent}%`;
+        fillBar.style.width = `calc(${percent}% - 8px)`;
+        document.getElementById('gauge-pin-val').textContent = stockVal;
+
+        if (isReorder) {
+          pinBadge.className = 'px-2.5 py-1 rounded-lg text-xs font-extrabold text-white shadow-md bg-rose-600 whitespace-nowrap';
+          pinArrow.className = 'w-0 h-0 border-l-4 border-r-4 border-t-4 border-l-transparent border-r-transparent border-t-rose-600';
+          fillBar.className = 'absolute left-1 top-1 bottom-1 rounded-lg transition-all duration-700 ease-out shadow-xs bg-rose-500';
+          zoneBadge.className = 'inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-rose-100 text-rose-800 border border-rose-200 self-start sm:self-center';
+          zoneBadge.textContent = 'Zone: Low Stock (< 20 Units)';
+        } else {
+          pinBadge.className = 'px-2.5 py-1 rounded-lg text-xs font-extrabold text-white shadow-md bg-emerald-600 whitespace-nowrap';
+          pinArrow.className = 'w-0 h-0 border-l-4 border-r-4 border-t-4 border-l-transparent border-r-transparent border-t-emerald-600';
+          fillBar.className = 'absolute left-1 top-1 bottom-1 rounded-lg transition-all duration-700 ease-out shadow-xs bg-emerald-500';
+          zoneBadge.className = 'inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800 border border-emerald-200 self-start sm:self-center';
+          zoneBadge.textContent = 'Zone: Healthy Stock (≥ 20 Units)';
+        }
+
+        // 5. Update Reasoning Workflow Steps
+        document.getElementById('step-detail-1').textContent = `Stock: ${stockVal} Units`;
+        document.getElementById('step-detail-2').textContent = `${stockVal} ${isReorder ? '<' : '≥'} 20 (${isReorder ? 'Deficit' : 'Sufficient'})`;
+        document.getElementById('step-detail-3').textContent = status;
+        const step4Detail = document.getElementById('step-detail-4');
+        step4Detail.textContent = decision;
+        step4Detail.className = isReorder
+          ? 'mt-2 pt-2 border-t border-slate-200 text-[11px] font-bold text-rose-700'
+          : 'mt-2 pt-2 border-t border-slate-200 text-[11px] font-bold text-emerald-700';
+        document.getElementById('step-detail-5').textContent = `Logged at ${timeStr}`;
+
+        // 6. Prepend to Activity Log
+        activityLogs.unshift({
+          id: Date.now().toString(),
+          time: timeStr,
+          date: dateStr,
+          stock: stockVal,
+          threshold: THRESHOLD,
+          status: status,
+          decision: decision,
+          reasoning: isReorder 
+            ? `${reasoning} [${currentPOCode} Restock: +${currentRequestedQty} to ${DISTRIBUTOR_EMAIL}]`
+            : reasoning
+        });
+        renderActivityTable();
+
+        // Finish Thinking
+        btnText.textContent = 'Analyze Stock';
+        iconPlay.classList.remove('hidden');
+        iconSpinner.classList.add('hidden');
+        decisionThinking.classList.remove('flex');
+        decisionThinking.classList.add('hidden');
+        decisionContent.classList.remove('hidden');
+        workflowBadge.textContent = 'All 5 Steps Completed';
+        workflowBadge.className = 'text-xs font-semibold text-slate-600 bg-slate-100 px-2.5 py-1 rounded-full';
+
+        playChime(isReorder ? 'reorder' : 'wait');
+        isAnalyzing = false;
+      }, 500);
+    }
+
+    // Input Validation & Submission
+    function handleAnalyzeClick() {
+      const input = document.getElementById('stock-input');
+      const errBox = document.getElementById('input-error');
+      const errMsg = document.getElementById('input-error-msg');
+      const valStr = input.value.trim();
+
+      if (valStr === '') {
+        errMsg.textContent = 'Please enter a current stock quantity.';
+        errBox.classList.remove('hidden');
+        return;
+      }
+
+      const num = Number(valStr);
+      if (isNaN(num)) {
+        errMsg.textContent = 'Stock value must be a valid number.';
+        errBox.classList.remove('hidden');
+        return;
+      }
+
+      if (!Number.isInteger(num)) {
+        errMsg.textContent = 'Stock value must be a whole integer.';
+        errBox.classList.remove('hidden');
+        return;
+      }
+
+      if (num < 0) {
+        errMsg.textContent = 'Stock value cannot be negative (must be ≥ 0).';
+        errBox.classList.remove('hidden');
+        return;
+      }
+
+      errBox.classList.add('hidden');
+      executeAnalysis(num);
+    }
+
+    // Quick presets
+    function runPreset(val) {
+      document.getElementById('stock-input').value = val;
+      document.getElementById('input-error').classList.add('hidden');
+      executeAnalysis(val);
+    }
+
+    function handleResetInput() {
+      document.getElementById('stock-input').value = '';
+      document.getElementById('input-error').classList.add('hidden');
+    }
+
+    function resetDashboard() {
+      document.getElementById('stock-input').value = '15';
+      document.getElementById('input-error').classList.add('hidden');
+      executeAnalysis(15);
+    }
+
+    // Activity Log Table Rendering
+    function renderActivityTable() {
+      const tbody = document.getElementById('activity-log-tbody');
+      const countBadge = document.getElementById('log-count-badge');
+      const filtered = activityLogs.filter(item => {
+        if (logFilter === 'ALL') return true;
+        return item.decision === logFilter;
+      });
+
+      countBadge.textContent = `${activityLogs.length} ${activityLogs.length === 1 ? 'Record' : 'Records'}`;
+
+      if (filtered.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="6" class="py-8 text-center text-slate-400">
+              No activity records found. Run an analysis above to generate log entries.
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
+      tbody.innerHTML = filtered.map((item, idx) => {
+        const isReorder = item.decision === 'REORDER';
+        const isLatest = idx === 0 && logFilter === 'ALL';
+        return `
+          <tr class="${isLatest ? 'bg-indigo-50/20' : ''} hover:bg-slate-50 transition-colors">
+            <td class="py-3 px-4 sm:px-6 whitespace-nowrap">
+              <div class="font-bold text-slate-900 tabular-nums">${item.time}</div>
+              <div class="text-[11px] text-slate-500">${item.date}</div>
+            </td>
+            <td class="py-3 px-4 text-center whitespace-nowrap font-black text-sm text-slate-900 tabular-nums">
+              ${item.stock} <span class="text-[11px] font-normal text-slate-500">Units</span>
+            </td>
+            <td class="py-3 px-4 text-center whitespace-nowrap font-bold text-slate-700 tabular-nums">
+              ${item.threshold} Units
+            </td>
+            <td class="py-3 px-4 whitespace-nowrap">
+              <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-bold ${
+                item.status === 'Healthy Stock'
+                  ? 'bg-emerald-50 text-emerald-700 border border-emerald-200'
+                  : 'bg-rose-50 text-rose-700 border border-rose-200'
+              }">
+                ${item.status}
+              </span>
+            </td>
+            <td class="py-3 px-4 whitespace-nowrap">
+              <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-black ${
+                isReorder ? 'bg-rose-600 text-white' : 'bg-emerald-600 text-white'
+              }">
+                ${item.decision}
+              </span>
+            </td>
+            <td class="py-3 px-4 sm:px-6 text-slate-600 text-[11px]">
+              ${item.reasoning}
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function setLogFilter(filter) {
+      logFilter = filter;
+      document.getElementById('filter-btn-all').className = filter === 'ALL'
+        ? 'px-2.5 py-1.5 rounded-md bg-white text-slate-900 shadow-2xs font-bold cursor-pointer'
+        : 'px-2.5 py-1.5 rounded-md text-slate-600 hover:text-slate-900 cursor-pointer';
+      document.getElementById('filter-btn-reorder').className = filter === 'REORDER'
+        ? 'px-2.5 py-1.5 rounded-md bg-rose-600 text-white shadow-2xs font-bold cursor-pointer'
+        : 'px-2.5 py-1.5 rounded-md text-slate-600 hover:text-slate-900 cursor-pointer';
+      document.getElementById('filter-btn-wait').className = filter === 'WAIT'
+        ? 'px-2.5 py-1.5 rounded-md bg-emerald-600 text-white shadow-2xs font-bold cursor-pointer'
+        : 'px-2.5 py-1.5 rounded-md text-slate-600 hover:text-slate-900 cursor-pointer';
+      renderActivityTable();
+    }
+
+    function clearActivityLogs() {
+      activityLogs = [];
+      renderActivityTable();
+    }
+
+    function exportToCSV() {
+      if (activityLogs.length === 0) return;
+      const headers = ['ID', 'Date', 'Time', 'Stock Level', 'Threshold', 'Status', 'Decision', 'Reasoning'];
+      const rows = activityLogs.map(l => [
+        l.id,
+        `"${l.date}"`,
+        `"${l.time}"`,
+        l.stock,
+        l.threshold,
+        `"${l.status}"`,
+        `"${l.decision}"`,
+        `"${l.reasoning.replace(/"/g, '""')}"`
+      ]);
+      const csv = 'data:text/csv;charset=utf-8,' + [headers.join(','), ...rows.map(e => e.join(','))].join('\n');
+      const uri = encodeURI(csv);
+      const link = document.createElement('a');
+      link.href = uri;
+      link.download = `inventory_agent_audit_${Date.now()}.csv`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    // Initial render and preview setup
+    refreshEmailPreview(15, currentPOCode, currentRequestedQty);
+    renderActivityTable();
+  </script>
+</body>
+</html>

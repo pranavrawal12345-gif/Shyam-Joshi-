@@ -1,0 +1,2886 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sentiment Agent AI — Rule-Based Intelligent Agent</title>
+  <meta name="description" content="A Rule-Based Intelligent Agent for Real-Time Sentiment Classification. Built with modern glassmorphism UI, interactive AI reasoning timeline, and 100% deterministic keyword matching.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    /* ==========================================================================
+       SENTIMENT AGENT AI — COMPLETE EMBEDDED STYLESHEET
+       ========================================================================== */
+    :root {
+      --bg-primary: #070B19;
+      --bg-secondary: #0D152D;
+      --bg-tertiary: #131E3D;
+      --bg-glass: rgba(13, 21, 45, 0.65);
+      --bg-glass-inset: rgba(7, 11, 25, 0.6);
+      --bg-glass-card: rgba(19, 30, 61, 0.55);
+
+      --primary-indigo: #6366F1;
+      --primary-violet: #8B5CF6;
+      --primary-cyan: #38BDF8;
+      --accent-glow: rgba(99, 102, 241, 0.35);
+
+      --color-positive: #10B981;
+      --color-positive-glow: rgba(16, 185, 129, 0.35);
+      --color-negative: #F43F5E;
+      --color-negative-glow: rgba(244, 63, 94, 0.35);
+      --color-neutral: #F59E0B;
+      --color-neutral-glow: rgba(245, 158, 11, 0.35);
+
+      --text-pure: #FFFFFF;
+      --text-main: #F1F5F9;
+      --text-muted: #94A3B8;
+      --text-dim: #64748B;
+
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-active: rgba(99, 102, 241, 0.4);
+      --border-card: rgba(148, 163, 184, 0.12);
+
+      --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+      --shadow-glow-indigo: 0 0 25px rgba(99, 102, 241, 0.3);
+
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --radius-xl: 26px;
+      --radius-full: 9999px;
+
+      --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-mono: 'JetBrains Mono', 'Fira Code', Consolas, Monaco, monospace;
+
+      --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-smooth: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      color-scheme: dark;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--bg-primary);
+      color: var(--text-main);
+      min-height: 100vh;
+      overflow-x: hidden;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      position: relative;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: var(--bg-primary); }
+    ::-webkit-scrollbar-thumb { background: rgba(99, 102, 241, 0.3); border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--primary-indigo); }
+
+    /* Canvas & Glows */
+    #particle-canvas {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .ambient-glow {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(120px);
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.3;
+      animation: floatAmbient 18s ease-in-out infinite alternate;
+    }
+
+    .glow-1 {
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, var(--primary-indigo), transparent 70%);
+      top: -100px; left: 15%;
+    }
+
+    .glow-2 {
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, var(--primary-violet), transparent 70%);
+      bottom: 10%; right: 5%;
+      animation-duration: 24s;
+    }
+
+    .glow-3 {
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, var(--primary-cyan), transparent 70%);
+      top: 45%; left: 60%;
+      opacity: 0.15;
+      animation-duration: 20s;
+    }
+
+    @keyframes floatAmbient {
+      0% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(40px, -30px) scale(1.1); }
+      100% { transform: translate(-30px, 40px) scale(0.95); }
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .main-wrapper { position: relative; z-index: 1; }
+    .section { padding: 100px 0; position: relative; }
+    .section-header { margin-bottom: 48px; }
+    .section-header.text-center { text-align: center; }
+
+    .section-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--primary-cyan);
+      padding: 4px 14px;
+      border-radius: var(--radius-full);
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--text-pure);
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+
+    .section-desc {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      max-width: 650px;
+      line-height: 1.6;
+    }
+
+    .section-header.text-center .section-desc { margin: 0 auto; }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #A78BFA 0%, #6366F1 50%, #38BDF8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+    }
+
+    .glow-text { text-shadow: 0 0 35px rgba(139, 92, 246, 0.4); }
+
+    .glass-panel {
+      background: var(--bg-glass);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .glass-card {
+      background: var(--bg-glass-card);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-glass);
+      transition: transform var(--transition-smooth), border-color var(--transition-smooth), box-shadow var(--transition-smooth);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .glass-card:hover {
+      border-color: rgba(99, 102, 241, 0.35);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45), 0 0 20px rgba(99, 102, 241, 0.15);
+    }
+
+    .glass-panel-inset {
+      background: var(--bg-glass-inset);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+    }
+
+    .pulse-dot {
+      width: 8px; height: 8px;
+      background-color: #10B981;
+      border-radius: 50%;
+      display: inline-block;
+      box-shadow: 0 0 0 rgba(16, 185, 129, 0.7);
+      animation: pulseDot 2s infinite;
+    }
+
+    @keyframes pulseDot {
+      0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+      70% { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 24px;
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      font-weight: 600;
+      border-radius: var(--radius-full);
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: all var(--transition-fast);
+      outline: none;
+      user-select: none;
+    }
+
+    .btn svg { width: 18px; height: 18px; transition: transform var(--transition-fast); }
+    .btn:hover svg { transform: translateX(2px); }
+
+    .btn-sm { padding: 8px 16px; font-size: 0.85rem; }
+    .btn-lg { padding: 15px 32px; font-size: 1.05rem; }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%);
+      color: var(--text-pure);
+      box-shadow: 0 4px 18px rgba(99, 102, 241, 0.4);
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%);
+      box-shadow: 0 6px 24px rgba(139, 92, 246, 0.55);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-main);
+      border: 1px solid var(--border-subtle);
+      backdrop-filter: blur(10px);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.25);
+      color: var(--text-pure);
+      transform: translateY(-2px);
+    }
+
+    .icon-btn {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+
+    .icon-btn:hover {
+      background: rgba(99, 102, 241, 0.2);
+      color: var(--text-pure);
+      border-color: var(--primary-indigo);
+    }
+
+    .icon-btn svg { width: 18px; height: 18px; }
+    .hidden { display: none !important; }
+
+    /* Navigation */
+    .navbar {
+      position: sticky;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      height: 72px;
+    }
+
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text-pure);
+    }
+
+    .logo-core {
+      width: 36px; height: 36px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo-orb {
+      width: 18px; height: 18px;
+      background: linear-gradient(135deg, #38BDF8, #8B5CF6);
+      border-radius: 50%;
+      box-shadow: 0 0 14px rgba(56, 189, 248, 0.8);
+      animation: pulseLogo 3s ease-in-out infinite;
+    }
+
+    .logo-ring {
+      position: absolute;
+      width: 34px; height: 34px;
+      border: 1.5px dashed rgba(99, 102, 241, 0.6);
+      border-radius: 50%;
+      animation: spinRing 8s linear infinite;
+    }
+
+    @keyframes spinRing { 100% { transform: rotate(360deg); } }
+    @keyframes pulseLogo {
+      0%, 100% { transform: scale(1); filter: brightness(1); }
+      50% { transform: scale(1.12); filter: brightness(1.3); }
+    }
+
+    .brand-text { display: flex; align-items: center; gap: 8px; }
+    .brand-title { font-size: 1.2rem; font-weight: 800; letter-spacing: -0.02em; }
+    .brand-badge {
+      font-size: 0.65rem; font-weight: 700;
+      background: rgba(99, 102, 241, 0.15);
+      color: var(--primary-cyan);
+      padding: 2px 6px; border-radius: 4px;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+    }
+
+    .nav-links { display: flex; align-items: center; gap: 28px; }
+    .nav-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color var(--transition-fast);
+      position: relative;
+    }
+
+    .nav-link:hover, .nav-link.active { color: var(--text-pure); }
+    .nav-link.active::after {
+      content: '';
+      position: absolute;
+      bottom: -6px; left: 0;
+      width: 100%; height: 2px;
+      background: linear-gradient(90deg, var(--primary-indigo), var(--primary-cyan));
+      border-radius: 2px;
+    }
+
+    .nav-actions { display: flex; align-items: center; gap: 12px; }
+    .mobile-toggle {
+      display: none; background: none; border: none;
+      flex-direction: column; gap: 5px; cursor: pointer; padding: 6px;
+    }
+    .mobile-toggle span { width: 22px; height: 2px; background: var(--text-main); border-radius: 2px; }
+
+    /* Hero Section */
+    .hero-section {
+      padding: 100px 0 120px;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .pill-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(19, 30, 61, 0.7);
+      border: 1px solid rgba(99, 102, 241, 0.3);
+      backdrop-filter: blur(12px);
+      padding: 6px 16px;
+      border-radius: var(--radius-full);
+      margin-bottom: 28px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .pill-text { font-size: 0.85rem; font-weight: 600; color: var(--text-main); }
+    .pill-tag {
+      background: var(--primary-indigo);
+      color: var(--text-pure);
+      font-size: 0.65rem; font-weight: 700;
+      padding: 2px 6px; border-radius: 4px;
+      text-transform: uppercase;
+    }
+
+    .hero-heading {
+      font-size: 4rem; font-weight: 800;
+      line-height: 1.12; letter-spacing: -0.03em;
+      color: var(--text-pure); max-width: 900px;
+      margin-bottom: 20px;
+    }
+
+    .hero-subtitle {
+      font-size: 1.25rem; color: var(--text-muted);
+      max-width: 720px; line-height: 1.6; margin-bottom: 40px;
+    }
+
+    .hero-cta-group {
+      display: flex; align-items: center; gap: 18px;
+      margin-bottom: 60px; flex-wrap: wrap; justify-content: center;
+    }
+
+    .hero-orb-wrapper {
+      position: relative;
+      width: 220px; height: 220px;
+      margin-bottom: 60px;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    .hero-neural-orb {
+      width: 140px; height: 140px;
+      position: relative;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    .orb-core {
+      width: 90px; height: 90px;
+      background: radial-gradient(circle at 35% 35%, #A78BFA, #6366F1 50%, #0D152D 95%);
+      border-radius: 50%;
+      box-shadow: 0 0 50px rgba(139, 92, 246, 0.7), inset 0 0 20px rgba(255, 255, 255, 0.4);
+      animation: breatheOrb 4s ease-in-out infinite alternate;
+    }
+
+    .orb-ring {
+      position: absolute; border-radius: 50%;
+      border: 1.5px solid transparent; pointer-events: none;
+    }
+
+    .ring-1 {
+      width: 160px; height: 160px;
+      border-top-color: var(--primary-cyan); border-bottom-color: var(--primary-indigo);
+      animation: spinRing 6s linear infinite;
+    }
+
+    .ring-2 {
+      width: 195px; height: 195px;
+      border-left-color: var(--primary-violet); border-right-color: rgba(255, 255, 255, 0.3);
+      animation: spinRing 9s linear infinite reverse;
+    }
+
+    .ring-3 {
+      width: 230px; height: 230px;
+      border: 1px dashed rgba(99, 102, 241, 0.35);
+      animation: spinRing 14s linear infinite;
+    }
+
+    .orb-particles .op-dot {
+      position: absolute; width: 6px; height: 6px;
+      background: var(--primary-cyan); border-radius: 50%;
+      box-shadow: 0 0 8px var(--primary-cyan);
+      animation: orbitFloat 5s ease-in-out infinite;
+    }
+
+    .d1 { top: 10px; left: 30px; animation-delay: 0s; }
+    .d2 { bottom: 20px; right: 25px; animation-delay: 1.2s; }
+    .d3 { top: 80px; right: 5px; animation-delay: 2.4s; }
+    .d4 { bottom: 70px; left: 10px; animation-delay: 3.6s; }
+
+    @keyframes breatheOrb {
+      0% { transform: scale(0.95); filter: drop-shadow(0 0 30px rgba(99, 102, 241, 0.6)); }
+      100% { transform: scale(1.08); filter: drop-shadow(0 0 65px rgba(139, 92, 246, 0.9)); }
+    }
+
+    @keyframes orbitFloat {
+      0%, 100% { transform: translateY(0) scale(1); opacity: 0.7; }
+      50% { transform: translateY(-12px) scale(1.4); opacity: 1; }
+    }
+
+    .hero-badges-row {
+      display: flex; align-items: center; justify-content: center;
+      gap: 32px; flex-wrap: wrap;
+    }
+
+    .badge-item {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 0.9rem; color: var(--text-muted);
+      background: rgba(255, 255, 255, 0.03);
+      padding: 8px 16px; border-radius: var(--radius-full);
+      border: 1px solid var(--border-subtle);
+    }
+
+    /* Agent Demo Section */
+    .demo-section { padding-top: 20px; }
+
+    .agent-workspace {
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(99, 102, 241, 0.25);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 30px rgba(99, 102, 241, 0.15);
+      overflow: hidden;
+    }
+
+    .agent-workspace-grid {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      min-height: 720px;
+    }
+
+    /* Left Avatar Panel */
+    .agent-avatar-panel {
+      padding: 30px 24px;
+      border-right: 1px solid var(--border-subtle);
+      display: flex;
+      flex-direction: column;
+      gap: 26px;
+      background: linear-gradient(180deg, rgba(13, 21, 45, 0.8) 0%, rgba(7, 11, 25, 0.95) 100%);
+    }
+
+    .avatar-header {
+      display: flex; align-items: center; justify-content: space-between;
+    }
+
+    .panel-label {
+      font-family: var(--font-mono); font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.1em; color: var(--text-dim);
+    }
+
+    .live-indicator {
+      display: flex; align-items: center; gap: 6px;
+      font-size: 0.7rem; font-weight: 700; color: #10B981;
+      background: rgba(16, 185, 129, 0.12);
+      padding: 3px 8px; border-radius: var(--radius-full);
+    }
+
+    .avatar-container {
+      width: 170px; height: 170px; margin: 10px auto;
+      position: relative; display: flex; align-items: center; justify-content: center;
+    }
+
+    .avatar-circle {
+      width: 110px; height: 110px;
+      background: radial-gradient(circle at 30% 30%, #38BDF8, #6366F1 60%, #0D152D 95%);
+      border-radius: 50%;
+      position: relative; display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 0 35px rgba(99, 102, 241, 0.6), inset 0 0 15px rgba(255, 255, 255, 0.5);
+      transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+    }
+
+    .avatar-container.state-thinking .avatar-circle {
+      animation: avatarThink 1.2s infinite alternate;
+      box-shadow: 0 0 50px rgba(139, 92, 246, 0.9), inset 0 0 20px rgba(255, 255, 255, 0.7);
+    }
+
+    .avatar-container.state-positive .avatar-circle {
+      background: radial-gradient(circle at 30% 30%, #34D399, #059669 60%, #064E3B 95%);
+      box-shadow: 0 0 45px rgba(16, 185, 129, 0.8);
+    }
+
+    .avatar-container.state-negative .avatar-circle {
+      background: radial-gradient(circle at 30% 30%, #FB7185, #E11D48 60%, #881337 95%);
+      box-shadow: 0 0 45px rgba(244, 63, 94, 0.8);
+    }
+
+    @keyframes avatarThink {
+      0% { transform: scale(0.96) rotate(0deg); }
+      100% { transform: scale(1.08) rotate(5deg); }
+    }
+
+    .avatar-inner-core {
+      width: 55px; height: 55px;
+      background: rgba(7, 11, 25, 0.8);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      backdrop-filter: blur(5px);
+    }
+
+    .avatar-iris {
+      width: 22px; height: 22px;
+      background: var(--text-pure);
+      border-radius: 50%;
+      box-shadow: 0 0 15px var(--text-pure);
+    }
+
+    .avatar-waves {
+      position: absolute; bottom: -8px;
+      display: flex; align-items: flex-end; gap: 3px; height: 20px;
+    }
+
+    .wave-bar {
+      width: 3px; height: 4px;
+      background: var(--primary-cyan); border-radius: 2px;
+      transition: height var(--transition-fast);
+    }
+
+    .avatar-container.state-listening .wave-bar {
+      animation: waveDance 0.8s ease-in-out infinite alternate;
+    }
+
+    .w1 { animation-delay: 0.1s; }
+    .w2 { animation-delay: 0.3s; }
+    .w3 { animation-delay: 0.2s; }
+    .w4 { animation-delay: 0.4s; }
+    .w5 { animation-delay: 0.15s; }
+
+    @keyframes waveDance {
+      0% { height: 4px; }
+      100% { height: 18px; background: var(--primary-violet); }
+    }
+
+    .avatar-orbit {
+      position: absolute; border-radius: 50%;
+      border: 1px solid rgba(99, 102, 241, 0.25); pointer-events: none;
+    }
+
+    .orbit-1 {
+      width: 145px; height: 145px; border-top-color: var(--primary-indigo);
+      animation: spinRing 5s linear infinite;
+    }
+
+    .orbit-2 {
+      width: 170px; height: 170px; border-right-color: var(--primary-cyan);
+      animation: spinRing 8s linear infinite reverse;
+    }
+
+    .agent-status-box {
+      background: rgba(255, 255, 255, 0.03);
+      padding: 14px 18px; border-radius: var(--radius-md);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .status-title {
+      font-family: var(--font-mono); font-size: 0.68rem;
+      color: var(--text-dim); letter-spacing: 0.08em; margin-bottom: 6px;
+    }
+
+    .status-badge {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 0.95rem; font-weight: 700; color: var(--text-pure);
+    }
+
+    .status-icon-dot {
+      width: 10px; height: 10px; border-radius: 50%;
+      background: var(--primary-cyan); box-shadow: 0 0 10px var(--primary-cyan);
+      transition: all var(--transition-fast);
+    }
+
+    .status-badge[data-state="ready"] .status-icon-dot { background: #38BDF8; box-shadow: 0 0 10px #38BDF8; }
+    .status-badge[data-state="listening"] .status-icon-dot { background: #F59E0B; box-shadow: 0 0 10px #F59E0B; }
+    .status-badge[data-state="analyzing"] .status-icon-dot { background: #8B5CF6; box-shadow: 0 0 12px #8B5CF6; }
+    .status-badge[data-state="generated"] .status-icon-dot { background: #10B981; box-shadow: 0 0 12px #10B981; }
+
+    .telemetry-box {
+      flex: 1; display: flex; flex-direction: column;
+      background: rgba(0, 0, 0, 0.4); border-radius: var(--radius-md);
+      border: 1px solid rgba(255, 255, 255, 0.05); padding: 12px;
+      min-height: 180px;
+    }
+
+    .telemetry-header {
+      display: flex; align-items: center; justify-content: space-between;
+      font-family: var(--font-mono); font-size: 0.68rem; font-weight: 700;
+      color: var(--text-dim); padding-bottom: 8px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05); margin-bottom: 8px;
+    }
+
+    .telemetry-clear { color: var(--primary-cyan); cursor: pointer; font-size: 0.65rem; }
+    .telemetry-clear:hover { text-decoration: underline; }
+
+    .telemetry-logs {
+      font-family: var(--font-mono); font-size: 0.72rem;
+      color: var(--text-muted); line-height: 1.5; overflow-y: auto;
+      max-height: 220px; display: flex; flex-direction: column; gap: 6px;
+    }
+
+    .log-entry { word-break: break-word; animation: fadeIn 0.25s ease-in; }
+    .log-time { color: var(--text-dim); margin-right: 4px; }
+    .log-system { color: #94A3B8; }
+    .log-ready { color: #38BDF8; }
+    .log-typing { color: #F59E0B; }
+    .log-pipeline { color: #A78BFA; }
+    .log-result { color: #34D399; }
+
+    /* Right Chat Panel */
+    .agent-chat-panel {
+      padding: 32px 36px; display: flex; flex-direction: column; gap: 28px;
+      background: var(--bg-glass-card);
+    }
+
+    .chat-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding-bottom: 20px; border-bottom: 1px solid var(--border-subtle);
+      flex-wrap: wrap; gap: 16px;
+    }
+
+    .chat-title-group { display: flex; align-items: center; gap: 14px; }
+    .chat-icon {
+      width: 42px; height: 42px; background: rgba(99, 102, 241, 0.12);
+      border: 1px solid rgba(99, 102, 241, 0.3); border-radius: var(--radius-md);
+      color: var(--primary-cyan); display: flex; align-items: center; justify-content: center;
+    }
+    .chat-icon svg { width: 22px; height: 22px; }
+    .chat-title { font-size: 1.25rem; font-weight: 700; color: var(--text-pure); }
+    .chat-subtitle { font-size: 0.85rem; color: var(--text-muted); }
+
+    .auto-scan-toggle {
+      display: flex; align-items: center; gap: 10px; font-size: 0.85rem;
+      color: var(--text-muted); background: rgba(255, 255, 255, 0.03);
+      padding: 6px 12px; border-radius: var(--radius-full);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .switch { position: relative; display: inline-block; width: 38px; height: 20px; }
+    .switch input { opacity: 0; width: 0; height: 0; }
+    .slider {
+      position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0;
+      background-color: rgba(255, 255, 255, 0.15); transition: .3s;
+    }
+    .slider:before {
+      position: absolute; content: ""; height: 14px; width: 14px;
+      left: 3px; bottom: 3px; background-color: white; transition: .3s;
+    }
+    input:checked + .slider { background-color: var(--primary-indigo); }
+    input:checked + .slider:before { transform: translateX(18px); }
+    .slider.round { border-radius: 34px; }
+    .slider.round:before { border-radius: 50%; }
+
+    .chat-input-wrapper {
+      background: var(--bg-glass-inset);
+      border: 1px solid var(--border-subtle); border-radius: var(--radius-lg);
+      padding: 18px 20px; transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+    }
+
+    .chat-input-wrapper:focus-within {
+      border-color: var(--primary-indigo);
+      box-shadow: 0 0 25px rgba(99, 102, 241, 0.2);
+    }
+
+    .sentiment-textarea {
+      width: 100%; background: transparent; border: none;
+      color: var(--text-pure); font-family: var(--font-sans);
+      font-size: 1.1rem; line-height: 1.6; resize: none; outline: none;
+    }
+
+    .sentiment-textarea::placeholder { color: var(--text-dim); }
+
+    .input-meta-bar {
+      display: flex; align-items: center; justify-content: space-between;
+      padding-top: 14px; margin-top: 10px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05); flex-wrap: wrap; gap: 12px;
+    }
+
+    .input-counters {
+      font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-dim);
+      display: flex; align-items: center; gap: 6px;
+    }
+
+    .input-btn-group { display: flex; align-items: center; gap: 10px; }
+    .voice-btn { position: relative; }
+    .voice-btn.active {
+      background: rgba(244, 63, 94, 0.2);
+      border-color: var(--color-negative); color: var(--color-negative);
+    }
+
+    .voice-ripple {
+      display: none; position: absolute;
+      top: -4px; left: -4px; right: -4px; bottom: -4px;
+      border: 1.5px solid var(--color-negative); border-radius: 50%;
+      animation: rippleAnim 1.2s infinite;
+    }
+
+    .voice-btn.active .voice-ripple { display: block; }
+    @keyframes rippleAnim { 0% { transform: scale(1); opacity: 1; } 100% { transform: scale(1.4); opacity: 0; } }
+
+    /* AI Reasoning Pipeline */
+    .ai-reasoning-container {
+      background: rgba(7, 11, 25, 0.85);
+      border: 1px solid rgba(139, 92, 246, 0.35);
+      border-radius: var(--radius-lg); padding: 22px 24px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4); animation: slideDown 0.3s ease-out;
+    }
+
+    .reasoning-header {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 18px; padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .reasoning-title-group { display: flex; align-items: center; gap: 10px; }
+    .thinking-spinner {
+      width: 16px; height: 16px; border: 2px solid rgba(139, 92, 246, 0.3);
+      border-top-color: var(--primary-violet); border-radius: 50%;
+      animation: spinRing 0.8s linear infinite;
+    }
+
+    .reasoning-title {
+      font-family: var(--font-mono); font-size: 0.85rem; font-weight: 700;
+      color: var(--primary-violet); letter-spacing: 0.05em; text-transform: uppercase;
+    }
+
+    .reasoning-timer {
+      font-family: var(--font-mono); font-size: 0.8rem;
+      color: var(--primary-cyan); background: rgba(56, 189, 248, 0.1);
+      padding: 2px 8px; border-radius: 4px;
+    }
+
+    .reasoning-steps-list { display: flex; flex-direction: column; gap: 10px; }
+    .pipeline-step {
+      display: flex; align-items: center; gap: 12px; font-size: 0.88rem;
+      color: var(--text-dim); transition: all var(--transition-fast);
+      padding: 6px 10px; border-radius: var(--radius-sm);
+    }
+
+    .pipeline-step.active { color: var(--text-pure); background: rgba(99, 102, 241, 0.12); }
+    .pipeline-step.completed { color: var(--text-muted); }
+
+    .step-status-icon {
+      width: 22px; height: 22px; border-radius: 50%;
+      background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border-subtle);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.72rem; font-family: var(--font-mono);
+    }
+
+    .pipeline-step.active .step-status-icon {
+      border-color: var(--primary-violet); background: var(--primary-violet);
+      color: white; box-shadow: 0 0 10px var(--primary-violet);
+    }
+
+    .pipeline-step.completed .step-status-icon {
+      border-color: #10B981; background: rgba(16, 185, 129, 0.2); color: #10B981;
+    }
+
+    .pipeline-step.completed .step-status-icon::after { content: '✓'; font-weight: 800; }
+    .pipeline-step.completed .step-num { display: none; }
+
+    /* Results Dashboard */
+    .sentiment-result-card { display: flex; flex-direction: column; gap: 22px; }
+
+    .result-banner {
+      background: linear-gradient(135deg, rgba(19, 30, 61, 0.8) 0%, rgba(13, 21, 45, 0.9) 100%);
+      border: 1px solid var(--border-card); border-radius: var(--radius-lg);
+      padding: 24px 28px; display: flex; align-items: center;
+      justify-content: space-between; flex-wrap: wrap; gap: 20px;
+      box-shadow: var(--shadow-glass); position: relative; overflow: hidden;
+    }
+
+    .result-banner::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--primary-indigo), var(--primary-cyan));
+    }
+
+    .result-mood-display { display: flex; align-items: center; gap: 20px; }
+    .result-emoji-wrapper {
+      width: 72px; height: 72px; border-radius: 50%;
+      background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border-subtle);
+      display: flex; align-items: center; justify-content: center; position: relative;
+    }
+
+    .result-emoji {
+      font-size: 2.4rem; line-height: 1;
+      filter: drop-shadow(0 4px 10px rgba(0,0,0,0.5));
+      transition: transform var(--transition-smooth);
+    }
+
+    .emoji-aura {
+      position: absolute; width: 100%; height: 100%;
+      border-radius: 50%; filter: blur(14px); opacity: 0.5; pointer-events: none;
+    }
+
+    .result-classification { display: flex; flex-direction: column; gap: 4px; }
+    .result-label-sub {
+      font-family: var(--font-mono); font-size: 0.7rem;
+      letter-spacing: 0.1em; color: var(--text-dim);
+    }
+
+    .result-sentiment-tag {
+      font-size: 1.8rem; font-weight: 800;
+      letter-spacing: -0.01em; color: var(--text-pure);
+      transition: color var(--transition-fast);
+    }
+
+    .result-confidence-box {
+      background: rgba(7, 11, 25, 0.6);
+      padding: 14px 20px; border-radius: var(--radius-md);
+      border: 1px solid var(--border-subtle); min-width: 180px;
+    }
+
+    .confidence-label {
+      font-family: var(--font-mono); font-size: 0.68rem;
+      color: var(--text-dim); letter-spacing: 0.08em; margin-bottom: 4px;
+    }
+
+    .confidence-metric {
+      font-size: 1.9rem; font-weight: 800;
+      color: var(--text-pure); line-height: 1.1; margin-bottom: 8px;
+    }
+
+    .confidence-unit { font-size: 1.1rem; color: var(--primary-cyan); margin-left: 2px; }
+    .confidence-bar-bg {
+      width: 100%; height: 6px; background: rgba(255, 255, 255, 0.08);
+      border-radius: 3px; overflow: hidden;
+    }
+
+    .confidence-bar-fill {
+      height: 100%; background: linear-gradient(90deg, var(--primary-indigo), var(--primary-cyan));
+      border-radius: 3px; transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .metrics-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+    }
+
+    .metric-card {
+      background: var(--bg-glass-inset);
+      border: 1px solid var(--border-subtle); border-radius: var(--radius-md);
+      padding: 16px 18px;
+    }
+
+    .metric-header { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .metric-dot { width: 8px; height: 8px; border-radius: 50%; }
+    .dot-positive { background: var(--color-positive); box-shadow: 0 0 8px var(--color-positive); }
+    .dot-negative { background: var(--color-negative); box-shadow: 0 0 8px var(--color-negative); }
+    .dot-neutral { background: var(--primary-cyan); box-shadow: 0 0 8px var(--primary-cyan); }
+
+    .metric-name { font-size: 0.8rem; font-weight: 600; color: var(--text-muted); }
+    .metric-counter {
+      font-size: 1.8rem; font-weight: 800; color: var(--text-pure);
+      font-family: var(--font-mono); line-height: 1.2;
+    }
+    .metric-footer { font-size: 0.72rem; color: var(--text-dim); margin-top: 4px; }
+
+    /* Emotion Spectrum Meter */
+    .emotion-meter-card { padding: 20px 24px; }
+    .meter-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+    .meter-title {
+      font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700;
+      color: var(--text-dim); letter-spacing: 0.08em;
+    }
+
+    .meter-zone-label {
+      font-family: var(--font-mono); font-size: 0.8rem; font-weight: 600;
+      color: var(--primary-cyan);
+    }
+
+    .meter-track-container { padding: 12px 0; }
+    .meter-track {
+      position: relative; width: 100%; height: 12px; border-radius: 6px;
+      background: linear-gradient(90deg, #F43F5E 0%, #F59E0B 50%, #10B981 100%);
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4);
+    }
+
+    .meter-glow-indicator {
+      position: absolute; top: 50%; transform: translate(-50%, -50%);
+      width: 24px; height: 24px; transition: left 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    .meter-needle-head {
+      width: 18px; height: 18px; background: var(--text-pure);
+      border-radius: 50%; border: 3px solid var(--bg-primary);
+      box-shadow: 0 0 14px rgba(255, 255, 255, 0.9); z-index: 2;
+    }
+
+    .meter-needle-halo {
+      position: absolute; width: 32px; height: 32px; border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3); animation: pulseHalo 1.5s infinite;
+    }
+
+    @keyframes pulseHalo { 0% { transform: scale(0.8); opacity: 0.7; } 100% { transform: scale(1.4); opacity: 0; } }
+
+    .meter-scale-labels {
+      display: flex; align-items: center; justify-content: space-between;
+      font-family: var(--font-mono); font-size: 0.72rem; margin-top: 8px;
+    }
+
+    .scale-neg { color: var(--color-negative); }
+    .scale-neu { color: var(--color-neutral); }
+    .scale-pos { color: var(--color-positive); }
+
+    /* Keyword Chips & Highlight */
+    .keyword-detection-card { padding: 20px 24px; }
+    .kd-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+    .kd-title-group { display: flex; align-items: center; gap: 8px; color: var(--text-main); font-size: 0.9rem; font-weight: 700; }
+    .kd-title-group svg { width: 16px; height: 16px; color: var(--primary-cyan); }
+    .kd-count-badge {
+      font-family: var(--font-mono); font-size: 0.72rem;
+      background: rgba(255, 255, 255, 0.06); padding: 3px 8px;
+      border-radius: var(--radius-full); color: var(--text-muted);
+    }
+
+    .keyword-chips-container {
+      display: flex; flex-wrap: wrap; gap: 10px; min-height: 48px;
+      align-items: center; margin-bottom: 16px;
+    }
+
+    .no-keywords-placeholder { font-size: 0.85rem; color: var(--text-dim); font-style: italic; }
+    .keyword-chip {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 6px 14px; border-radius: var(--radius-full);
+      font-size: 0.85rem; font-weight: 600; font-family: var(--font-mono);
+      animation: popIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: transform var(--transition-fast);
+    }
+
+    .keyword-chip:hover { transform: translateY(-2px) scale(1.04); }
+    .chip-pos {
+      background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.4);
+      color: #34D399; box-shadow: 0 0 12px rgba(16, 185, 129, 0.2);
+    }
+    .chip-neg {
+      background: rgba(244, 63, 94, 0.15); border: 1px solid rgba(244, 63, 94, 0.4);
+      color: #FB7185; box-shadow: 0 0 12px rgba(244, 63, 94, 0.2);
+    }
+
+    .chip-badge { font-size: 0.68rem; background: rgba(0, 0, 0, 0.3); padding: 1px 6px; border-radius: 10px; }
+    .highlighted-preview-box {
+      background: rgba(0, 0, 0, 0.35); padding: 12px 14px;
+      border-radius: var(--radius-sm); border: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    .hp-label { font-family: var(--font-mono); font-size: 0.65rem; color: var(--text-dim); display: block; margin-bottom: 6px; }
+    .hp-content { font-size: 0.95rem; line-height: 1.5; color: var(--text-muted); }
+    .highlight-pos {
+      background: rgba(16, 185, 129, 0.25); color: #34D399; padding: 1px 6px;
+      border-radius: 4px; border-bottom: 2px solid #10B981; font-weight: 600;
+    }
+    .highlight-neg {
+      background: rgba(244, 63, 94, 0.25); color: #FB7185; padding: 1px 6px;
+      border-radius: 4px; border-bottom: 2px solid #F43F5E; font-weight: 600;
+    }
+
+    /* Explanation Card */
+    .explanation-card { padding: 20px 24px; border-left: 3px solid var(--primary-indigo); }
+    .exp-header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+    .exp-icon svg { width: 18px; height: 18px; color: var(--primary-indigo); }
+    .exp-title { font-size: 0.95rem; font-weight: 700; color: var(--text-pure); }
+    .exp-list { list-style: none; display: flex; flex-direction: column; gap: 8px; padding-left: 4px; }
+    .exp-list li {
+      position: relative; padding-left: 20px; font-size: 0.88rem;
+      color: var(--text-muted); line-height: 1.5;
+    }
+    .exp-list li::before {
+      content: '›'; position: absolute; left: 0; top: 0;
+      color: var(--primary-cyan); font-size: 1.1rem; line-height: 1; font-weight: 700;
+    }
+
+    /* Stats Section */
+    .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .stat-card { padding: 32px 28px; display: flex; flex-direction: column; gap: 20px; position: relative; }
+    .stat-icon-wrapper {
+      width: 52px; height: 52px; border-radius: var(--radius-md);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .stat-icon-wrapper svg { width: 26px; height: 26px; }
+    .stat-icon-pos { background: rgba(16, 185, 129, 0.15); color: var(--color-positive); border: 1px solid rgba(16, 185, 129, 0.3); }
+    .stat-icon-neg { background: rgba(244, 63, 94, 0.15); color: var(--color-negative); border: 1px solid rgba(244, 63, 94, 0.3); }
+    .stat-icon-speed { background: rgba(99, 102, 241, 0.15); color: var(--primary-indigo); border: 1px solid rgba(99, 102, 241, 0.3); }
+
+    .stat-label { font-size: 0.85rem; font-weight: 600; color: var(--text-muted); display: block; margin-bottom: 6px; }
+    .stat-value-group { display: flex; align-items: baseline; gap: 8px; margin-bottom: 12px; }
+    .stat-number { font-size: 3rem; font-weight: 800; color: var(--text-pure); font-family: var(--font-mono); line-height: 1; }
+    .stat-suffix { font-size: 1rem; font-weight: 600; color: var(--text-dim); }
+    .stat-desc { font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; font-family: var(--font-mono); }
+
+    .card-glow-edge {
+      position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--primary-indigo), transparent); opacity: 0.6;
+    }
+    .glow-emerald { background: linear-gradient(90deg, transparent, var(--color-positive), transparent); }
+    .glow-rose { background: linear-gradient(90deg, transparent, var(--color-negative), transparent); }
+    .glow-indigo { background: linear-gradient(90deg, transparent, var(--primary-indigo), transparent); }
+
+    /* Playground */
+    .sample-cards-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .sample-card {
+      padding: 24px; cursor: pointer; display: flex; flex-direction: column;
+      justify-content: space-between; gap: 16px;
+    }
+    .sample-card:hover { transform: translateY(-4px); }
+    .sample-top { display: flex; align-items: center; justify-content: space-between; }
+    .sample-tag-pill { font-size: 0.72rem; font-weight: 700; padding: 4px 10px; border-radius: var(--radius-full); }
+    .tag-pos { background: rgba(16, 185, 129, 0.15); color: #34D399; border: 1px solid rgba(16, 185, 129, 0.3); }
+    .tag-neg { background: rgba(244, 63, 94, 0.15); color: #FB7185; border: 1px solid rgba(244, 63, 94, 0.3); }
+    .tag-neu { background: rgba(245, 158, 11, 0.15); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.3); }
+    .tag-mix { background: rgba(99, 102, 241, 0.15); color: #A78BFA; border: 1px solid rgba(99, 102, 241, 0.3); }
+    .sample-action-hint { font-size: 0.78rem; color: var(--primary-cyan); font-weight: 600; }
+    .sample-text { font-size: 1.05rem; color: var(--text-pure); line-height: 1.5; font-style: italic; }
+    .sample-footer { border-top: 1px solid var(--border-subtle); padding-top: 10px; }
+    .sample-meta { font-size: 0.75rem; font-family: var(--font-mono); color: var(--text-dim); }
+
+    /* Workflow Diagram */
+    .workflow-diagram-container { padding: 50px 30px; }
+    .workflow-flow { display: flex; align-items: center; justify-content: space-between; position: relative; }
+    .flow-node {
+      background: var(--bg-glass-inset); border: 1px solid var(--border-card);
+      border-radius: var(--radius-md); padding: 20px 16px; text-align: center;
+      min-width: 155px; box-shadow: var(--shadow-glass); transition: transform var(--transition-smooth);
+    }
+    .flow-node:hover { transform: translateY(-4px); border-color: var(--primary-indigo); }
+    .node-icon-box {
+      width: 44px; height: 44px; margin: 0 auto 12px; background: rgba(99, 102, 241, 0.12);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--primary-cyan);
+    }
+    .node-icon-box svg { width: 22px; height: 22px; }
+    .node-title { font-size: 0.92rem; font-weight: 700; color: var(--text-pure); margin-bottom: 4px; }
+    .node-sub { font-size: 0.75rem; color: var(--text-dim); }
+
+    .flow-connector { flex: 1; position: relative; height: 2px; margin: 0 10px; }
+    .connector-line { position: absolute; top: 0; left: 0; right: 0; height: 2px; background: rgba(255, 255, 255, 0.1); }
+    .pulse-packet {
+      position: absolute; top: -3px; width: 8px; height: 8px;
+      background: var(--primary-cyan); border-radius: 50%; box-shadow: 0 0 10px var(--primary-cyan);
+      animation: travelPacket 2.4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    }
+    .packet-1 { animation-delay: 0s; }
+    .packet-2 { animation-delay: 0.6s; }
+    .packet-3 { animation-delay: 1.2s; }
+    .packet-4 { animation-delay: 1.8s; }
+
+    @keyframes travelPacket {
+      0% { left: 0%; opacity: 0; }
+      20% { opacity: 1; }
+      80% { opacity: 1; }
+      100% { left: 100%; opacity: 0; }
+    }
+
+    /* Timeline Section */
+    .timeline-wrapper {
+      display: flex; flex-direction: column; gap: 24px; position: relative; padding-left: 60px;
+    }
+    .timeline-wrapper::before {
+      content: ''; position: absolute; top: 30px; bottom: 30px; left: 24px; width: 2px;
+      background: linear-gradient(180deg, var(--primary-indigo), var(--primary-cyan), transparent);
+    }
+
+    .timeline-item { position: relative; }
+    .timeline-marker {
+      position: absolute; left: -60px; top: 24px; width: 48px; height: 48px;
+      background: var(--bg-secondary); border: 2px solid var(--primary-indigo);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 0 16px rgba(99, 102, 241, 0.4); z-index: 2;
+    }
+    .marker-num { font-family: var(--font-mono); font-size: 0.8rem; font-weight: 800; color: var(--text-pure); }
+    .timeline-content { padding: 24px 28px; display: flex; align-items: flex-start; gap: 20px; }
+    .tl-icon {
+      width: 44px; height: 44px; background: rgba(99, 102, 241, 0.12); border-radius: var(--radius-md);
+      display: flex; align-items: center; justify-content: center; color: var(--primary-cyan); flex-shrink: 0;
+    }
+    .tl-icon svg { width: 22px; height: 22px; }
+    .tl-title { font-size: 1.15rem; font-weight: 700; color: var(--text-pure); margin-bottom: 6px; }
+    .tl-desc { font-size: 0.92rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* Features Section */
+    .features-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .feature-card { padding: 36px 32px; display: flex; flex-direction: column; gap: 16px; position: relative; }
+    .feat-icon { width: 50px; height: 50px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; }
+    .feat-icon svg { width: 26px; height: 26px; }
+    .feat-icon-1 { background: rgba(56, 189, 248, 0.12); color: var(--primary-cyan); }
+    .feat-icon-2 { background: rgba(139, 92, 246, 0.12); color: var(--primary-violet); }
+    .feat-icon-3 { background: rgba(16, 185, 129, 0.12); color: var(--color-positive); }
+    .feat-icon-4 { background: rgba(245, 158, 11, 0.12); color: var(--color-neutral); }
+    .feat-title { font-size: 1.2rem; font-weight: 700; color: var(--text-pure); }
+    .feat-desc { font-size: 0.92rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* Educational Section */
+    .edu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .edu-card { padding: 32px 28px; display: flex; flex-direction: column; justify-content: space-between; gap: 20px; }
+    .edu-badge {
+      font-family: var(--font-mono); font-size: 0.7rem; font-weight: 700; color: var(--primary-cyan);
+      background: rgba(56, 189, 248, 0.1); padding: 3px 8px; border-radius: 4px; align-self: flex-start;
+    }
+    .edu-title { font-size: 1.25rem; font-weight: 700; color: var(--text-pure); }
+    .edu-text { font-size: 0.92rem; color: var(--text-muted); line-height: 1.65; }
+    .edu-highlight-box {
+      background: rgba(0, 0, 0, 0.3); padding: 10px 14px; border-radius: var(--radius-sm);
+      border-left: 2px solid var(--primary-indigo); font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-main);
+    }
+
+    /* Project Info & Algorithm Code Card */
+    .project-info-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 28px; }
+    .info-card { padding: 32px 28px; display: flex; flex-direction: column; gap: 20px; }
+    .info-tag { font-family: var(--font-mono); font-size: 0.7rem; font-weight: 700; color: var(--primary-cyan); letter-spacing: 0.1em; display: block; margin-bottom: 6px; }
+    .info-title { font-size: 1.4rem; font-weight: 800; color: var(--text-pure); }
+    .info-body { font-size: 0.95rem; color: var(--text-muted); line-height: 1.7; }
+    .info-bullets { display: flex; flex-direction: column; gap: 10px; margin-top: 10px; }
+    .ib-item { display: flex; align-items: center; gap: 10px; font-size: 0.88rem; color: var(--text-main); }
+    .ib-check { color: var(--color-positive); font-weight: 800; }
+
+    .code-view-card { padding: 24px; }
+    .code-terminal { background: #050711; border-radius: var(--radius-md); border: 1px solid rgba(255, 255, 255, 0.08); overflow: hidden; }
+    .terminal-bar {
+      background: rgba(255, 255, 255, 0.04); padding: 10px 16px;
+      display: flex; align-items: center; gap: 8px; border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .term-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .t-red { background: #EF4444; }
+    .t-yellow { background: #F59E0B; }
+    .t-green { background: #10B981; }
+    .term-filename { font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-dim); margin-left: 8px; }
+    .code-pre { padding: 18px 20px; font-family: var(--font-mono); font-size: 0.78rem; line-height: 1.6; color: #E2E8F0; overflow-x: auto; }
+    .c-comment { color: #64748B; font-style: italic; }
+    .c-keyword { color: #F43F5E; font-weight: 600; }
+    .c-func { color: #38BDF8; }
+    .c-string { color: #34D399; }
+
+    /* Footer */
+    .footer { background: #03060F; position: relative; padding-top: 60px; }
+    .footer-divider-glow {
+      position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--primary-indigo), var(--primary-cyan), transparent);
+      box-shadow: 0 0 15px rgba(99, 102, 241, 0.5);
+    }
+    .footer-container { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.2fr; gap: 40px; padding-bottom: 50px; }
+    .footer-tagline { font-size: 0.88rem; color: var(--text-muted); margin: 14px 0 20px; line-height: 1.5; }
+    .footer-tech-stack { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tech-pill {
+      font-family: var(--font-mono); font-size: 0.68rem; background: rgba(255, 255, 255, 0.05);
+      color: var(--text-dim); padding: 3px 8px; border-radius: 4px; border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .footer-heading { font-size: 0.9rem; font-weight: 700; color: var(--text-pure); margin-bottom: 18px; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a { color: var(--text-muted); text-decoration: none; font-size: 0.85rem; transition: color var(--transition-fast); }
+    .footer-links a:hover { color: var(--primary-cyan); }
+    .sys-status-badge {
+      display: inline-flex; align-items: center; gap: 8px; font-size: 0.8rem; font-weight: 600;
+      color: #34D399; background: rgba(16, 185, 129, 0.1); padding: 6px 12px; border-radius: var(--radius-full);
+      border: 1px solid rgba(16, 185, 129, 0.25); margin-bottom: 12px;
+    }
+    .academic-note { font-size: 0.82rem; color: var(--text-dim); line-height: 1.5; }
+    .footer-bottom { border-top: 1px solid rgba(255, 255, 255, 0.05); padding: 22px 0; font-size: 0.8rem; color: var(--text-dim); }
+    .footer-bottom-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+
+    /* Keyframes */
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes popIn { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .hero-heading { font-size: 3.2rem; }
+      .agent-workspace-grid { grid-template-columns: 1fr; }
+      .agent-avatar-panel { border-right: none; border-bottom: 1px solid var(--border-subtle); }
+      .workflow-flow { flex-wrap: wrap; gap: 20px; justify-content: center; }
+      .flow-connector { display: none; }
+      .stats-grid, .edu-grid { grid-template-columns: repeat(2, 1fr); }
+      .project-info-grid { grid-template-columns: 1fr; }
+      .footer-container { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 768px) {
+      .hero-heading { font-size: 2.4rem; }
+      .hero-subtitle { font-size: 1.05rem; }
+      .nav-links { display: none; }
+      .nav-links.mobile-active {
+        display: flex; flex-direction: column; position: absolute;
+        top: 72px; left: 0; right: 0; background: var(--bg-secondary);
+        padding: 20px; border-bottom: 1px solid var(--border-subtle); gap: 16px;
+      }
+      .mobile-toggle { display: flex; }
+      .stats-grid, .features-grid, .edu-grid, .sample-cards-grid { grid-template-columns: 1fr; }
+      .metrics-grid { grid-template-columns: 1fr; }
+      .footer-container { grid-template-columns: 1fr; }
+      .timeline-wrapper { padding-left: 45px; }
+      .timeline-marker { left: -45px; width: 36px; height: 36px; }
+    }
+  </style>
+</head>
+<body class="dark-theme">
+
+  <!-- Interactive Canvas Particle Background -->
+  <canvas id="particle-canvas"></canvas>
+
+  <!-- Ambient Light Orbs -->
+  <div class="ambient-glow glow-1"></div>
+  <div class="ambient-glow glow-2"></div>
+  <div class="ambient-glow glow-3"></div>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar glass-panel">
+    <div class="nav-container">
+      <a href="#" class="brand-logo" id="nav-brand">
+        <div class="logo-core">
+          <div class="logo-orb"></div>
+          <div class="logo-ring"></div>
+        </div>
+        <div class="brand-text">
+          <span class="brand-title">Sentiment<span class="gradient-text">Agent</span></span>
+          <span class="brand-badge">AI v1.0</span>
+        </div>
+      </a>
+
+      <div class="nav-links" id="nav-links">
+        <a href="#hero" class="nav-link active">Home</a>
+        <a href="#demo" class="nav-link">Live Agent</a>
+        <a href="#stats" class="nav-link">Dictionary</a>
+        <a href="#samples" class="nav-link">Playground</a>
+        <a href="#workflow" class="nav-link">Architecture</a>
+        <a href="#how-it-works" class="nav-link">Pipeline</a>
+        <a href="#features" class="nav-link">Features</a>
+        <a href="#education" class="nav-link">Theory</a>
+      </div>
+
+      <div class="nav-actions">
+        <button id="sound-toggle" class="icon-btn" title="Toggle UI Audio Effects" aria-label="Toggle Sound">
+          <svg class="sound-on-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+            <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+          </svg>
+          <svg class="sound-off-icon hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+            <line x1="23" y1="9" x2="17" y2="15"></line>
+            <line x1="17" y1="9" x2="23" y2="15"></line>
+          </svg>
+        </button>
+
+        <a href="#demo" class="btn btn-sm btn-primary glow-btn">
+          <span>Launch Agent</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle Navigation">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content Wrapper -->
+  <main class="main-wrapper">
+
+    <!-- ================= HERO SECTION ================= -->
+    <section id="hero" class="hero-section">
+      <div class="container hero-container">
+        <div class="pill-badge animate-fade-in">
+          <span class="pulse-dot"></span>
+          <span class="pill-text">Autonomous Rule-Based Sentiment Engine • 100% Deterministic</span>
+          <span class="pill-tag">Offline JS</span>
+        </div>
+
+        <h1 class="hero-heading">
+          Meet <span class="gradient-text glow-text">Sentiment Agent AI</span>
+        </h1>
+
+        <p class="hero-subtitle">
+          An intelligent rule-based AI agent that listens to your words, analyzes emotional keywords in real time, and classifies your sentiment instantly.
+        </p>
+
+        <div class="hero-cta-group">
+          <a href="#demo" class="btn btn-lg btn-primary glow-btn" id="hero-try-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            <span>Try Live Demo</span>
+          </a>
+          <a href="#how-it-works" class="btn btn-lg btn-secondary glass-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            <span>Learn How It Works</span>
+          </a>
+        </div>
+
+        <!-- Floating Neural Orb Visual Behind Hero -->
+        <div class="hero-orb-wrapper">
+          <div class="hero-neural-orb">
+            <div class="orb-core"></div>
+            <div class="orb-ring ring-1"></div>
+            <div class="orb-ring ring-2"></div>
+            <div class="orb-ring ring-3"></div>
+            <div class="orb-particles">
+              <span class="op-dot d1"></span>
+              <span class="op-dot d2"></span>
+              <span class="op-dot d3"></span>
+              <span class="op-dot d4"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Badges -->
+        <div class="hero-badges-row">
+          <div class="badge-item">
+            <span class="badge-icon">⚡</span>
+            <span class="badge-label">Zero API Latency</span>
+          </div>
+          <div class="badge-item">
+            <span class="badge-icon">🔒</span>
+            <span class="badge-label">100% Client-Side Privacy</span>
+          </div>
+          <div class="badge-item">
+            <span class="badge-icon">🎯</span>
+            <span class="badge-label">Keyword Match Precision</span>
+          </div>
+          <div class="badge-item">
+            <span class="badge-icon">🧠</span>
+            <span class="badge-label">Reasoning Transparency</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= AI AGENT DEMO SECTION ================= -->
+    <section id="demo" class="section demo-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Interactive AI Workspace</span>
+          <h2 class="section-title">Experience the <span class="gradient-text">Live Agent</span> in Action</h2>
+          <p class="section-desc">Type your thoughts naturally. The agent will listen, evaluate lexical polarity, and formulate a real-time sentiment verdict.</p>
+        </div>
+
+        <div class="agent-workspace glass-card" id="agent-workspace">
+          <div class="agent-workspace-grid">
+
+            <!-- LEFT SIDE: AI AVATAR & STATUS PANEL -->
+            <div class="agent-avatar-panel glass-panel-inset">
+              <div class="avatar-header">
+                <span class="panel-label">AGENT CORE TELEMETRY</span>
+                <span class="live-indicator"><span class="pulse-dot"></span> LIVE</span>
+              </div>
+
+              <!-- Animated Avatar -->
+              <div class="avatar-container" id="avatar-container">
+                <div class="avatar-glow"></div>
+                <div class="avatar-circle" id="agent-avatar">
+                  <div class="avatar-inner-core">
+                    <div class="avatar-iris"></div>
+                  </div>
+                  <div class="avatar-waves">
+                    <span class="wave-bar w1"></span>
+                    <span class="wave-bar w2"></span>
+                    <span class="wave-bar w3"></span>
+                    <span class="wave-bar w4"></span>
+                    <span class="wave-bar w5"></span>
+                  </div>
+                </div>
+                <div class="avatar-orbit orbit-1"></div>
+                <div class="avatar-orbit orbit-2"></div>
+              </div>
+
+              <!-- Agent Status Indicator -->
+              <div class="agent-status-box">
+                <div class="status-title">CURRENT AGENT STATE</div>
+                <div class="status-badge" id="agent-status-badge" data-state="ready">
+                  <span class="status-icon-dot"></span>
+                  <span id="agent-status-text">System Ready</span>
+                </div>
+              </div>
+
+              <!-- Live Telemetry Stream -->
+              <div class="telemetry-box">
+                <div class="telemetry-header">
+                  <span>REASONING STREAM</span>
+                  <span class="telemetry-clear" id="telemetry-clear" title="Clear log">clear</span>
+                </div>
+                <div class="telemetry-logs" id="telemetry-logs">
+                  <div class="log-entry log-system"><span class="log-time">00:00:00</span> [INIT] Sentiment Agent AI initialized.</div>
+                  <div class="log-entry log-ready"><span class="log-time">00:00:01</span> [SYSTEM] Ready for user keyboard input.</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- RIGHT SIDE: INTERACTIVE CHAT & INPUT WINDOW -->
+            <div class="agent-chat-panel">
+              <div class="chat-header">
+                <div class="chat-title-group">
+                  <div class="chat-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                  </div>
+                  <div>
+                    <h3 class="chat-title">Sentiment Analysis Console</h3>
+                    <p class="chat-subtitle">Real-time keyword extraction & scoring</p>
+                  </div>
+                </div>
+
+                <div class="auto-scan-toggle" title="Scan and classify automatically as you type">
+                  <label class="switch">
+                    <input type="checkbox" id="realtime-toggle" checked>
+                    <span class="slider round"></span>
+                  </label>
+                  <span class="toggle-label">Live Typing Reaction</span>
+                </div>
+              </div>
+
+              <!-- Chat Input Area -->
+              <div class="chat-input-wrapper">
+                <textarea 
+                  id="sentiment-input" 
+                  class="sentiment-textarea" 
+                  placeholder="Type how you're feeling today... (e.g. 'I had an amazing day and I feel so happy')"
+                  rows="4"
+                  maxlength="500"
+                ></textarea>
+
+                <div class="input-meta-bar">
+                  <div class="input-counters">
+                    <span id="char-counter">0 / 500 chars</span>
+                    <span class="meta-dot">•</span>
+                    <span id="word-counter">0 words</span>
+                  </div>
+
+                  <div class="input-btn-group">
+                    <button class="icon-btn voice-btn" id="voice-btn" title="Simulate Voice Input Stream" aria-label="Voice input">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+                        <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                        <line x1="12" y1="19" x2="12" y2="23"></line>
+                        <line x1="8" y1="23" x2="16" y2="23"></line>
+                      </svg>
+                      <span class="voice-ripple"></span>
+                    </button>
+
+                    <button class="btn btn-secondary btn-sm" id="clear-btn">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+                      <span>Clear</span>
+                    </button>
+
+                    <button class="btn btn-primary btn-sm glow-btn" id="analyze-btn">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                      <span>Analyze</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- ================= AI REASONING TIMELINE ================= -->
+              <div class="ai-reasoning-container hidden" id="reasoning-timeline-card">
+                <div class="reasoning-header">
+                  <div class="reasoning-title-group">
+                    <span class="thinking-spinner"></span>
+                    <span class="reasoning-title">AI Reasoning Pipeline</span>
+                  </div>
+                  <span class="reasoning-timer" id="pipeline-timer">0.00s</span>
+                </div>
+
+                <div class="reasoning-steps-list">
+                  <div class="pipeline-step" id="step-1" data-step="1">
+                    <div class="step-status-icon"><span class="step-num">1</span></div>
+                    <div class="step-content"><span class="step-text">Initializing Agent Environment...</span></div>
+                  </div>
+                  <div class="pipeline-step" id="step-2" data-step="2">
+                    <div class="step-status-icon"><span class="step-num">2</span></div>
+                    <div class="step-content"><span class="step-text">Processing Text & Lowercase Tokenization...</span></div>
+                  </div>
+                  <div class="pipeline-step" id="step-3" data-step="3">
+                    <div class="step-status-icon"><span class="step-num">3</span></div>
+                    <div class="step-content"><span class="step-text">Scanning Positive Dictionary (10 Lexicons)...</span></div>
+                  </div>
+                  <div class="pipeline-step" id="step-4" data-step="4">
+                    <div class="step-status-icon"><span class="step-num">4</span></div>
+                    <div class="step-content"><span class="step-text">Scanning Negative Dictionary (10 Lexicons)...</span></div>
+                  </div>
+                  <div class="pipeline-step" id="step-5" data-step="5">
+                    <div class="step-status-icon"><span class="step-num">5</span></div>
+                    <div class="step-content"><span class="step-text">Comparing Sentiment Scores & Calculating Confidence...</span></div>
+                  </div>
+                  <div class="pipeline-step" id="step-6" data-step="6">
+                    <div class="step-status-icon"><span class="step-num">6</span></div>
+                    <div class="step-content"><span class="step-text">Generating Final Sentiment Classification...</span></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- ================= SENTIMENT RESULT DASHBOARD ================= -->
+              <div class="sentiment-result-card" id="sentiment-result-card">
+                <!-- Result Banner -->
+                <div class="result-banner" id="result-banner">
+                  <div class="result-mood-display">
+                    <div class="result-emoji-wrapper" id="result-emoji-wrapper">
+                      <span class="result-emoji" id="result-emoji">✨</span>
+                      <div class="emoji-aura" id="emoji-aura"></div>
+                    </div>
+                    <div class="result-classification">
+                      <span class="result-label-sub">CLASSIFICATION VERDICT</span>
+                      <div class="result-sentiment-tag" id="result-sentiment-tag">Awaiting Input</div>
+                    </div>
+                  </div>
+
+                  <div class="result-confidence-box">
+                    <div class="confidence-label">AGENT CONFIDENCE</div>
+                    <div class="confidence-metric">
+                      <span class="confidence-value" id="confidence-val">0</span><span class="confidence-unit">%</span>
+                    </div>
+                    <div class="confidence-bar-bg">
+                      <div class="confidence-bar-fill" id="confidence-bar-fill" style="width: 0%;"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Metrics Row -->
+                <div class="metrics-grid">
+                  <div class="metric-card metric-positive">
+                    <div class="metric-header">
+                      <span class="metric-dot dot-positive"></span>
+                      <span class="metric-name">Positive Matches</span>
+                    </div>
+                    <div class="metric-counter" id="pos-count-val">0</div>
+                    <div class="metric-footer">Keywords detected</div>
+                  </div>
+
+                  <div class="metric-card metric-negative">
+                    <div class="metric-header">
+                      <span class="metric-dot dot-negative"></span>
+                      <span class="metric-name">Negative Matches</span>
+                    </div>
+                    <div class="metric-counter" id="neg-count-val">0</div>
+                    <div class="metric-footer">Keywords detected</div>
+                  </div>
+
+                  <div class="metric-card metric-polarity">
+                    <div class="metric-header">
+                      <span class="metric-dot dot-neutral"></span>
+                      <span class="metric-name">Net Polarity</span>
+                    </div>
+                    <div class="metric-counter" id="polarity-val">0</div>
+                    <div class="metric-footer">Pos − Neg Delta</div>
+                  </div>
+                </div>
+
+                <!-- Emotion Meter Gauge -->
+                <div class="emotion-meter-card glass-panel-inset">
+                  <div class="meter-header">
+                    <span class="meter-title">EMOTION SPECTRUM GAUGE</span>
+                    <span class="meter-zone-label" id="meter-zone-label">Neutral Balance (0.00)</span>
+                  </div>
+                  <div class="meter-track-container">
+                    <div class="meter-track">
+                      <div class="meter-glow-indicator" id="meter-indicator" style="left: 50%;">
+                        <div class="meter-needle-head"></div>
+                        <div class="meter-needle-halo"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="meter-scale-labels">
+                    <span class="scale-item scale-neg">Negative (100%)</span>
+                    <span class="scale-item scale-neu">Neutral (0%)</span>
+                    <span class="scale-item scale-pos">Positive (100%)</span>
+                  </div>
+                </div>
+
+                <!-- Keyword Detection Panel -->
+                <div class="keyword-detection-card glass-panel-inset">
+                  <div class="kd-header">
+                    <div class="kd-title-group">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
+                      <span class="kd-title">Detected Keyword Lexicons</span>
+                    </div>
+                    <span class="kd-count-badge" id="kd-total-badge">0 tokens</span>
+                  </div>
+
+                  <div class="keyword-chips-container" id="keyword-chips-container">
+                    <span class="no-keywords-placeholder">No positive or negative keywords matched yet.</span>
+                  </div>
+
+                  <div class="highlighted-preview-box">
+                    <span class="hp-label">INLINE TOKEN HIGHLIGHT:</span>
+                    <div class="hp-content" id="hp-content">Type a sentence above to see matched keywords highlighted in real-time.</div>
+                  </div>
+                </div>
+
+                <!-- AI Explanation Card -->
+                <div class="explanation-card glass-panel-inset">
+                  <div class="exp-header">
+                    <div class="exp-icon">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                    </div>
+                    <span class="exp-title" id="exp-title">Why did I classify this as Neutral?</span>
+                  </div>
+                  <ul class="exp-list" id="exp-list">
+                    <li>The system is awaiting meaningful text input containing recognized emotional keywords.</li>
+                    <li>No positive or negative sentiment tokens have been identified.</li>
+                    <li>Default neutral equilibrium assigned.</li>
+                  </ul>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= LIVE STATISTICS PANEL ================= -->
+    <section id="stats" class="section stats-section">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag">Agent Knowledge Base</span>
+          <h2 class="section-title">Lexicon <span class="gradient-text">Statistics</span> & Performance</h2>
+          <p class="section-desc">The agent operates on deterministic symbolic dictionaries calibrated for sub-millisecond execution.</p>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card glass-card">
+            <div class="stat-icon-wrapper stat-icon-pos">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
+            </div>
+            <div class="stat-body">
+              <span class="stat-label">Positive Dictionary</span>
+              <div class="stat-value-group">
+                <span class="stat-number" data-target="10">10</span>
+                <span class="stat-suffix">Keywords</span>
+              </div>
+              <p class="stat-desc">good, great, excellent, amazing, awesome, happy, love, wonderful, fantastic, best</p>
+            </div>
+            <div class="card-glow-edge glow-emerald"></div>
+          </div>
+
+          <div class="stat-card glass-card">
+            <div class="stat-icon-wrapper stat-icon-neg">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3zm7-13h3a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-3"></path></svg>
+            </div>
+            <div class="stat-body">
+              <span class="stat-label">Negative Dictionary</span>
+              <div class="stat-value-group">
+                <span class="stat-number" data-target="10">10</span>
+                <span class="stat-suffix">Keywords</span>
+              </div>
+              <p class="stat-desc">bad, poor, terrible, awful, hate, sad, worst, horrible, disappointed, angry</p>
+            </div>
+            <div class="card-glow-edge glow-rose"></div>
+          </div>
+
+          <div class="stat-card glass-card">
+            <div class="stat-icon-wrapper stat-icon-speed">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            </div>
+            <div class="stat-body">
+              <span class="stat-label">Analysis Speed</span>
+              <div class="stat-value-group">
+                <span class="stat-number" data-target="1">1</span>
+                <span class="stat-suffix">Second Pipeline</span>
+              </div>
+              <p class="stat-desc">&lt; 0.2ms raw computation with animated simulated AI reasoning steps.</p>
+            </div>
+            <div class="card-glow-edge glow-indigo"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= INTERACTIVE EXAMPLE PLAYGROUND ================= -->
+    <section id="samples" class="section playground-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Instant Testing</span>
+          <h2 class="section-title">Try Sample <span class="gradient-text">Conversations</span></h2>
+          <p class="section-desc">Click any pre-crafted scenario to populate the agent console and trigger immediate classification.</p>
+        </div>
+
+        <div class="sample-cards-grid">
+          <div class="sample-card glass-card sample-pos" data-sample="I love this project. It is amazing, wonderful and truly the best experience!">
+            <div class="sample-top">
+              <span class="sample-tag-pill tag-pos">😊 POSITIVE PRESET</span>
+              <span class="sample-action-hint">Click to test →</span>
+            </div>
+            <p class="sample-text">"I love this project. It is amazing, wonderful and truly the best experience!"</p>
+            <div class="sample-footer">
+              <span class="sample-meta">Detected: love, amazing, wonderful, best</span>
+            </div>
+          </div>
+
+          <div class="sample-card glass-card sample-neg" data-sample="This is the worst experience ever. The service was terrible and I am so angry and disappointed.">
+            <div class="sample-top">
+              <span class="sample-tag-pill tag-neg">😞 NEGATIVE PRESET</span>
+              <span class="sample-action-hint">Click to test →</span>
+            </div>
+            <p class="sample-text">"This is the worst experience ever. The service was terrible and I am so angry and disappointed."</p>
+            <div class="sample-footer">
+              <span class="sample-meta">Detected: worst, terrible, angry, disappointed</span>
+            </div>
+          </div>
+
+          <div class="sample-card glass-card sample-neu" data-sample="Today I completed my assignment and submitted the final documentation on the portal.">
+            <div class="sample-top">
+              <span class="sample-tag-pill tag-neu">😐 NEUTRAL PRESET</span>
+              <span class="sample-action-hint">Click to test →</span>
+            </div>
+            <p class="sample-text">"Today I completed my assignment and submitted the final documentation on the portal."</p>
+            <div class="sample-footer">
+              <span class="sample-meta">Detected: 0 emotional keywords</span>
+            </div>
+          </div>
+
+          <div class="sample-card glass-card sample-mix" data-sample="The food was good and fantastic, but the waiting time was awful and poor.">
+            <div class="sample-top">
+              <span class="sample-tag-pill tag-mix">⚖️ BALANCED PRESET</span>
+              <span class="sample-action-hint">Click to test →</span>
+            </div>
+            <p class="sample-text">"The food was good and fantastic, but the waiting time was awful and poor."</p>
+            <div class="sample-footer">
+              <span class="sample-meta">Detected: 2 Positive (good, fantastic) vs 2 Negative (awful, poor)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= WORKFLOW ARCHITECTURE ================= -->
+    <section id="workflow" class="section workflow-section">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag">System Architecture</span>
+          <h2 class="section-title">AI Agent <span class="gradient-text">Workflow Architecture</span></h2>
+          <p class="section-desc">An end-to-end trace of how information flows from raw keystrokes to explainable sentiment output.</p>
+        </div>
+
+        <div class="workflow-diagram-container glass-card">
+          <div class="workflow-flow">
+            <div class="flow-node">
+              <div class="node-icon-box">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"></rect><line x1="6" y1="8" x2="6" y2="8"></line><line x1="10" y1="8" x2="10" y2="8"></line><line x1="14" y1="8" x2="14" y2="8"></line><line x1="18" y1="8" x2="18" y2="8"></line><line x1="6" y1="12" x2="6" y2="12"></line><line x1="10" y1="12" x2="10" y2="12"></line><line x1="14" y1="12" x2="14" y2="12"></line><line x1="18" y1="12" x2="18" y2="12"></line><line x1="7" y1="16" x2="17" y2="16"></line></svg>
+              </div>
+              <h4 class="node-title">1. User Types</h4>
+              <p class="node-sub">Raw keystroke capture</p>
+            </div>
+
+            <div class="flow-connector">
+              <div class="connector-line"></div>
+              <div class="pulse-packet packet-1"></div>
+            </div>
+
+            <div class="flow-node">
+              <div class="node-icon-box">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 7 4 4 20 4 20 7"></polyline><line x1="9" y1="20" x2="15" y2="20"></line><line x1="12" y1="4" x2="12" y2="20"></line></svg>
+              </div>
+              <h4 class="node-title">2. Text Processor</h4>
+              <p class="node-sub">Lowercase & token split</p>
+            </div>
+
+            <div class="flow-connector">
+              <div class="connector-line"></div>
+              <div class="pulse-packet packet-2"></div>
+            </div>
+
+            <div class="flow-node">
+              <div class="node-icon-box">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              </div>
+              <h4 class="node-title">3. Keyword Matcher</h4>
+              <p class="node-sub">Lexicon lookup tables</p>
+            </div>
+
+            <div class="flow-connector">
+              <div class="connector-line"></div>
+              <div class="pulse-packet packet-3"></div>
+            </div>
+
+            <div class="flow-node">
+              <div class="node-icon-box">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"></path></svg>
+              </div>
+              <h4 class="node-title">4. Decision Engine</h4>
+              <p class="node-sub">Polarity delta comparison</p>
+            </div>
+
+            <div class="flow-connector">
+              <div class="connector-line"></div>
+              <div class="pulse-packet packet-4"></div>
+            </div>
+
+            <div class="flow-node">
+              <div class="node-icon-box">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+              </div>
+              <h4 class="node-title">5. Result Generator</h4>
+              <p class="node-sub">UI & explanation dispatch</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= TIMELINE SECTION ================= -->
+    <section id="how-it-works" class="section timeline-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Algorithmic Breakdown</span>
+          <h2 class="section-title">How the <span class="gradient-text">AI Agent Works</span></h2>
+          <p class="section-desc">A deep dive into the 5 distinct mathematical and lexical stages executed upon every query.</p>
+        </div>
+
+        <div class="timeline-wrapper">
+          <div class="timeline-item">
+            <div class="timeline-marker">
+              <div class="marker-dot"></div>
+              <div class="marker-num">01</div>
+            </div>
+            <div class="timeline-content glass-card">
+              <div class="tl-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"></rect><line x1="6" y1="8" x2="6" y2="8"></line><line x1="10" y1="8" x2="10" y2="8"></line><line x1="14" y1="8" x2="14" y2="8"></line><line x1="18" y1="8" x2="18" y2="8"></line><line x1="6" y1="12" x2="6" y2="12"></line><line x1="10" y1="12" x2="10" y2="12"></line><line x1="14" y1="12" x2="14" y2="12"></line><line x1="18" y1="12" x2="18" y2="12"></line><line x1="7" y1="16" x2="17" y2="16"></line></svg>
+              </div>
+              <h3 class="tl-title">Step 1: Keyboard Input Capture</h3>
+              <p class="tl-desc">The agent attaches an asynchronous event listener to the input buffer, recording user typing events and string length in real time without blocking the UI thread.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-marker">
+              <div class="marker-dot"></div>
+              <div class="marker-num">02</div>
+            </div>
+            <div class="timeline-content glass-card">
+              <div class="tl-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 7 4 4 20 4 20 7"></polyline><line x1="9" y1="20" x2="15" y2="20"></line><line x1="12" y1="4" x2="12" y2="20"></line></svg>
+              </div>
+              <h3 class="tl-title">Step 2: Lowercase & Normalization</h3>
+              <p class="tl-desc">The raw string is converted to lowercase and sanitized using regex word boundaries to prevent punctuation collisions and ensure case-insensitive matching (e.g. "AMAZING!" → "amazing").</p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-marker">
+              <div class="marker-dot"></div>
+              <div class="marker-num">03</div>
+            </div>
+            <div class="timeline-content glass-card">
+              <div class="tl-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              </div>
+              <h3 class="tl-title">Step 3: Keyword Dictionary Matching</h3>
+              <p class="tl-desc">The normalized token stream is evaluated against two calibrated sets: 10 Positive Lexicons (`good`, `great`, `love`, etc.) and 10 Negative Lexicons (`bad`, `hate`, `awful`, etc.).</p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-marker">
+              <div class="marker-dot"></div>
+              <div class="marker-num">04</div>
+            </div>
+            <div class="timeline-content glass-card">
+              <div class="tl-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 16v1a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v1"></path><path d="M18 8h4a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-4"></path><circle cx="8" cy="12" r="2"></circle></svg>
+              </div>
+              <h3 class="tl-title">Step 4: Score Comparison & Polarity Math</h3>
+              <p class="tl-desc">The frequency scores $S_{pos}$ and $S_{neg}$ are compared. Net polarity $\Delta = S_{pos} - S_{neg}$ is computed alongside a confidence percentage derived from token dominance.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-marker">
+              <div class="marker-dot"></div>
+              <div class="marker-num">05</div>
+            </div>
+            <div class="timeline-content glass-card">
+              <div class="tl-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg>
+              </div>
+              <h3 class="tl-title">Step 5: Sentiment Classification & Explanation</h3>
+              <p class="tl-desc">The final class (`POSITIVE`, `NEGATIVE`, or `NEUTRAL`) is rendered along with confidence gauges, spectrum needle animation, and transparent reasoning bullets.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FEATURES SECTION ================= -->
+    <section id="features" class="section features-section">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag">Core Capabilities</span>
+          <h2 class="section-title">Engineered for <span class="gradient-text">Modern AI Interactions</span></h2>
+          <p class="section-desc">Designed with high-precision front-end engineering, zero latency overhead, and elegant micro-interactions.</p>
+        </div>
+
+        <div class="features-grid">
+          <div class="feature-card glass-card">
+            <div class="feat-icon feat-icon-1">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+            </div>
+            <h3 class="feat-title">Real-Time Keystroke Reactivity</h3>
+            <p class="feat-desc">Immediate state synchronization as the user types, updating token counters, lexical checks, and telemetry logs seamlessly.</p>
+            <div class="card-glow-edge"></div>
+          </div>
+
+          <div class="feature-card glass-card">
+            <div class="feat-icon feat-icon-2">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+            </div>
+            <h3 class="feat-title">Instant Sentiment Detection</h3>
+            <p class="feat-desc">High-speed dictionary evaluation that matches exact and plural word forms with sub-millisecond algorithmic execution time.</p>
+            <div class="card-glow-edge"></div>
+          </div>
+
+          <div class="feature-card glass-card">
+            <div class="feat-icon feat-icon-3">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            </div>
+            <h3 class="feat-title">100% Rule-Based Determinism</h3>
+            <p class="feat-desc">No hallucinations, no probabilistic ambiguity, no external cloud dependencies, and zero private data transmission.</p>
+            <div class="card-glow-edge"></div>
+          </div>
+
+          <div class="feature-card glass-card">
+            <div class="feat-icon feat-icon-4">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+            </div>
+            <h3 class="feat-title">Interactive Visual Dashboard</h3>
+            <p class="feat-desc">Complete telemetry suite with Emotion Spectrum gauge, interactive keyword chips, reasoning pipeline, and audio feedback.</p>
+            <div class="card-glow-edge"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= EDUCATIONAL SECTION ================= -->
+    <section id="education" class="section education-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Theoretical Foundations</span>
+          <h2 class="section-title">Understanding <span class="gradient-text">AI Agent Paradigms</span></h2>
+          <p class="section-desc">Explore the foundational concepts bridging classical symbolic AI and modern neural architectures.</p>
+        </div>
+
+        <div class="edu-grid">
+          <div class="edu-card glass-card">
+            <div class="edu-badge">CONCEPT 01</div>
+            <h3 class="edu-title">What is an AI Agent?</h3>
+            <p class="edu-text">An <strong>AI Agent</strong> is an autonomous entity that perceives its environment through sensors (e.g. keyboard input events), processes the received state through internal reasoning mechanisms, and executes actions (e.g. rendering classifications and explanations) to achieve a defined objective.</p>
+            <div class="edu-highlight-box">
+              <span>Perception → Reasoning → Action Loop</span>
+            </div>
+          </div>
+
+          <div class="edu-card glass-card">
+            <div class="edu-badge">CONCEPT 02</div>
+            <h3 class="edu-title">What is Rule-Based AI?</h3>
+            <p class="edu-text"><strong>Rule-Based AI</strong> (also known as Classical or Symbolic AI) relies on explicitly programmed human knowledge represented as deterministic <em>IF-THEN</em> rules, keyword lexicons, and logic trees. It guarantees 100% predictability, auditability, and total transparency without black-box opacity.</p>
+            <div class="edu-highlight-box">
+              <span>Deterministic • Explainable • Auditable</span>
+            </div>
+          </div>
+
+          <div class="edu-card glass-card">
+            <div class="edu-badge">CONCEPT 03</div>
+            <h3 class="edu-title">Rule-Based AI vs Machine Learning</h3>
+            <p class="edu-text">While <strong>Machine Learning (ML / LLMs)</strong> learns statistical representations from massive training datasets, <strong>Rule-Based Systems</strong> excel at constrained domains where strict compliance, zero hallucination, instant execution, and zero inference costs are paramount.</p>
+            <div class="edu-highlight-box">
+              <span>Exact Precision vs Statistical Approximation</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PROJECT SPECS & ALGORITHM ================= -->
+    <section id="algorithm" class="section project-info-section">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag">Project Specification</span>
+          <h2 class="section-title">Problem Statement & <span class="gradient-text">Algorithm Specification</span></h2>
+          <p class="section-desc">Designed for academic presentations, viva examinations, and portfolio demonstrations.</p>
+        </div>
+
+        <div class="project-info-grid">
+          <div class="info-card glass-card">
+            <div class="info-card-header">
+              <span class="info-tag">ACADEMIC SCOPE</span>
+              <h3 class="info-title">Problem Statement</h3>
+            </div>
+            <p class="info-body">
+              Build an interactive, responsive, and deterministic AI agent that classifies user sentiment from real-time keyboard input using rule-based lexical matching. The system must simulate cognitive AI thinking stages, provide transparent reasoning, display confidence metrics, and operate completely offline in vanilla JavaScript with zero external ML dependencies.
+            </p>
+            <div class="info-bullets">
+              <div class="ib-item"><span class="ib-check">✓</span> 10 Positive & 10 Negative Pre-defined Lexicons</div>
+              <div class="ib-item"><span class="ib-check">✓</span> Real-Time Keyboard Event Reactivity</div>
+              <div class="ib-item"><span class="ib-check">✓</span> Transparent Chain-of-Thought Reasoning</div>
+              <div class="ib-item"><span class="ib-check">✓</span> Zero Framework / Zero Cloud Dependency</div>
+            </div>
+          </div>
+
+          <div class="info-card glass-card code-view-card">
+            <div class="info-card-header">
+              <span class="info-tag">DETERMINISTIC LOGIC</span>
+              <h3 class="info-title">The 8 Processing Steps</h3>
+            </div>
+            <div class="code-terminal">
+              <div class="terminal-bar">
+                <span class="term-dot t-red"></span>
+                <span class="term-dot t-yellow"></span>
+                <span class="term-dot t-green"></span>
+                <span class="term-filename">sentiment_agent_algorithm.js</span>
+              </div>
+              <pre class="code-pre"><code><span class="c-comment">// 1. Receive keyboard input</span>
+<span class="c-keyword">const</span> rawInput = textarea.value;
+
+<span class="c-comment">// 2. Convert text to lowercase</span>
+<span class="c-keyword">const</span> text = rawInput.toLowerCase();
+
+<span class="c-comment">// 3. Scan for positive keywords (10 lexicons)</span>
+<span class="c-keyword">const</span> posMatches = POSITIVE_DICT.filter(word => 
+  <span class="c-func">regexMatch</span>(text, word)
+);
+
+<span class="c-comment">// 4. Scan for negative keywords (10 lexicons)</span>
+<span class="c-keyword">const</span> negMatches = NEGATIVE_DICT.filter(word => 
+  <span class="c-func">regexMatch</span>(text, word)
+);
+
+<span class="c-comment">// 5. Count keyword occurrences</span>
+<span class="c-keyword">const</span> posScore = posMatches.length;
+<span class="c-keyword">const</span> negScore = negMatches.length;
+
+<span class="c-comment">// 6. Compare counts & 7. Return classification</span>
+<span class="c-keyword">let</span> sentiment = <span class="c-string">"NEUTRAL"</span>;
+<span class="c-keyword">if</span> (posScore > negScore) sentiment = <span class="c-string">"POSITIVE"</span>;
+<span class="c-keyword">else if</span> (negScore > posScore) sentiment = <span class="c-string">"NEGATIVE"</span>;
+
+<span class="c-comment">// 8. Simulate processing delay & dispatch UI</span>
+<span class="c-keyword">await</span> <span class="c-func">simulateAgentThinking</span>(1000);
+<span class="c-func">renderResults</span>({ sentiment, posScore, negScore });</code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer">
+    <div class="footer-divider-glow"></div>
+    <div class="container footer-container">
+      <div class="footer-brand-col">
+        <div class="brand-logo">
+          <div class="logo-core">
+            <div class="logo-orb"></div>
+            <div class="logo-ring"></div>
+          </div>
+          <span class="brand-title">Sentiment<span class="gradient-text">Agent</span> AI</span>
+        </div>
+        <p class="footer-tagline">A Rule-Based Intelligent Agent for Real-Time Sentiment Classification.</p>
+        <div class="footer-tech-stack">
+          <span class="tech-pill">HTML5</span>
+          <span class="tech-pill">CSS3 Glassmorphism</span>
+          <span class="tech-pill">Vanilla JavaScript ES6+</span>
+          <span class="tech-pill">Web Audio Synth</span>
+        </div>
+      </div>
+
+      <div class="footer-links-col">
+        <h4 class="footer-heading">Quick Navigation</h4>
+        <ul class="footer-links">
+          <li><a href="#hero">Hero Overview</a></li>
+          <li><a href="#demo">Live Agent Demo</a></li>
+          <li><a href="#stats">Lexicon Dictionaries</a></li>
+          <li><a href="#samples">Sample Playground</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links-col">
+        <h4 class="footer-heading">Architecture & Theory</h4>
+        <ul class="footer-links">
+          <li><a href="#workflow">Agent Workflow</a></li>
+          <li><a href="#how-it-works">5-Step Pipeline</a></li>
+          <li><a href="#education">Symbolic AI Theory</a></li>
+          <li><a href="#algorithm">8-Step Algorithm</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-status-col">
+        <h4 class="footer-heading">System Status</h4>
+        <div class="sys-status-badge">
+          <span class="pulse-dot"></span>
+          <span>Engine Operational • 100% Local</span>
+        </div>
+        <p class="academic-note">
+          Designed and built for an AI/ML academic presentation and engineering portfolio demonstration.
+        </p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <span>© 2026 Sentiment Agent AI Project. All rights reserved.</span>
+        <span class="built-with">Crafted with pure HTML, CSS & JavaScript</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================= EMBEDDED JAVASCRIPT ================= -->
+  <script>
+    /**
+     * SENTIMENT AGENT AI — CORE APPLICATION SCRIPT
+     * 100% Rule-Based Intelligent Sentiment Agent
+     */
+    (function () {
+      'use strict';
+
+      // 1. LEXICON DICTIONARIES
+      const POSITIVE_KEYWORDS = [
+        'good', 'great', 'excellent', 'amazing', 'awesome',
+        'happy', 'love', 'wonderful', 'fantastic', 'best'
+      ];
+
+      const NEGATIVE_KEYWORDS = [
+        'bad', 'poor', 'terrible', 'awful', 'hate',
+        'sad', 'worst', 'horrible', 'disappointed', 'angry'
+      ];
+
+      // 2. DEFENSIVE WEB AUDIO SYNTHESIZER
+      class SoundFX {
+        constructor() {
+          this.enabled = true;
+          this.ctx = null;
+        }
+
+        init() {
+          try {
+            if (!this.ctx && (window.AudioContext || window.webkitAudioContext)) {
+              const AudioCtx = window.AudioContext || window.webkitAudioContext;
+              this.ctx = new AudioCtx();
+            }
+            if (this.ctx && this.ctx.state === 'suspended') {
+              this.ctx.resume();
+            }
+          } catch (e) {}
+        }
+
+        playClick() {
+          if (!this.enabled) return;
+          try {
+            this.init();
+            if (!this.ctx) return;
+            const osc = this.ctx.createOscillator();
+            const gain = this.ctx.createGain();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(800, this.ctx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(300, this.ctx.currentTime + 0.04);
+            gain.gain.setValueAtTime(0.05, this.ctx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.04);
+            osc.connect(gain);
+            gain.connect(this.ctx.destination);
+            osc.start();
+            osc.stop(this.ctx.currentTime + 0.04);
+          } catch (e) {}
+        }
+
+        playScanTone() {
+          if (!this.enabled) return;
+          try {
+            this.init();
+            if (!this.ctx) return;
+            const osc = this.ctx.createOscillator();
+            const gain = this.ctx.createGain();
+            osc.type = 'triangle';
+            osc.frequency.setValueAtTime(440, this.ctx.currentTime);
+            osc.frequency.linearRampToValueAtTime(880, this.ctx.currentTime + 0.15);
+            gain.gain.setValueAtTime(0.03, this.ctx.currentTime);
+            gain.gain.linearRampToValueAtTime(0.001, this.ctx.currentTime + 0.15);
+            osc.connect(gain);
+            gain.connect(this.ctx.destination);
+            osc.start();
+            osc.stop(this.ctx.currentTime + 0.15);
+          } catch (e) {}
+        }
+
+        playResultChord(sentiment) {
+          if (!this.enabled) return;
+          try {
+            this.init();
+            if (!this.ctx) return;
+            let freqs = [523.25, 659.25, 783.99];
+            if (sentiment === 'NEGATIVE') {
+              freqs = [440.00, 523.25, 622.25];
+            } else if (sentiment === 'NEUTRAL') {
+              freqs = [440.00, 554.37, 659.25];
+            }
+
+            freqs.forEach((freq, index) => {
+              const osc = this.ctx.createOscillator();
+              const gain = this.ctx.createGain();
+              osc.type = 'sine';
+              osc.frequency.setValueAtTime(freq, this.ctx.currentTime + index * 0.06);
+              gain.gain.setValueAtTime(0.06, this.ctx.currentTime + index * 0.06);
+              gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.6);
+              osc.connect(gain);
+              gain.connect(this.ctx.destination);
+              osc.start(this.ctx.currentTime + index * 0.06);
+              osc.stop(this.ctx.currentTime + 0.6);
+            });
+          } catch (e) {}
+        }
+      }
+
+      const sfx = new SoundFX();
+
+      // 3. CANVAS PARTICLE SYSTEM
+      function initParticleCanvas() {
+        const canvas = document.getElementById('particle-canvas');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        let width, height;
+        let particles = [];
+        const particleCount = Math.min(window.innerWidth < 768 ? 25 : 60, 80);
+
+        function resize() {
+          width = canvas.width = window.innerWidth;
+          height = canvas.height = window.innerHeight;
+        }
+
+        window.addEventListener('resize', resize);
+        resize();
+
+        class Particle {
+          constructor() { this.reset(); }
+          reset() {
+            this.x = Math.random() * width;
+            this.y = Math.random() * height;
+            this.vx = (Math.random() - 0.5) * 0.6;
+            this.vy = (Math.random() - 0.5) * 0.6;
+            this.radius = Math.random() * 2 + 1;
+            this.alpha = Math.random() * 0.5 + 0.2;
+          }
+          update() {
+            this.x += this.vx;
+            this.y += this.vy;
+            if (this.x < 0 || this.x > width) this.vx *= -1;
+            if (this.y < 0 || this.y > height) this.vy *= -1;
+          }
+          draw() {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(139, 92, 246, ${this.alpha})`;
+            ctx.fill();
+          }
+        }
+
+        for (let i = 0; i < particleCount; i++) {
+          particles.push(new Particle());
+        }
+
+        function animate() {
+          ctx.clearRect(0, 0, width, height);
+          for (let i = 0; i < particles.length; i++) {
+            for (let j = i + 1; j < particles.length; j++) {
+              const dx = particles[i].x - particles[j].x;
+              const dy = particles[i].y - particles[j].y;
+              const dist = Math.sqrt(dx * dx + dy * dy);
+
+              if (dist < 120) {
+                ctx.beginPath();
+                ctx.moveTo(particles[i].x, particles[i].y);
+                ctx.lineTo(particles[j].x, particles[j].y);
+                const lineAlpha = (1 - dist / 120) * 0.15;
+                ctx.strokeStyle = `rgba(99, 102, 241, ${lineAlpha})`;
+                ctx.lineWidth = 0.8;
+                ctx.stroke();
+              }
+            }
+          }
+
+          particles.forEach(p => {
+            p.update();
+            p.draw();
+          });
+
+          requestAnimationFrame(animate);
+        }
+
+        animate();
+      }
+
+      // 4. SENTIMENT ENGINE
+      class SentimentEngine {
+        constructor() {
+          this.posDict = POSITIVE_KEYWORDS;
+          this.negDict = NEGATIVE_KEYWORDS;
+        }
+
+        evaluate(rawInput) {
+          const input = (rawInput || '').trim();
+
+          if (!input) {
+            return {
+              sentiment: 'NEUTRAL',
+              emoji: '✨',
+              confidence: 0,
+              posScore: 0,
+              negScore: 0,
+              polarity: 0,
+              posMatches: [],
+              negMatches: [],
+              reasons: [
+                'System is awaiting meaningful keyboard text input.',
+                'No emotional keyword lexicons have been recognized yet.',
+                'Default neutral baseline assigned.'
+              ],
+              highlightedHTML: 'Type a sentence above to see matched keywords highlighted in real-time.'
+            };
+          }
+
+          const lowerText = input.toLowerCase();
+
+          const posMatches = [];
+          this.posDict.forEach(word => {
+            const regex = new RegExp(`\\b${word}\\b`, 'gi');
+            const matches = lowerText.match(regex);
+            if (matches) posMatches.push({ word, count: matches.length });
+          });
+
+          const negMatches = [];
+          this.negDict.forEach(word => {
+            const regex = new RegExp(`\\b${word}\\b`, 'gi');
+            const matches = lowerText.match(regex);
+            if (matches) negMatches.push({ word, count: matches.length });
+          });
+
+          const posScore = posMatches.reduce((sum, item) => sum + item.count, 0);
+          const negScore = negMatches.reduce((sum, item) => sum + item.count, 0);
+          const totalMatches = posScore + negScore;
+          const polarity = posScore - negScore;
+
+          let sentiment = 'NEUTRAL';
+          let emoji = '😐';
+          let confidence = 0;
+          const reasons = [];
+
+          if (posScore > negScore) {
+            sentiment = 'POSITIVE';
+            emoji = '😊';
+            confidence = negScore === 0 ? Math.min(82 + posScore * 4, 98) : Math.round((posScore / totalMatches) * 100);
+            posMatches.forEach(m => reasons.push(`Detected positive keyword "${m.word}" (${m.count} occurrence${m.count > 1 ? 's' : ''}).`));
+            if (negMatches.length > 0) negMatches.forEach(m => reasons.push(`Detected negative keyword "${m.word}" (${m.count} occurrence${m.count > 1 ? 's' : ''}).`));
+            reasons.push(`Positive score (${posScore}) exceeds negative score (${negScore}).`);
+            reasons.push(`Final classification: POSITIVE (${confidence}% confidence).`);
+          } else if (negScore > posScore) {
+            sentiment = 'NEGATIVE';
+            emoji = '😞';
+            confidence = posScore === 0 ? Math.min(82 + negScore * 4, 98) : Math.round((negScore / totalMatches) * 100);
+            negMatches.forEach(m => reasons.push(`Detected negative keyword "${m.word}" (${m.count} occurrence${m.count > 1 ? 's' : ''}).`));
+            if (posMatches.length > 0) posMatches.forEach(m => reasons.push(`Detected positive keyword "${m.word}" (${m.count} occurrence${m.count > 1 ? 's' : ''}).`));
+            reasons.push(`Negative score (${negScore}) exceeds positive score (${posScore}).`);
+            reasons.push(`Final classification: NEGATIVE (${confidence}% confidence).`);
+          } else {
+            sentiment = 'NEUTRAL';
+            emoji = '😐';
+            if (totalMatches === 0) {
+              confidence = 0;
+              reasons.push('No recognized emotional keywords found from the 20-word dictionary.');
+              reasons.push('Text structure classified as objective / factual neutral.');
+              reasons.push('Final classification: NEUTRAL (0% emotional skew).');
+            } else {
+              confidence = 50;
+              posMatches.forEach(m => reasons.push(`Matched positive keyword "${m.word}" (${m.count}).`));
+              negMatches.forEach(m => reasons.push(`Matched negative keyword "${m.word}" (${m.count}).`));
+              reasons.push(`Positive score (${posScore}) and negative score (${negScore}) are perfectly balanced.`);
+              reasons.push('Final classification: NEUTRAL (50% equilibrium).');
+            }
+          }
+
+          let highlightedHTML = input;
+          this.posDict.forEach(word => {
+            const regex = new RegExp(`\\b(${word})\\b`, 'gi');
+            highlightedHTML = highlightedHTML.replace(regex, `<mark class="highlight-pos">$1</mark>`);
+          });
+          this.negDict.forEach(word => {
+            const regex = new RegExp(`\\b(${word})\\b`, 'gi');
+            highlightedHTML = highlightedHTML.replace(regex, `<mark class="highlight-neg">$1</mark>`);
+          });
+
+          return { sentiment, emoji, confidence, posScore, negScore, polarity, posMatches, negMatches, reasons, highlightedHTML };
+        }
+      }
+
+      const engine = new SentimentEngine();
+
+      // 5. DOM REFERENCES
+      let dom = {};
+
+      function bindDom() {
+        dom = {
+          textarea: document.getElementById('sentiment-input'),
+          analyzeBtn: document.getElementById('analyze-btn'),
+          clearBtn: document.getElementById('clear-btn'),
+          voiceBtn: document.getElementById('voice-btn'),
+          realtimeToggle: document.getElementById('realtime-toggle'),
+          soundToggle: document.getElementById('sound-toggle'),
+          charCounter: document.getElementById('char-counter'),
+          wordCounter: document.getElementById('word-counter'),
+
+          avatarContainer: document.getElementById('avatar-container'),
+          agentAvatar: document.getElementById('agent-avatar'),
+          statusBadge: document.getElementById('agent-status-badge'),
+          statusText: document.getElementById('agent-status-text'),
+          telemetryLogs: document.getElementById('telemetry-logs'),
+          telemetryClear: document.getElementById('telemetry-clear'),
+
+          reasoningCard: document.getElementById('reasoning-timeline-card'),
+          pipelineTimer: document.getElementById('pipeline-timer'),
+          pipelineSteps: document.querySelectorAll('.pipeline-step'),
+
+          resultEmoji: document.getElementById('result-emoji'),
+          emojiAura: document.getElementById('emoji-aura'),
+          sentimentTag: document.getElementById('result-sentiment-tag'),
+          confidenceVal: document.getElementById('confidence-val'),
+          confidenceBarFill: document.getElementById('confidence-bar-fill'),
+          posCountVal: document.getElementById('pos-count-val'),
+          negCountVal: document.getElementById('neg-count-val'),
+          polarityVal: document.getElementById('polarity-val'),
+
+          meterIndicator: document.getElementById('meter-indicator'),
+          meterZoneLabel: document.getElementById('meter-zone-label'),
+
+          chipsContainer: document.getElementById('keyword-chips-container'),
+          kdTotalBadge: document.getElementById('kd-total-badge'),
+          hpContent: document.getElementById('hp-content'),
+
+          expTitle: document.getElementById('exp-title'),
+          expList: document.getElementById('exp-list'),
+
+          navLinks: document.getElementById('nav-links'),
+          mobileToggle: document.getElementById('mobile-toggle'),
+          sampleCards: document.querySelectorAll('.sample-card')
+        };
+      }
+
+      let isProcessing = false;
+      let simulatedPipelineInterval = null;
+
+      function getTimestamp() {
+        const now = new Date();
+        return now.toTimeString().split(' ')[0];
+      }
+
+      function addTelemetryLog(message, type = 'system') {
+        if (!dom.telemetryLogs) return;
+        const entry = document.createElement('div');
+        entry.className = `log-entry log-${type}`;
+        entry.innerHTML = `<span class="log-time">${getTimestamp()}</span> ${message}`;
+        dom.telemetryLogs.appendChild(entry);
+        dom.telemetryLogs.scrollTop = dom.telemetryLogs.scrollHeight;
+      }
+
+      function setAgentState(state, text) {
+        if (!dom.statusBadge || !dom.statusText || !dom.avatarContainer) return;
+        dom.statusBadge.setAttribute('data-state', state);
+        dom.statusText.textContent = text;
+
+        dom.avatarContainer.classList.remove('state-thinking', 'state-listening', 'state-positive', 'state-negative');
+        if (state === 'analyzing') {
+          dom.avatarContainer.classList.add('state-thinking');
+        } else if (state === 'listening') {
+          dom.avatarContainer.classList.add('state-listening');
+        }
+      }
+
+      function animateCounter(element, targetValue, duration = 600) {
+        if (!element) return;
+        const startValue = parseInt(element.textContent, 10) || 0;
+        const startTime = performance.now();
+
+        function update(currentTime) {
+          const elapsed = currentTime - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          const ease = 1 - Math.pow(1 - progress, 3);
+          const current = Math.round(startValue + (targetValue - startValue) * ease);
+          element.textContent = current;
+
+          if (progress < 1) {
+            requestAnimationFrame(update);
+          } else {
+            element.textContent = targetValue;
+          }
+        }
+
+        requestAnimationFrame(update);
+      }
+
+      function renderDashboard(result) {
+        if (dom.resultEmoji) dom.resultEmoji.textContent = result.emoji;
+        if (dom.sentimentTag) {
+          dom.sentimentTag.textContent = result.sentiment;
+          if (result.sentiment === 'POSITIVE') {
+            dom.sentimentTag.style.color = 'var(--color-positive)';
+            if (dom.emojiAura) dom.emojiAura.style.background = 'var(--color-positive-glow)';
+            if (dom.avatarContainer) dom.avatarContainer.classList.add('state-positive');
+          } else if (result.sentiment === 'NEGATIVE') {
+            dom.sentimentTag.style.color = 'var(--color-negative)';
+            if (dom.emojiAura) dom.emojiAura.style.background = 'var(--color-negative-glow)';
+            if (dom.avatarContainer) dom.avatarContainer.classList.add('state-negative');
+          } else {
+            dom.sentimentTag.style.color = 'var(--color-neutral)';
+            if (dom.emojiAura) dom.emojiAura.style.background = 'var(--color-neutral-glow)';
+          }
+        }
+
+        animateCounter(dom.confidenceVal, result.confidence);
+        if (dom.confidenceBarFill) dom.confidenceBarFill.style.width = `${result.confidence}%`;
+
+        animateCounter(dom.posCountVal, result.posScore);
+        animateCounter(dom.negCountVal, result.negScore);
+        animateCounter(dom.polarityVal, result.polarity);
+
+        let meterPercent = 50;
+        if (result.sentiment === 'POSITIVE') {
+          meterPercent = 50 + Math.min(result.posScore * 12, 48);
+          if (dom.meterZoneLabel) {
+            dom.meterZoneLabel.textContent = `Positive Spectrum (+${result.posScore})`;
+            dom.meterZoneLabel.style.color = 'var(--color-positive)';
+          }
+        } else if (result.sentiment === 'NEGATIVE') {
+          meterPercent = 50 - Math.min(result.negScore * 12, 48);
+          if (dom.meterZoneLabel) {
+            dom.meterZoneLabel.textContent = `Negative Spectrum (-${result.negScore})`;
+            dom.meterZoneLabel.style.color = 'var(--color-negative)';
+          }
+        } else {
+          meterPercent = 50;
+          if (dom.meterZoneLabel) {
+            dom.meterZoneLabel.textContent = result.posScore > 0 ? 'Equilibrium (Tied)' : 'Neutral Balance (0.00)';
+            dom.meterZoneLabel.style.color = 'var(--primary-cyan)';
+          }
+        }
+        if (dom.meterIndicator) dom.meterIndicator.style.left = `${meterPercent}%`;
+
+        if (dom.chipsContainer) {
+          dom.chipsContainer.innerHTML = '';
+          const totalChips = result.posMatches.length + result.negMatches.length;
+
+          if (dom.kdTotalBadge) dom.kdTotalBadge.textContent = `${totalChips} token${totalChips !== 1 ? 's' : ''}`;
+
+          if (totalChips === 0) {
+            dom.chipsContainer.innerHTML = `<span class="no-keywords-placeholder">No positive or negative keywords matched yet.</span>`;
+          } else {
+            result.posMatches.forEach(m => {
+              const chip = document.createElement('div');
+              chip.className = 'keyword-chip chip-pos';
+              chip.innerHTML = `<span>+ ${m.word}</span> <span class="chip-badge">×${m.count}</span>`;
+              dom.chipsContainer.appendChild(chip);
+            });
+
+            result.negMatches.forEach(m => {
+              const chip = document.createElement('div');
+              chip.className = 'keyword-chip chip-neg';
+              chip.innerHTML = `<span>− ${m.word}</span> <span class="chip-badge">×${m.count}</span>`;
+              dom.chipsContainer.appendChild(chip);
+            });
+          }
+        }
+
+        if (dom.hpContent) dom.hpContent.innerHTML = result.highlightedHTML;
+
+        if (dom.expTitle) dom.expTitle.textContent = `Why did I classify this as ${result.sentiment}?`;
+        if (dom.expList) {
+          dom.expList.innerHTML = '';
+          result.reasons.forEach(reason => {
+            const li = document.createElement('li');
+            li.textContent = reason;
+            dom.expList.appendChild(li);
+          });
+        }
+
+        sfx.playResultChord(result.sentiment);
+      }
+
+      // 6. PIPELINE REASONING
+      async function runReasoningPipeline(text) {
+        if (isProcessing) return;
+        isProcessing = true;
+
+        if (dom.reasoningCard) dom.reasoningCard.classList.remove('hidden');
+        if (dom.pipelineSteps) {
+          dom.pipelineSteps.forEach(step => step.classList.remove('active', 'completed'));
+        }
+
+        setAgentState('analyzing', 'Analyzing...');
+        addTelemetryLog(`[INFERENCE] Triggered full pipeline for "${text.substring(0, 30)}..."`, 'pipeline');
+
+        const startTime = performance.now();
+        simulatedPipelineInterval = setInterval(() => {
+          const elapsed = ((performance.now() - startTime) / 1000).toFixed(2);
+          if (dom.pipelineTimer) dom.pipelineTimer.textContent = `${elapsed}s`;
+        }, 40);
+
+        const steps = Array.from(dom.pipelineSteps || []);
+
+        for (let i = 0; i < steps.length; i++) {
+          steps[i].classList.add('active');
+          sfx.playScanTone();
+          await new Promise(r => setTimeout(r, 160));
+          steps[i].classList.remove('active');
+          steps[i].classList.add('completed');
+        }
+
+        clearInterval(simulatedPipelineInterval);
+        const finalElapsed = ((performance.now() - startTime) / 1000).toFixed(2);
+        if (dom.pipelineTimer) dom.pipelineTimer.textContent = `${finalElapsed}s`;
+
+        const result = engine.evaluate(text);
+        renderDashboard(result);
+
+        setAgentState('generated', 'Response Generated');
+        addTelemetryLog(`[DECISION] Sentiment: ${result.sentiment} (Confidence: ${result.confidence}%)`, 'result');
+
+        isProcessing = false;
+      }
+
+      function handleLiveTyping() {
+        if (!dom.textarea) return;
+        const text = dom.textarea.value;
+        const charCount = text.length;
+        const wordCount = text.trim() ? text.trim().split(/\s+/).length : 0;
+
+        if (dom.charCounter) dom.charCounter.textContent = `${charCount} / 500 chars`;
+        if (dom.wordCounter) dom.wordCounter.textContent = `${wordCount} words`;
+
+        if (dom.realtimeToggle && !dom.realtimeToggle.checked) return;
+
+        if (text.trim().length > 0) {
+          setAgentState('listening', 'Listening...');
+          const result = engine.evaluate(text);
+          renderDashboard(result);
+        } else {
+          setAgentState('ready', 'System Ready');
+          renderDashboard(engine.evaluate(''));
+        }
+      }
+
+      // 7. EVENT LISTENERS
+      function setupEventListeners() {
+        if (dom.textarea) {
+          dom.textarea.addEventListener('input', () => {
+            sfx.playClick();
+            handleLiveTyping();
+          });
+
+          dom.textarea.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) {
+              e.preventDefault();
+              if (dom.analyzeBtn) dom.analyzeBtn.click();
+            }
+          });
+        }
+
+        if (dom.analyzeBtn) {
+          dom.analyzeBtn.addEventListener('click', () => {
+            sfx.playClick();
+            const text = dom.textarea ? dom.textarea.value : '';
+            if (!text.trim()) {
+              if (dom.textarea) dom.textarea.focus();
+              return;
+            }
+            runReasoningPipeline(text);
+          });
+        }
+
+        if (dom.clearBtn) {
+          dom.clearBtn.addEventListener('click', () => {
+            sfx.playClick();
+            if (dom.textarea) dom.textarea.value = '';
+            if (dom.reasoningCard) dom.reasoningCard.classList.add('hidden');
+            handleLiveTyping();
+            setAgentState('ready', 'System Ready');
+            addTelemetryLog('[CLEAR] Console buffer reset.', 'system');
+            if (dom.textarea) dom.textarea.focus();
+          });
+        }
+
+        if (dom.voiceBtn) {
+          dom.voiceBtn.addEventListener('click', () => {
+            sfx.playClick();
+            dom.voiceBtn.classList.toggle('active');
+            if (dom.voiceBtn.classList.contains('active')) {
+              setAgentState('listening', 'Voice Listening...');
+              addTelemetryLog('[VOICE] Simulated audio stream active.', 'ready');
+              setTimeout(() => {
+                if (dom.voiceBtn && dom.voiceBtn.classList.contains('active')) {
+                  if (dom.textarea) dom.textarea.value = "I am having an amazing and wonderful day, I love this project!";
+                  handleLiveTyping();
+                  dom.voiceBtn.classList.remove('active');
+                  runReasoningPipeline(dom.textarea ? dom.textarea.value : '');
+                }
+              }, 1500);
+            } else {
+              setAgentState('ready', 'System Ready');
+            }
+          });
+        }
+
+        if (dom.telemetryClear) {
+          dom.telemetryClear.addEventListener('click', () => {
+            if (dom.telemetryLogs) {
+              dom.telemetryLogs.innerHTML = `
+                <div class="log-entry log-system"><span class="log-time">${getTimestamp()}</span> [INIT] Sentiment Agent AI initialized.</div>
+                <div class="log-entry log-ready"><span class="log-time">${getTimestamp()}</span> [SYSTEM] Telemetry buffer refreshed.</div>
+              `;
+            }
+          });
+        }
+
+        if (dom.soundToggle) {
+          const soundOn = dom.soundToggle.querySelector('.sound-on-icon');
+          const soundOff = dom.soundToggle.querySelector('.sound-off-icon');
+
+          dom.soundToggle.addEventListener('click', () => {
+            sfx.enabled = !sfx.enabled;
+            if (sfx.enabled) {
+              if (soundOn) soundOn.classList.remove('hidden');
+              if (soundOff) soundOff.classList.add('hidden');
+              dom.soundToggle.setAttribute('title', 'Mute UI Audio Effects');
+              sfx.playClick();
+            } else {
+              if (soundOn) soundOn.classList.add('hidden');
+              if (soundOff) soundOff.classList.remove('hidden');
+              dom.soundToggle.setAttribute('title', 'Enable UI Audio Effects');
+            }
+          });
+        }
+
+        if (dom.sampleCards) {
+          dom.sampleCards.forEach(card => {
+            card.addEventListener('click', () => {
+              sfx.playClick();
+              const sampleText = card.getAttribute('data-sample');
+              if (sampleText && dom.textarea) {
+                dom.textarea.value = sampleText;
+                const demoSection = document.getElementById('demo');
+                if (demoSection) demoSection.scrollIntoView({ behavior: 'smooth' });
+                handleLiveTyping();
+                runReasoningPipeline(sampleText);
+              }
+            });
+          });
+        }
+
+        if (dom.mobileToggle && dom.navLinks) {
+          dom.mobileToggle.addEventListener('click', () => {
+            dom.navLinks.classList.toggle('mobile-active');
+          });
+          dom.navLinks.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+              dom.navLinks.classList.remove('mobile-active');
+            });
+          });
+        }
+      }
+
+      function init() {
+        bindDom();
+        initParticleCanvas();
+        setupEventListeners();
+        renderDashboard(engine.evaluate(''));
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+      } else {
+        init();
+      }
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,2434 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO & Open Graph Metadata -->
+  <title>Pranav G. Rawal | Marketing • Strategy • Market Research</title>
+  <meta name="description" content="Portfolio of Pranav G. Rawal, MBA Marketing student specializing in market research, consumer insights, brand strategy, business strategy and go-to-market thinking.">
+  <meta name="keywords" content="Pranav G Rawal, MBA Marketing, Market Research, Brand Strategy, Consumer Insights, Go-To-Market, Woxsen University, Fast and Fluid, IDEX Corporation">
+  <meta name="author" content="Pranav G. Rawal">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Pranav G. Rawal | Marketing • Strategy • Market Research">
+  <meta property="og:description" content="Turning Market Insights into Strategic Ideas. MBA Marketing candidate at Woxsen University.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80">
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
+
+  <!-- Google Fonts: Plus Jakarta Sans, Syne, JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: ['class', '[data-theme="dark"]'],
+      theme: {
+        extend: {
+          colors: {
+            teal: {
+              50: '#f0fdfa',
+              100: '#ccfbf1',
+              200: '#99f6e4',
+              300: '#5eead4',
+              400: '#2dd4bf',
+              500: '#14b8a6',
+              600: '#0d9488',
+              700: '#0f766e',
+              800: '#115e59',
+              900: '#134e4a',
+              950: '#042f2e'
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            display: ['Syne', '"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Embedded Design System Styles -->
+  <style>
+    :root {
+      /* Editorial Dark (Default) */
+      --bg-primary: #080c14;
+      --bg-secondary: #0e1422;
+      --bg-card: rgba(17, 24, 39, 0.7);
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-active: rgba(20, 184, 166, 0.4);
+      --text-primary: #f8fafc;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
+      --accent-teal: #14b8a6;
+      --accent-teal-glow: rgba(20, 184, 166, 0.25);
+      --nav-bg: rgba(8, 12, 20, 0.85);
+      --card-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+    }
+
+    [data-theme="light"] {
+      --bg-primary: #f8f9fa;
+      --bg-secondary: #ffffff;
+      --bg-card: rgba(255, 255, 255, 0.95);
+      --border-subtle: rgba(0, 0, 0, 0.08);
+      --border-active: rgba(13, 148, 136, 0.4);
+      --text-primary: #0f172a;
+      --text-secondary: #475569;
+      --text-muted: #64748b;
+      --accent-teal: #0d9488;
+      --accent-teal-glow: rgba(13, 148, 136, 0.15);
+      --nav-bg: rgba(248, 249, 250, 0.88);
+      --card-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.06);
+    }
+
+    body {
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      transition: background-color 0.3s ease, color 0.3s ease;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+    }
+
+    .font-display { font-family: 'Syne', sans-serif; }
+    .font-mono-code { font-family: 'JetBrains Mono', monospace; }
+
+    .glass-panel {
+      background: var(--bg-card);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--card-shadow);
+      border-radius: 1rem;
+    }
+
+    .glass-nav {
+      background: var(--nav-bg);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .text-gradient-teal {
+      background: linear-gradient(135deg, #14b8a6 0%, #38bdf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    [data-theme="light"] .text-gradient-teal {
+      background: linear-gradient(135deg, #0d9488 0%, #0284c7 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .badge-teal {
+      background: rgba(20, 184, 166, 0.12);
+      color: var(--accent-teal);
+      border: 1px solid rgba(20, 184, 166, 0.3);
+    }
+
+    .badge-slate {
+      background: rgba(100, 116, 139, 0.12);
+      color: var(--text-secondary);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .card-hover-lift {
+      transition: transform 0.3s cubic-bezier(0.2, 0, 0, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+
+    .card-hover-lift:hover {
+      transform: translateY(-5px);
+      border-color: var(--border-active);
+      box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.35);
+    }
+
+    .bg-ambient-radial {
+      position: absolute;
+      border-radius: 9999px;
+      filter: blur(100px);
+      pointer-events: none;
+      opacity: 0.15;
+      z-index: 0;
+    }
+
+    .modal-backdrop {
+      background: rgba(4, 7, 13, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    /* Print CV styling */
+    @media print {
+      body { background: white !important; color: black !important; }
+      .no-print { display: none !important; }
+      .print-break-inside { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body class="selection:bg-teal-500 selection:text-slate-950">
+
+  <!-- Sticky Navbar -->
+  <div id="navbar-container"></div>
+
+  <!-- Main Content Sections -->
+  <main>
+    <div id="hero-container"></div>
+    <div id="approach-container"></div>
+    <div id="about-container"></div>
+    <div id="case-study-container"></div>
+    <div id="experience-container"></div>
+    <div id="projects-container-section"></div>
+    <div id="skills-container"></div>
+    <div id="education-container"></div>
+    <div id="achievements-container"></div>
+    <div id="interests-container"></div>
+    <div id="brand-statement-container"></div>
+    <div id="contact-container"></div>
+  </main>
+
+  <!-- Footer -->
+  <div id="footer-container"></div>
+
+  <!-- Global Modals -->
+  <div id="modals-container"></div>
+
+  <!-- Consolidated Portfolio Application Script -->
+  <script>
+    // Single Source of Truth CV Data
+    const portfolioData = {
+      personal: {
+        name: "Pranav G. Rawal",
+        title: "MBA Marketing | Market Research | Strategy",
+        tagline: "Turning Market Insights into Strategic Ideas.",
+        subTagline: "MBA MARKETING • MARKET RESEARCH • STRATEGY",
+        shortBio: "MBA Marketing student with hands-on experience in market research, consumer insights, branding, strategy, and go-to-market thinking. I enjoy solving business problems by combining real-world research with practical marketing ideas.",
+        email: "pranav.rawal_2027@woxsen.edu.in",
+        phone: "+91 8374682331",
+        location: "Hyderabad, India",
+        linkedin: "https://www.linkedin.com/in/pranav-g-rawal-807913124",
+        linkedinDisplay: "linkedin.com/in/pranav-g-rawal-807913124",
+        university: "Woxsen University",
+        yearOfStudy: "2025–2027",
+        brandStatement: {
+          quote: "Good marketing starts with understanding people.",
+          description: "I like exploring what customers need, why they make decisions, and how businesses can turn those insights into better products, stronger brands, and smarter strategies."
+        }
+      },
+
+      marketingMindset: [
+        {
+          step: "01",
+          name: "Understand",
+          question: "What is the customer/business problem?",
+          description: "Deconstructing core business objectives, identifying friction in customer journeys, and formulating testable hypotheses.",
+          icon: "help-circle",
+          deliverable: "Problem Framing & Scope"
+        },
+        {
+          step: "02",
+          name: "Research",
+          question: "What does the market actually say?",
+          description: "Conducting primary field research, stakeholder interviews, competitor benchmarking, and empirical data gathering.",
+          icon: "search",
+          deliverable: "Primary & Secondary Field Data"
+        },
+        {
+          step: "03",
+          name: "Analyze",
+          question: "What patterns and opportunities exist?",
+          description: "Synthesizing qualitative feedback, mapping competitive gaps, pinpointing adoption friction, and identifying whitespace.",
+          icon: "bar-chart-2",
+          deliverable: "Customer Insights & Gap Analysis"
+        },
+        {
+          step: "04",
+          name: "Strategize",
+          question: "What should the brand/business do?",
+          description: "Developing differentiated value propositions, pricing models, target segment definitions, and GTM architecture.",
+          icon: "compass",
+          deliverable: "Strategic Roadmap & Positioning"
+        },
+        {
+          step: "05",
+          name: "Execute",
+          question: "How can the idea become practical?",
+          description: "Translating high-level strategy into actionable commercial campaigns, operational workflows, and tangible marketing initiatives.",
+          icon: "check-circle",
+          deliverable: "Commercial GTM & Action Plan"
+        }
+      ],
+
+      about: {
+        heading: "A marketer who likes to understand the \"why.\"",
+        summary: "Currently pursuing an MBA in Marketing at Woxsen University, with a strong interest in consumer behavior, brand communication, market strategy, and market research. My experience spans primary field research, supply chain operations, sales, marketing campaigns, and strategic business projects.",
+        coreFocus: [
+          "Consumer Behavior",
+          "Market Research",
+          "Brand Strategy",
+          "Go-To-Market",
+          "Business Strategy",
+          "Customer Insights"
+        ],
+        pillars: [
+          {
+            title: "Research",
+            icon: "search",
+            tag: "Discovery & Fieldwork",
+            description: "Turning primary research into actionable insights through rigorous on-ground observation, competitor mapping, and customer interviews."
+          },
+          {
+            title: "Strategy",
+            icon: "compass",
+            tag: "Positioning & Value",
+            description: "Connecting customer needs with business opportunities to define scalable revenue models, brand positioning, and GTM plans."
+          },
+          {
+            title: "Creativity",
+            icon: "sparkles",
+            tag: "Concept & Narrative",
+            description: "Developing practical marketing and communication ideas that cut through noise and resonate with core consumer motivations."
+          },
+          {
+            title: "Execution",
+            icon: "trending-up",
+            tag: "Cross-Functional Impact",
+            description: "Working across teams, bridging operations and commercial functions, and turning strategic concepts into structured outcomes."
+          }
+        ]
+      },
+
+      signatureCaseStudy: {
+        id: "idex-fast-and-fluid",
+        title: "66 Shops. One Market. Real Insights.",
+        subtitle: "Automotive Refinish Market Research — Fast and Fluid Management (IDEX Corporation)",
+        client: "Fast and Fluid Management (IDEX Corporation)",
+        role: "Market Research Intern",
+        period: "Jun – Aug 2026",
+        location: "Mumbai, India",
+        metrics: [
+          { label: "Body/Paint Shops Researched", value: "66", highlight: "Primary Fieldwork" },
+          { label: "Primary Research Location", value: "Mumbai", highlight: "Key Metro Hub" },
+          { label: "Key Competitors Mapped", value: "Fillon • Santint", highlight: "Competitive Intel" },
+          { label: "Critical Adoption Barriers", value: "2 Key Areas", highlight: "Colour Accuracy & Maintenance" }
+        ],
+        journeySteps: [
+          { step: "01", name: "Field Research", detail: "On-ground survey across 66 independent body & paint workshops in Mumbai." },
+          { step: "02", name: "Customer Needs", detail: "Assessing turnaround time requirements, paint consistency needs, and shop economics." },
+          { step: "03", name: "Competitive Landscape", detail: "Benchmarking positioning, pricing, and distribution of Fillon and Santint." },
+          { step: "04", name: "Adoption Barriers", detail: "Uncovering deep friction around colour-matching precision and maintenance costs." },
+          { step: "05", name: "Business Insights", detail: "Delivering strategic recommendations for product messaging, training, and value proposition." }
+        ],
+        narrative: "Conducted primary market research across 66 body and paint shops in Mumbai's automotive refinish sector to understand customer needs, competitive positioning, and adoption barriers.",
+        barriers: [
+          {
+            title: "Colour-Matching Accuracy",
+            description: "Workshops demand zero margin of error on formula shade matching to prevent costly paint job rework and customer dissatisfaction."
+          },
+          {
+            title: "Equipment Maintenance Costs",
+            description: "High perceived cost of replacement parts, calibration downtime, and lack of localized maintenance support delay technology upgrades."
+          }
+        ],
+        competitors: [
+          { name: "Fillon Technologies", focus: "Dispensing & mixing solutions, established distributor relationships" },
+          { name: "Santint", focus: "Competitive pricing models and compact automatic tinting machines" }
+        ],
+        keyTakeaway: "Primary field research revealed that equipment purchase decisions in automotive refinish are driven as much by ongoing maintenance predictability and formula accuracy as by upfront hardware pricing."
+      },
+
+      experiences: [
+        {
+          id: "exp-idex",
+          title: "Market Research Intern",
+          company: "Fast and Fluid Management (IDEX Corporation)",
+          location: "Mumbai",
+          period: "Jun–Aug 2026",
+          featured: true,
+          category: "Market Research & Strategy",
+          highlights: [
+            "Conducted primary market research across 66 body/paint shops in Mumbai's automotive refinish sector.",
+            "Analyzed market data to identify key competitors including Fillon and Santint.",
+            "Identified critical adoption barriers such as colour-matching accuracy and equipment maintenance costs.",
+            "Synthesized field interviews into strategic market intelligence for commercial and product teams."
+          ],
+          tags: ["Primary Research", "Competitive Analysis", "Automotive Refinish", "Fieldwork"]
+        },
+        {
+          id: "exp-inzpera",
+          title: "Associate Executive — Supply Chain Management",
+          company: "Inzpera HealthScience Pvt Ltd",
+          location: "Mumbai",
+          period: "June 2023 – July 2024",
+          featured: false,
+          category: "Operations & Analytics",
+          highlights: [
+            "Managed day-to-day supply chain operations and product distribution workflows.",
+            "Ensured efficient inventory flow, stock reconciliation, and timely delivery cycles.",
+            "Coordinated with vendors, logistics partners, and internal cross-functional teams.",
+            "Analyzed supply chain data to optimize stock levels and reduce operational costs."
+          ],
+          tags: ["Supply Chain", "Operations", "Inventory Optimization", "Logistics"]
+        },
+        {
+          id: "exp-evah",
+          title: "Marketing Intern",
+          company: "Evah",
+          location: "Mumbai",
+          period: "June 2023 – July 2023",
+          featured: false,
+          category: "Marketing Campaigns",
+          highlights: [
+            "Assisted in planning and executing marketing campaigns across digital and on-site channels.",
+            "Collaborated on promotional collateral development and audience engagement strategies."
+          ],
+          tags: ["Digital Marketing", "Campaign Execution", "On-site Marketing"]
+        },
+        {
+          id: "exp-renault",
+          title: "Sales Intern",
+          company: "Renault",
+          location: "Ahmedabad",
+          period: "June 2022 – July 2022",
+          featured: false,
+          category: "Sales & Consumer Relations",
+          highlights: [
+            "Supported customers throughout the consultative automotive sales process.",
+            "Built strong client relationships and gathered firsthand consumer preferences."
+          ],
+          tags: ["B2C Sales", "Customer Engagement", "Automotive"]
+        }
+      ],
+
+      projects: [
+        {
+          id: "proj-vardhman",
+          number: "01",
+          title: "Vardhman Textiles",
+          subtitle: "B2C Launch & Go-To-Market Strategy",
+          category: "Strategy",
+          tags: ["Go-To-Market", "Brand Positioning", "B2C"],
+          shortDescription: "Developed a comprehensive go-to-market and brand positioning strategy for Vardhman's strategic entry into the consumer blankets segment.",
+          challenge: "Vardhman, traditionally an established B2B textile powerhouse, required a tailored consumer brand identity, channel strategy, and value proposition to capture market share in the premium consumer blanket segment.",
+          solution: "Engineered a structured GTM framework addressing consumer segmentation, premium positioning, distribution channel partnerships, and promotional launch mechanics.",
+          outcome: "20–35% projected increase in B2C blanket sales over 5 years (Projected outcome based on strategic financial and market modeling).",
+          isProjection: true,
+          keyElements: [
+            "Consumer segment identification & target profiling",
+            "Differentiated brand positioning versus incumbent bedding brands",
+            "Multi-tier distribution roadmap across modern retail and digital channels",
+            "5-year projected growth model"
+          ]
+        },
+        {
+          id: "proj-nike",
+          number: "02",
+          title: "Nike",
+          subtitle: "Business Expansion Strategy",
+          category: "Strategy",
+          tags: ["Business Strategy", "Revenue Model", "Innovation"],
+          shortDescription: "Proposed new recurring revenue streams and premium monetization models to elevate customer lifetime value.",
+          challenge: "Identifying adjacent high-margin product categories and premium post-purchase consumer touchpoints to drive repeat purchase frequency among sneaker enthusiasts.",
+          solution: "Developed an expansion strategy introducing specialized Nike-branded sneaker care systems and premium collectible packaging lines.",
+          outcome: "Designed to drive repeat sales, deepen brand affinity, and expand the revenue model into high-margin sneaker care accessories.",
+          isProjection: false,
+          keyElements: [
+            "Sneaker care product ecosystem conceptualization",
+            "Premium collectible packaging architecture for limited releases",
+            "Post-purchase lifecycle engagement model",
+            "Monetization and margin expansion roadmap"
+          ]
+        },
+        {
+          id: "proj-eldercare",
+          number: "03",
+          title: "ElderCare Smart Health",
+          subtitle: "Marketing Innovation & Business Model",
+          category: "Innovation",
+          tags: ["Innovation", "VPC", "Customer Segmentation"],
+          shortDescription: "Developed a scalable service-based business model utilizing the Business Model Canvas and Value Proposition Canvas.",
+          challenge: "Elderly consumers and caregivers face fragmented healthcare support, emergency response anxiety, and complex technological barriers.",
+          solution: "Applied the BMI framework and Value Proposition Canvas to map elderly pain points, design a seamless support service, and create an empathetic customer-centric value proposition.",
+          outcome: "Structured a viable service-based business blueprint with differentiated tier pricing and caregiver collaboration features.",
+          isProjection: false,
+          keyElements: [
+            "Business Model Canvas & BMI framework mapping",
+            "Value Proposition Canvas (VPC) customer alignment",
+            "Caregiver & senior citizen pain-point taxonomy",
+            "Customer-centric service tier design"
+          ]
+        },
+        {
+          id: "proj-reynold",
+          number: "04",
+          title: "Reynold Tea",
+          subtitle: "Business Model Canvas & Brand Strategy",
+          category: "Business",
+          tags: ["Business Model", "Branding", "Strategy"],
+          shortDescription: "Conducted in-depth Business Model Canvas analysis to identify growth opportunities across branding and distribution channels.",
+          challenge: "Optimizing brand positioning and navigating competitive FMCG retail distribution channels in the premium tea category.",
+          solution: "Evaluated customer segments, distribution channel efficiencies, brand equity touchpoints, and scalable growth pathways.",
+          outcome: "Formulated clear strategic recommendations to expand retail channel presence and strengthen consumer brand recall.",
+          isProjection: false,
+          keyElements: [
+            "Comprehensive Business Model Canvas (BMC) audit",
+            "FMCG retail and modern trade distribution evaluation",
+            "Brand storytelling and packaging differentiation",
+            "Market expansion opportunity mapping"
+          ]
+        },
+        {
+          id: "proj-ecofoam",
+          number: "05",
+          title: "EcoFoam",
+          subtitle: "Biodegradable Packaging Model",
+          category: "Innovation",
+          tags: ["Sustainability", "Business Model", "Financial Viability"],
+          shortDescription: "Developed a sustainable packaging business plan incorporating cost metrics, SDG mapping, and financial viability roadmaps.",
+          challenge: "Balancing eco-friendly material adoption with manufacturing unit economics and commercial cost parity against conventional foam.",
+          solution: "Constructed an end-to-end business plan aligning biodegradable packaging solutions with UN Sustainable Development Goals (SDGs) and strict cost parameters.",
+          outcome: "Delivered a comprehensive commercial viability roadmap proving financial sustainability alongside positive environmental impact.",
+          isProjection: false,
+          keyElements: [
+            "Unit economics and manufacturing cost modeling",
+            "UN Sustainable Development Goals (SDG) alignment matrix",
+            "Multi-stage commercialization roadmap",
+            "B2B green procurement value proposition"
+          ]
+        },
+        {
+          id: "proj-netflix",
+          number: "06",
+          title: "Netflix",
+          subtitle: "Revenue & Consumer Pricing Analysis",
+          category: "Market Research",
+          tags: ["Pricing", "Revenue Strategy", "Consumer Analysis"],
+          shortDescription: "Analyzed streaming revenue models and consumer pricing strategies to identify opportunities for monetization growth.",
+          challenge: "Subscriber saturation in mature markets and price sensitivity across emerging consumer tiers amidst intense streaming competition.",
+          solution: "Evaluated tier-based pricing structures, consumer elasticity, ad-supported tier dynamics, and regional monetization strategies.",
+          outcome: "Identified strategic pricing levers and value packaging options to maximize Average Revenue Per User (ARPU) while minimizing churn.",
+          isProjection: false,
+          keyElements: [
+            "Consumer price sensitivity and willingness-to-pay analysis",
+            "Tiered subscription & hybrid ad-supported revenue modeling",
+            "Competitive benchmarking against major streaming rivals",
+            "Subscriber retention and monetization recommendations"
+          ]
+        },
+        {
+          id: "proj-mentos-surf",
+          number: "07",
+          title: "Mentos × Surf Excel",
+          subtitle: "30-Second Integrated Marketing Ad Concept",
+          category: "Marketing",
+          tags: ["Advertising", "Creative Strategy", "Communication"],
+          shortDescription: "Created an impactful integrated marketing advertising concept merging freshness and stain-free confidence.",
+          challenge: "Formulating a creative cross-brand conceptual synergy between two iconic brands with distinct category associations.",
+          solution: "Scripted and storyboarded a 30-second integrated advertising concept combining the playful freshness of Mentos with the bold cleaning confidence of Surf Excel.",
+          outcome: "Delivered a cohesive high-recall campaign narrative centered on spontaneous action, creative humor, and brand resonance.",
+          isProjection: false,
+          keyElements: [
+            "Integrated creative narrative & 30-second script development",
+            "Cross-brand synergy and dual-equity alignment",
+            "Multi-channel rollout concept across digital and TVC",
+            "Target audience emotional resonance hooks"
+          ]
+        },
+        {
+          id: "proj-loveverse",
+          number: "08",
+          title: "LoveVerse",
+          subtitle: "AI-Powered VR Metaverse Concept",
+          category: "Innovation",
+          tags: ["AI", "VR", "Innovation"],
+          shortDescription: "Conceptual design of an AI-powered VR metaverse environment centered on human emotional interaction.",
+          challenge: "Digital virtual spaces often feel transactional and cold; conceptualizing an immersive platform dedicated to empathetic, authentic connections.",
+          solution: "Designed an interactive architecture integrating generative AI conversational companions and immersive VR environments tailored for emotional well-being.",
+          outcome: "Formulated a conceptual product architecture exploring new frontiers in immersive consumer technology and virtual social interaction.",
+          isProjection: false,
+          keyElements: [
+            "AI-driven conversational and emotional responsiveness design",
+            "Immersive VR spatial experience architecture",
+            "User journey and digital community guidelines",
+            "Exploratory monetization and subscription framework"
+          ]
+        }
+      ],
+
+      skills: {
+        categories: [
+          {
+            name: "Strategy",
+            description: "Analytical framing, market synthesis, and commercial positioning",
+            color: "teal",
+            skills: ["Branding", "Strategy", "Analytics", "Research"]
+          },
+          {
+            name: "Creative",
+            description: "Storytelling, compelling concepts, and campaign development",
+            color: "blue",
+            skills: ["Creativity", "Storytelling", "Communication", "Campaigns"]
+          },
+          {
+            name: "Leadership",
+            description: "Cross-functional initiative, execution, and visionary innovation",
+            color: "emerald",
+            skills: ["Leadership", "Innovation"]
+          }
+        ],
+        allSkillsList: [
+          { name: "Branding", group: "Strategy", icon: "shield", description: "Identity, positioning, and customer equity building" },
+          { name: "Strategy", group: "Strategy", icon: "compass", description: "Business model design, competitive moats, and GTM" },
+          { name: "Analytics", group: "Strategy", icon: "bar-chart-2", description: "Data synthesis, pricing models, and commercial metrics" },
+          { name: "Research", group: "Strategy", icon: "search", description: "Primary on-ground fieldwork, user surveys, and competitor mapping" },
+          { name: "Creativity", group: "Creative", icon: "sparkles", description: "Differentiated campaign hooks and concept generation" },
+          { name: "Storytelling", group: "Creative", icon: "feather", description: "Narrative architecture that connects data to human emotion" },
+          { name: "Communication", group: "Creative", icon: "message-square", description: "Executive stakeholder presentations and cross-team alignment" },
+          { name: "Campaigns", group: "Creative", icon: "target", description: "Integrated multi-channel marketing and launch orchestration" },
+          { name: "Leadership", group: "Leadership", icon: "users", description: "Event leadership, cross-functional operations, and team coordination" },
+          { name: "Innovation", group: "Leadership", icon: "zap", description: "Emerging tech conceptualization (AI/VR) and business model innovation" }
+        ]
+      },
+
+      education: [
+        {
+          degree: "MBA — Marketing",
+          institution: "Woxsen University",
+          location: "Hyderabad, India",
+          period: "2025–2027",
+          status: "Currently Pursuing",
+          badge: "In Progress",
+          highlights: [
+            "Focus: Market Research, Consumer Behavior, Brand Communication, and Go-To-Market Strategy",
+            "Active team member in campus operations and university flagship festival management"
+          ]
+        },
+        {
+          degree: "Bachelor of Business Administration",
+          institution: "Amity Global Business School",
+          location: "Ahmedabad, India",
+          period: "2023",
+          status: "Graduated",
+          badge: "Completed",
+          highlights: [
+            "Awarded Most Valuable Student for leadership and academic excellence",
+            "Flagship event coordinator for Ekagrata and national nominee for Sangathan"
+          ]
+        }
+      ],
+
+      certifications: [
+        {
+          title: "Create a Product Design Brainstorming with Miro",
+          issuer: "Coursera Project Network",
+          date: "May 2025",
+          type: "Product & Strategy"
+        },
+        {
+          title: "Foundations of Business Strategy",
+          issuer: "University of Virginia",
+          date: "April 2025",
+          type: "Business Strategy"
+        },
+        {
+          title: "Leadership Communication for Maximum Impact",
+          issuer: "Northwestern University",
+          date: "May 2025",
+          type: "Leadership & Communication"
+        },
+        {
+          title: "How to Innovate with the Strategy Canvas for Competitiveness",
+          issuer: "Coursera Project Network",
+          date: "May 2025",
+          type: "Strategy & Innovation"
+        },
+        {
+          title: "Product Management Essentials",
+          issuer: "University of Maryland",
+          date: "Verified",
+          type: "Product Management"
+        },
+        {
+          title: "Design Thinking for Innovation",
+          issuer: "University of Virginia",
+          date: "Verified",
+          type: "Design Thinking"
+        },
+        {
+          title: "Foundations of Digital Marketing & E-Commerce",
+          issuer: "Google",
+          date: "Verified",
+          type: "Digital Marketing"
+        }
+      ],
+
+      achievements: [
+        {
+          title: "Most Valuable Student",
+          issuer: "Amity Business School Ahmedabad",
+          awardBadge: "🏆 Academic & Leadership",
+          description: "Awarded for exceptional leadership, peer mentorship, and academic excellence across the entire business school cohort."
+        },
+        {
+          title: "2nd Position",
+          issuer: "Amity's Got Talent",
+          awardBadge: "🥈 Intercollege Showcase",
+          description: "Secured runner-up position in the competitive intercollege talent and performance showcase."
+        }
+      ],
+
+      leadership: [
+        {
+          title: "Flagship Event Coordinator — 'Ekagrata'",
+          org: "Amity Business School",
+          role: "Lead Management & Operations",
+          description: "Successfully managed and coordinated Amity Business School's flagship event 'Ekagrata', overseeing complete planning, logistics, budgets, and on-ground execution."
+        },
+        {
+          title: "National Signature Event Nominee — 'Sangathan'",
+          org: "Amity National Sports & Culture",
+          role: "Institutional Nominee",
+          description: "Nominated for 'Sangathan', Amity's national signature event, gaining extensive exposure to large-scale event coordination and multi-team logistics."
+        },
+        {
+          title: "Intercollege Sports & Cultural Organizing",
+          org: "Intercollegiate Tournaments",
+          role: "Key Organizing Member",
+          description: "Key member in organizing intercollege basketball competitions and major cultural events, handling team schedules and court management."
+        },
+        {
+          title: "Flagship Fest Crowd Operations — Woxsen University",
+          org: "Woxsen University",
+          role: "Operations & Ticket Operations",
+          description: "Served as an active team member responsible for crowd management, visitor flow, and ticket counter operations during Woxsen's flagship fest."
+        }
+      ],
+
+      interests: [
+        { name: "Basketball", emoji: "🏀", category: "Sports", note: "Team dynamics, tactical pacing, and decisive court execution." },
+        { name: "Badminton", emoji: "🏸", category: "Sports", note: "Agility, fast reaction times, and focused precision." },
+        { name: "Advertising Creatives", emoji: "🎨", category: "Marketing", note: "Analyzing persuasive copy, emotional hooks, and visual storytelling." },
+        { name: "Product Launches", emoji: "🚀", category: "Strategy", note: "Studying category entry strategies, early adopters, and buzz mechanics." },
+        { name: "Go-To-Market Strategies", emoji: "📈", category: "Business", note: "Deconstructing channel partnerships, pricing friction, and scale." }
+      ],
+
+      languages: [
+        { language: "English", note: "Professional & Academic Proficiency" },
+        { language: "Hindi", note: "Native / Fluent" }
+      ]
+    };
+
+    // UI Rendering Functions
+    function renderApp() {
+      // Navbar
+      document.getElementById('navbar-container').innerHTML = `
+        <nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 glass-nav" id="main-navbar">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+              <a href="#hero" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-teal-500/20 to-teal-500/5 border border-teal-500/30 flex items-center justify-center font-display font-bold text-teal-400 group-hover:border-teal-400 transition-all">
+                  PR
+                </div>
+                <div class="flex flex-col">
+                  <span class="font-display font-bold text-base tracking-tight text-white group-hover:text-teal-400 transition-colors">
+                    Pranav G. Rawal
+                  </span>
+                  <span class="text-[11px] font-mono-code text-slate-400 tracking-wider uppercase">
+                    MBA Marketing • Strategy
+                  </span>
+                </div>
+              </a>
+
+              <div class="hidden md:flex items-center gap-1 lg:gap-2">
+                <a href="#about" class="px-3 py-2 text-sm font-medium text-slate-300 hover:text-teal-400 hover:bg-slate-800/40 rounded-lg transition-all">About</a>
+                <a href="#approach" class="px-3 py-2 text-sm font-medium text-slate-300 hover:text-teal-400 hover:bg-slate-800/40 rounded-lg transition-all">Approach</a>
+                <a href="#case-study" class="px-3 py-2 text-sm font-medium text-slate-300 hover:text-teal-400 hover:bg-slate-800/40 rounded-lg transition-all">Featured Work</a>
+                <a href="#experience" class="px-3 py-2 text-sm font-medium text-slate-300 hover:text-teal-400 hover:bg-slate-800/40 rounded-lg transition-all">Experience</a>
+                <a href="#projects" class="px-3 py-2 text-sm font-medium text-slate-300 hover:text-teal-400 hover:bg-slate-800/40 rounded-lg transition-all">Projects</a>
+                <a href="#skills" class="px-3 py-2 text-sm font-medium text-slate-300 hover:text-teal-400 hover:bg-slate-800/40 rounded-lg transition-all">Skills</a>
+                <a href="#education" class="px-3 py-2 text-sm font-medium text-slate-300 hover:text-teal-400 hover:bg-slate-800/40 rounded-lg transition-all">Education</a>
+                <a href="#contact" class="px-3 py-2 text-sm font-medium text-slate-300 hover:text-teal-400 hover:bg-slate-800/40 rounded-lg transition-all">Contact</a>
+              </div>
+
+              <div class="hidden sm:flex items-center gap-3">
+                <button id="theme-toggle-btn" class="p-2.5 rounded-xl border border-slate-800 bg-slate-900/50 hover:bg-slate-800 text-slate-300 hover:text-teal-400 transition-all" title="Toggle Theme">
+                  <i data-lucide="sun" class="w-4 h-4 hidden dark-icon"></i>
+                  <i data-lucide="moon" class="w-4 h-4 light-icon"></i>
+                </button>
+
+                <button id="nav-cv-btn" class="inline-flex items-center gap-2 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-teal-300 bg-teal-500/10 hover:bg-teal-500/20 border border-teal-500/30 hover:border-teal-500/60 rounded-xl transition-all shadow-sm">
+                  <i data-lucide="file-text" class="w-3.5 h-3.5"></i>
+                  <span>Download CV</span>
+                </button>
+              </div>
+
+              <div class="flex items-center gap-2 md:hidden">
+                <button id="mobile-theme-btn" class="p-2 rounded-lg border border-slate-800 bg-slate-900/50 text-slate-300">
+                  <i data-lucide="moon" class="w-4 h-4"></i>
+                </button>
+                <button id="mobile-menu-btn" class="p-2 rounded-lg border border-slate-800 bg-slate-900/50 text-slate-200 hover:text-teal-400">
+                  <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div id="mobile-drawer" class="hidden md:hidden border-b border-slate-800 bg-slate-950/95 backdrop-blur-xl px-4 pt-2 pb-6 space-y-2">
+            <a href="#about" class="block px-3 py-2 rounded-lg text-base font-medium text-slate-200 hover:text-teal-400 hover:bg-slate-900">About</a>
+            <a href="#approach" class="block px-3 py-2 rounded-lg text-base font-medium text-slate-200 hover:text-teal-400 hover:bg-slate-900">Marketing Approach</a>
+            <a href="#case-study" class="block px-3 py-2 rounded-lg text-base font-medium text-slate-200 hover:text-teal-400 hover:bg-slate-900">Featured Case Study</a>
+            <a href="#experience" class="block px-3 py-2 rounded-lg text-base font-medium text-slate-200 hover:text-teal-400 hover:bg-slate-900">Experience</a>
+            <a href="#projects" class="block px-3 py-2 rounded-lg text-base font-medium text-slate-200 hover:text-teal-400 hover:bg-slate-900">Projects</a>
+            <a href="#skills" class="block px-3 py-2 rounded-lg text-base font-medium text-slate-200 hover:text-teal-400 hover:bg-slate-900">Skills</a>
+            <a href="#education" class="block px-3 py-2 rounded-lg text-base font-medium text-slate-200 hover:text-teal-400 hover:bg-slate-900">Education & Credentials</a>
+            <a href="#contact" class="block px-3 py-2 rounded-lg text-base font-medium text-slate-200 hover:text-teal-400 hover:bg-slate-900">Contact</a>
+            <div class="pt-3">
+              <button id="mobile-cv-btn" class="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-teal-500/10 border border-teal-500/30 text-teal-300 font-semibold text-sm">
+                <i data-lucide="download" class="w-4 h-4"></i> Download CV (PDF)
+              </button>
+            </div>
+          </div>
+        </nav>
+      `;
+
+      // Hero
+      document.getElementById('hero-container').innerHTML = `
+        <section id="hero" class="relative min-h-screen pt-32 pb-20 flex flex-col justify-center overflow-hidden">
+          <div class="bg-ambient-radial w-[500px] h-[500px] bg-teal-500/20 top-20 -left-40"></div>
+          <div class="bg-ambient-radial w-[450px] h-[450px] bg-blue-500/15 bottom-10 -right-20"></div>
+
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+              
+              <div class="lg:col-span-7 space-y-8">
+                <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full badge-teal text-xs font-mono-code tracking-widest uppercase">
+                  <span class="w-2 h-2 rounded-full bg-teal-400 animate-pulse"></span>
+                  <span>${portfolioData.personal.subTagline}</span>
+                </div>
+
+                <div class="space-y-3">
+                  <h1 class="text-4xl sm:text-5xl lg:text-6xl font-display font-extrabold tracking-tight text-white leading-[1.12]">
+                    Hi, I'm <span class="text-gradient-teal">Pranav.</span><br/>
+                    I turn market insights into strategic ideas.
+                  </h1>
+                  <p class="text-lg sm:text-xl text-slate-300 max-w-2xl font-light leading-relaxed pt-2">
+                    ${portfolioData.personal.shortBio}
+                  </p>
+                </div>
+
+                <div class="flex flex-wrap gap-2 pt-1">
+                  <span class="px-3 py-1 text-xs rounded-lg badge-slate font-medium">Primary Fieldwork</span>
+                  <span class="px-3 py-1 text-xs rounded-lg badge-slate font-medium">Competitive Intelligence</span>
+                  <span class="px-3 py-1 text-xs rounded-lg badge-slate font-medium">B2C Go-To-Market</span>
+                  <span class="px-3 py-1 text-xs rounded-lg badge-slate font-medium">Consumer Value Props</span>
+                </div>
+
+                <div class="flex flex-wrap items-center gap-4 pt-4">
+                  <a href="#projects" class="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-xl bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold text-sm transition-all transform hover:-translate-y-0.5 shadow-lg shadow-teal-500/25">
+                    <span>Explore My Work</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                  </a>
+
+                  <button id="hero-cv-btn" class="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl border border-slate-700 hover:border-teal-500/50 bg-slate-900/60 hover:bg-slate-800 text-slate-200 font-semibold text-sm transition-all transform hover:-translate-y-0.5">
+                    <i data-lucide="file-down" class="w-4 h-4 text-teal-400"></i>
+                    <span>Download CV</span>
+                  </button>
+                </div>
+
+                <div class="grid grid-cols-3 gap-4 pt-6 border-t border-slate-800 max-w-xl">
+                  <div>
+                    <div class="text-2xl sm:text-3xl font-display font-extrabold text-teal-400" id="counter-shops">66</div>
+                    <div class="text-xs text-slate-400 font-medium">Shops Researched in Mumbai</div>
+                  </div>
+                  <div>
+                    <div class="text-2xl sm:text-3xl font-display font-extrabold text-blue-400">8+</div>
+                    <div class="text-xs text-slate-400 font-medium">Strategic Projects</div>
+                  </div>
+                  <div>
+                    <div class="text-2xl sm:text-3xl font-display font-extrabold text-emerald-400">100%</div>
+                    <div class="text-xs text-slate-400 font-medium">Data-Driven Approach</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="lg:col-span-5">
+                <div class="relative glass-panel p-6 sm:p-8 rounded-2xl border border-slate-800/80 bg-slate-950/60 shadow-2xl">
+                  <div class="flex items-center justify-between pb-6 border-b border-slate-800">
+                    <div class="flex items-center gap-2">
+                      <div class="w-3 h-3 rounded-full bg-teal-400"></div>
+                      <span class="text-xs font-mono-code uppercase tracking-wider text-slate-300 font-bold">Strategy Engine</span>
+                    </div>
+                    <span class="text-[11px] font-mono-code px-2 py-0.5 rounded bg-teal-950 text-teal-400 border border-teal-800/40">
+                      Interactive Model
+                    </span>
+                  </div>
+
+                  <div class="pt-6 space-y-4">
+                    <div class="strategy-node active p-4 rounded-xl border border-teal-500/50 bg-teal-950/30 transition-all cursor-pointer" data-stage="1">
+                      <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                          <div class="w-8 h-8 rounded-lg bg-teal-500/20 text-teal-300 flex items-center justify-center font-mono-code font-bold text-xs">01</div>
+                          <div>
+                            <div class="text-sm font-bold text-white flex items-center gap-2">
+                              <span>Primary Research</span>
+                              <span class="text-[10px] px-1.5 py-0.2 rounded bg-teal-900/60 text-teal-300">Fieldwork</span>
+                            </div>
+                            <p class="text-xs text-slate-400 mt-0.5">On-ground interviews across 66 auto workshops in Mumbai.</p>
+                          </div>
+                        </div>
+                        <i data-lucide="chevron-right" class="w-4 h-4 text-teal-400"></i>
+                      </div>
+                    </div>
+
+                    <div class="strategy-node p-4 rounded-xl border border-slate-800 bg-slate-900/40 hover:bg-slate-900/80 transition-all cursor-pointer" data-stage="2">
+                      <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                          <div class="w-8 h-8 rounded-lg bg-blue-500/20 text-blue-300 flex items-center justify-center font-mono-code font-bold text-xs">02</div>
+                          <div>
+                            <div class="text-sm font-bold text-white flex items-center gap-2">
+                              <span>Market Insights</span>
+                              <span class="text-[10px] px-1.5 py-0.2 rounded bg-blue-900/60 text-blue-300">Patterns</span>
+                            </div>
+                            <p class="text-xs text-slate-400 mt-0.5">Identified colour accuracy & maintenance barriers.</p>
+                          </div>
+                        </div>
+                        <i data-lucide="chevron-right" class="w-4 h-4 text-slate-600"></i>
+                      </div>
+                    </div>
+
+                    <div class="strategy-node p-4 rounded-xl border border-slate-800 bg-slate-900/40 hover:bg-slate-900/80 transition-all cursor-pointer" data-stage="3">
+                      <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                          <div class="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-300 flex items-center justify-center font-mono-code font-bold text-xs">03</div>
+                          <div>
+                            <div class="text-sm font-bold text-white flex items-center gap-2">
+                              <span>Brand & GTM Strategy</span>
+                              <span class="text-[10px] px-1.5 py-0.2 rounded bg-emerald-900/60 text-emerald-300">Positioning</span>
+                            </div>
+                            <p class="text-xs text-slate-400 mt-0.5">Value proposition design, channel pricing & expansion.</p>
+                          </div>
+                        </div>
+                        <i data-lucide="chevron-right" class="w-4 h-4 text-slate-600"></i>
+                      </div>
+                    </div>
+
+                    <div class="strategy-node p-4 rounded-xl border border-slate-800 bg-slate-900/40 hover:bg-slate-900/80 transition-all cursor-pointer" data-stage="4">
+                      <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                          <div class="w-8 h-8 rounded-lg bg-amber-500/20 text-amber-300 flex items-center justify-center font-mono-code font-bold text-xs">04</div>
+                          <div>
+                            <div class="text-sm font-bold text-white flex items-center gap-2">
+                              <span>Commercial Impact</span>
+                              <span class="text-[10px] px-1.5 py-0.2 rounded bg-amber-900/60 text-amber-300">Execution</span>
+                            </div>
+                            <p class="text-xs text-slate-400 mt-0.5">Translating strategic plans into measurable business outcomes.</p>
+                          </div>
+                        </div>
+                        <i data-lucide="chevron-right" class="w-4 h-4 text-slate-600"></i>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div id="engine-live-output" class="mt-6 p-4 rounded-xl bg-slate-900/80 border border-teal-500/30 text-xs text-slate-300 flex items-center justify-between">
+                    <div class="flex items-center gap-2.5">
+                      <i data-lucide="sparkles" class="w-4 h-4 text-teal-400"></i>
+                      <span id="engine-output-text">Active stage: <strong>Primary Fieldwork</strong> across 66 auto body workshops in Mumbai.</span>
+                    </div>
+                    <a href="#case-study" class="text-teal-400 hover:text-teal-300 font-bold whitespace-nowrap ml-2">View Study →</a>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="mt-16 flex justify-center">
+              <a href="#about" class="flex flex-col items-center gap-2 text-slate-400 hover:text-teal-400 transition-colors group">
+                <span class="text-[11px] font-mono-code uppercase tracking-widest text-slate-500 group-hover:text-teal-400">Explore Strategy</span>
+                <div class="w-6 h-10 rounded-full border-2 border-slate-700 group-hover:border-teal-400 flex items-start justify-center p-1.5 transition-colors">
+                  <div class="w-1.5 h-2.5 bg-teal-400 rounded-full animate-bounce"></div>
+                </div>
+              </a>
+            </div>
+
+          </div>
+        </section>
+      `;
+
+      // Marketing Mindset (5-Stage Framework)
+      document.getElementById('approach-container').innerHTML = `
+        <section id="approach" class="py-24 relative overflow-hidden bg-slate-950/40 border-y border-slate-800/80">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full badge-teal text-xs font-mono-code tracking-widest uppercase">
+                <i data-lucide="compass" class="w-3.5 h-3.5"></i>
+                <span>Strategic Framework</span>
+              </div>
+              <h2 class="text-3xl sm:text-4xl font-display font-extrabold text-white tracking-tight">
+                How I Approach a Business Problem
+              </h2>
+              <p class="text-slate-400 text-base sm:text-lg">
+                A 5-step data-informed methodology combining rigorous market research, behavioral diagnosis, and practical commercial strategy.
+              </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-4 relative">
+              ${portfolioData.marketingMindset.map((item, index) => `
+                <div class="group relative p-6 rounded-2xl glass-panel border border-slate-800/80 hover:border-teal-500/50 bg-slate-900/60 hover:bg-slate-900/95 transition-all duration-300 flex flex-col justify-between">
+                  <div>
+                    <div class="flex items-center justify-between mb-4">
+                      <span class="font-mono-code font-bold text-xs px-2.5 py-1 rounded-md bg-slate-800/80 text-teal-400 group-hover:bg-teal-500/20 transition-colors">
+                        ${item.step}
+                      </span>
+                      <div class="w-8 h-8 rounded-full bg-slate-800/50 flex items-center justify-center text-slate-400 group-hover:text-teal-400 group-hover:bg-teal-500/10 transition-all">
+                        <i data-lucide="${item.icon}" class="w-4 h-4"></i>
+                      </div>
+                    </div>
+
+                    <h3 class="text-lg font-display font-bold text-white group-hover:text-teal-300 transition-colors mb-2">
+                      ${item.name}
+                    </h3>
+                    
+                    <p class="text-xs font-semibold text-teal-400/90 mb-3 min-h-[32px] leading-snug">
+                      "${item.question}"
+                    </p>
+
+                    <p class="text-xs text-slate-400 leading-relaxed font-light">
+                      ${item.description}
+                    </p>
+                  </div>
+
+                  <div class="pt-4 mt-4 border-t border-slate-800/60">
+                    <span class="text-[10px] font-mono-code text-slate-400 uppercase tracking-wider block truncate">
+                      Output: ${item.deliverable}
+                    </span>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+
+            <div class="mt-8 p-6 rounded-2xl bg-gradient-to-r from-teal-950/40 via-slate-900/60 to-blue-950/40 border border-teal-500/30 flex flex-col md:flex-row items-center justify-between gap-4">
+              <div class="flex items-center gap-4 text-left">
+                <div class="w-12 h-12 rounded-xl bg-teal-500/20 text-teal-400 flex items-center justify-center shrink-0">
+                  <i data-lucide="layers" class="w-6 h-6"></i>
+                </div>
+                <div>
+                  <div class="text-xs font-mono-code text-teal-400 uppercase tracking-wider font-semibold">Strategic Synthesis</div>
+                  <div class="text-sm font-medium text-slate-200">
+                    Hover or explore each stage to see how on-ground research bridges consumer reality with business growth.
+                  </div>
+                </div>
+              </div>
+              <a href="#case-study" class="shrink-0 px-5 py-2.5 rounded-xl bg-teal-500/10 hover:bg-teal-500/20 border border-teal-500/40 text-teal-300 font-semibold text-xs transition-all">
+                See Framework in Action (66 Shops) →
+              </a>
+            </div>
+
+          </div>
+        </section>
+      `;
+
+      // About
+      document.getElementById('about-container').innerHTML = `
+        <section id="about" class="py-24 relative overflow-hidden">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+              
+              <div class="lg:col-span-5 space-y-6">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full badge-teal text-xs font-mono-code tracking-widest uppercase">
+                  <i data-lucide="user" class="w-3.5 h-3.5"></i>
+                  <span>Professional Summary</span>
+                </div>
+
+                <h2 class="text-3xl sm:text-4xl font-display font-extrabold text-white tracking-tight leading-tight">
+                  ${portfolioData.about.heading}
+                </h2>
+
+                <div class="space-y-4 text-slate-300 text-base sm:text-lg font-light leading-relaxed">
+                  <p>${portfolioData.about.summary}</p>
+                  <p class="text-sm text-slate-400">
+                    I believe that impactful marketing doesn't begin with assumptions in a boardroom—it starts by observing consumer friction on the ground, analyzing operational realities, and designing strategies that solve real business bottlenecks.
+                  </p>
+                </div>
+
+                <div class="pt-4 space-y-3">
+                  <div class="text-xs font-mono-code uppercase tracking-wider text-slate-400 font-semibold">
+                    Strategic Competencies
+                  </div>
+                  <div class="flex flex-wrap gap-2">
+                    ${portfolioData.about.coreFocus.map(focus => `
+                      <span class="px-3.5 py-1.5 rounded-lg text-xs font-medium bg-slate-900 border border-slate-800 text-teal-300 hover:border-teal-500/40 transition-colors">
+                        ${focus}
+                      </span>
+                    `).join('')}
+                  </div>
+                </div>
+              </div>
+
+              <div class="lg:col-span-7 space-y-4">
+                <div class="flex items-center justify-between pb-2 border-b border-slate-800">
+                  <span class="text-xs font-mono-code uppercase tracking-wider text-slate-400 font-semibold">
+                    What I Bring to the Table
+                  </span>
+                  <span class="text-xs text-teal-400 font-mono-code">4 Core Value Drivers</span>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  ${portfolioData.about.pillars.map((pillar, idx) => `
+                    <div class="card-hover-lift p-6 rounded-2xl glass-panel border border-slate-800/80 bg-slate-900/50 hover:bg-slate-900/90 flex flex-col justify-between">
+                      <div>
+                        <div class="flex items-center justify-between mb-4">
+                          <div class="w-10 h-10 rounded-xl bg-teal-500/10 border border-teal-500/30 text-teal-400 flex items-center justify-center">
+                            <i data-lucide="${pillar.icon}" class="w-5 h-5"></i>
+                          </div>
+                          <span class="text-[11px] font-mono-code text-slate-500">0${idx + 1}</span>
+                        </div>
+                        <h3 class="text-lg font-display font-bold text-white mb-1">${pillar.title}</h3>
+                        <div class="text-[11px] font-mono-code text-teal-400 mb-3 uppercase tracking-wider">${pillar.tag}</div>
+                        <p class="text-xs text-slate-300 leading-relaxed">${pillar.description}</p>
+                      </div>
+                    </div>
+                  `).join('')}
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+      `;
+
+      // Featured Signature Case Study (IDEX 66 Shops)
+      document.getElementById('case-study-container').innerHTML = `
+        <section id="case-study" class="py-24 relative overflow-hidden">
+          <div class="bg-ambient-radial w-[600px] h-[600px] bg-teal-500/10 top-1/4 -right-40"></div>
+
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-4">
+              <div class="space-y-3">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full badge-teal text-xs font-mono-code tracking-widest uppercase">
+                  <i data-lucide="star" class="w-3.5 h-3.5 fill-teal-400 text-teal-400"></i>
+                  <span>Signature Market Research Case Study</span>
+                </div>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-display font-extrabold text-white tracking-tight">
+                  ${portfolioData.signatureCaseStudy.title}
+                </h2>
+                <p class="text-teal-400 font-medium text-base sm:text-lg">
+                  ${portfolioData.signatureCaseStudy.subtitle}
+                </p>
+              </div>
+
+              <button id="open-featured-modal-btn" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold text-xs uppercase tracking-wider transition-all transform hover:-translate-y-0.5 shadow-lg shadow-teal-500/20 shrink-0">
+                <span>View Full Case Study</span>
+                <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+              </button>
+            </div>
+
+            <div class="glass-panel p-8 sm:p-10 lg:p-12 rounded-3xl border border-slate-800 bg-slate-950/80 shadow-2xl relative overflow-hidden">
+              <div class="flex flex-wrap items-center justify-between gap-4 pb-8 border-b border-slate-800">
+                <div class="flex items-center gap-3">
+                  <span class="w-3 h-3 rounded-full bg-teal-400 animate-pulse"></span>
+                  <span class="text-sm font-display font-bold text-white tracking-wide">
+                    IDEX Corporation • Fast and Fluid Management
+                  </span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="text-xs font-mono-code px-3 py-1 rounded-lg bg-slate-900 text-slate-300 border border-slate-800">
+                    Mumbai • Jun–Aug 2026
+                  </span>
+                  <span class="text-xs font-mono-code px-3 py-1 rounded-lg bg-teal-950/80 text-teal-300 border border-teal-800/40">
+                    Primary Field Research
+                  </span>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 py-8 border-b border-slate-800">
+                ${portfolioData.signatureCaseStudy.metrics.map(m => `
+                  <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800/80">
+                    <div class="text-2xl sm:text-3xl lg:text-4xl font-display font-extrabold text-white mb-1">${m.value}</div>
+                    <div class="text-xs text-slate-400 font-medium mb-1">${m.label}</div>
+                    <div class="text-[10px] font-mono-code text-teal-400 uppercase tracking-wider">${m.highlight}</div>
+                  </div>
+                `).join('')}
+              </div>
+
+              <div class="py-8 border-b border-slate-800">
+                <div class="flex items-center justify-between mb-6">
+                  <h3 class="text-sm font-mono-code uppercase tracking-wider text-slate-300 font-bold flex items-center gap-2">
+                    <i data-lucide="git-commit" class="w-4 h-4 text-teal-400"></i>
+                    <span>The Research Journey & Funnel</span>
+                  </h3>
+                  <span class="text-xs text-slate-500 font-mono-code">5 Sequential Phases</span>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
+                  ${portfolioData.signatureCaseStudy.journeySteps.map(step => `
+                    <div class="p-4 rounded-xl bg-slate-900/40 border border-slate-800/60 hover:border-teal-500/40 hover:bg-slate-900/90 transition-all">
+                      <div class="text-xs font-mono-code text-teal-400 font-bold mb-1">${step.step}</div>
+                      <div class="text-sm font-bold text-white mb-1.5">${step.name}</div>
+                      <div class="text-xs text-slate-400 leading-snug">${step.detail}</div>
+                    </div>
+                  `).join('')}
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 pt-8 items-start">
+                <div class="lg:col-span-7 space-y-4">
+                  <h3 class="text-sm font-mono-code uppercase tracking-wider text-teal-400 font-bold flex items-center gap-2">
+                    <i data-lucide="alert-triangle" class="w-4 h-4 text-amber-400"></i>
+                    <span>Key Adoption Barriers Identified</span>
+                  </h3>
+                  <div class="space-y-3">
+                    ${portfolioData.signatureCaseStudy.barriers.map(b => `
+                      <div class="p-4 rounded-xl bg-slate-900/50 border border-slate-800 flex items-start gap-3.5">
+                        <div class="w-2 h-2 rounded-full bg-teal-400 mt-2 shrink-0"></div>
+                        <div>
+                          <h4 class="text-sm font-bold text-white mb-1">${b.title}</h4>
+                          <p class="text-xs text-slate-400 leading-relaxed">${b.description}</p>
+                        </div>
+                      </div>
+                    `).join('')}
+                  </div>
+                </div>
+
+                <div class="lg:col-span-5 space-y-4">
+                  <h3 class="text-sm font-mono-code uppercase tracking-wider text-slate-300 font-bold flex items-center gap-2">
+                    <i data-lucide="crosshair" class="w-4 h-4 text-blue-400"></i>
+                    <span>Competitive Landscape Mapped</span>
+                  </h3>
+                  <div class="space-y-3">
+                    ${portfolioData.signatureCaseStudy.competitors.map(c => `
+                      <div class="p-4 rounded-xl bg-slate-900/50 border border-slate-800">
+                        <div class="text-sm font-bold text-white mb-0.5">${c.name}</div>
+                        <div class="text-xs text-slate-400">${c.focus}</div>
+                      </div>
+                    `).join('')}
+                  </div>
+
+                  <div class="p-4 rounded-xl bg-teal-950/30 border border-teal-500/30">
+                    <div class="text-xs font-mono-code uppercase tracking-wider text-teal-400 font-bold mb-1">
+                      Strategic Synthesis
+                    </div>
+                    <p class="text-xs text-slate-300 italic leading-relaxed">
+                      "${portfolioData.signatureCaseStudy.keyTakeaway}"
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-8 pt-6 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="text-xs text-slate-400 flex items-center gap-2">
+                  <i data-lucide="info" class="w-4 h-4 text-teal-400"></i>
+                  <span>Click below to explore full fieldwork methodologies and operational details.</span>
+                </div>
+                <button id="open-featured-modal-btn-2" class="text-xs font-mono-code text-teal-400 hover:text-teal-300 font-bold inline-flex items-center gap-1.5">
+                  <span>Expand Case Study Modal</span>
+                  <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i>
+                </button>
+              </div>
+
+            </div>
+          </div>
+        </section>
+      `;
+
+      // Experience Timeline
+      document.getElementById('experience-container').innerHTML = `
+        <section id="experience" class="py-24 relative overflow-hidden bg-slate-950/30 border-y border-slate-800/80">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4">
+              <div class="space-y-3">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full badge-teal text-xs font-mono-code tracking-widest uppercase">
+                  <i data-lucide="briefcase" class="w-3.5 h-3.5"></i>
+                  <span>Career Trajectory</span>
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-display font-extrabold text-white tracking-tight">
+                  Work Experience
+                </h2>
+                <p class="text-slate-400 text-base max-w-2xl">
+                  Cross-functional background across primary market research, supply chain operations, consultative sales, and digital campaigns.
+                </p>
+              </div>
+              <span class="text-xs font-mono-code text-teal-400 px-3 py-1.5 rounded-lg bg-teal-950/60 border border-teal-800/40">
+                4 Professional Roles
+              </span>
+            </div>
+
+            <div class="relative border-l-2 border-slate-800 ml-4 md:ml-32 space-y-12">
+              ${portfolioData.experiences.map((exp) => `
+                <div class="relative pl-8 md:pl-12 group">
+                  <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full ${exp.featured ? 'bg-teal-400 ring-4 ring-teal-500/20' : 'bg-slate-700 group-hover:bg-teal-400'} transition-all duration-300"></div>
+
+                  <div class="hidden md:block absolute -left-36 top-1 text-right w-28">
+                    <span class="text-xs font-mono-code ${exp.featured ? 'text-teal-400 font-bold' : 'text-slate-400'}">
+                      ${exp.period}
+                    </span>
+                    <div class="text-[10px] text-slate-500 font-mono-code truncate">${exp.location}</div>
+                  </div>
+
+                  <div class="card-hover-lift p-6 sm:p-8 rounded-2xl glass-panel ${exp.featured ? 'border-teal-500/40 bg-slate-900/80 ring-1 ring-teal-500/20 shadow-xl' : 'border-slate-800 bg-slate-900/40'} transition-all">
+                    <div class="md:hidden flex items-center justify-between gap-2 pb-3 mb-3 border-b border-slate-800">
+                      <span class="text-xs font-mono-code text-teal-400 font-semibold">${exp.period}</span>
+                      <span class="text-xs text-slate-400 font-mono-code">${exp.location}</span>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+                      <div>
+                        <div class="flex items-center gap-2">
+                          <h3 class="text-xl font-display font-bold text-white group-hover:text-teal-300 transition-colors">
+                            ${exp.title}
+                          </h3>
+                          ${exp.featured ? `
+                            <span class="text-[10px] font-mono-code uppercase px-2 py-0.5 rounded bg-teal-500/20 text-teal-300 border border-teal-500/40">
+                              Featured Role
+                            </span>
+                          ` : ''}
+                        </div>
+                        <div class="text-sm font-medium text-slate-300 mt-0.5">${exp.company}</div>
+                      </div>
+
+                      <span class="text-xs font-mono-code px-3 py-1 rounded-md bg-slate-800/80 text-slate-300 border border-slate-700 self-start">
+                        ${exp.category}
+                      </span>
+                    </div>
+
+                    <ul class="space-y-2.5 my-4">
+                      ${exp.highlights.map(point => `
+                        <li class="flex items-start gap-3 text-xs sm:text-sm text-slate-300 leading-relaxed font-light">
+                          <i data-lucide="check" class="w-4 h-4 text-teal-400 shrink-0 mt-0.5"></i>
+                          <span>${point}</span>
+                        </li>
+                      `).join('')}
+                    </ul>
+
+                    <div class="flex flex-wrap gap-2 pt-4 mt-2 border-t border-slate-800/60">
+                      ${exp.tags.map(tag => `
+                        <span class="text-[11px] font-mono-code px-2.5 py-0.5 rounded bg-slate-950 text-slate-400 border border-slate-800">
+                          #${tag}
+                        </span>
+                      `).join('')}
+                    </div>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+
+          </div>
+        </section>
+      `;
+
+      // Projects Grid & Filters
+      const categories = ["All", "Strategy", "Marketing", "Market Research", "Branding", "Innovation", "Business"];
+      document.getElementById('projects-container-section').innerHTML = `
+        <section id="projects" class="py-24 relative overflow-hidden">
+          <div class="bg-ambient-radial w-[500px] h-[500px] bg-blue-500/10 bottom-20 -left-40"></div>
+
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+              <div class="space-y-3">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full badge-teal text-xs font-mono-code tracking-widest uppercase">
+                  <i data-lucide="folder-git-2" class="w-3.5 h-3.5"></i>
+                  <span>Strategic Case Portfolio</span>
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-display font-extrabold text-white tracking-tight">
+                  Selected Strategic Projects
+                </h2>
+                <p class="text-slate-400 text-base max-w-2xl">
+                  In-depth strategic analyses, GTM frameworks, revenue expansion models, and consumer positioning roadmaps.
+                </p>
+              </div>
+
+              <span class="text-xs font-mono-code text-slate-400">
+                Showing <strong id="project-count" class="text-teal-400">${portfolioData.projects.length}</strong> Projects
+              </span>
+            </div>
+
+            <div class="flex flex-wrap items-center gap-2 mb-10 pb-4 border-b border-slate-800" id="project-filters">
+              ${categories.map((cat, i) => `
+                <button class="project-filter-btn px-4 py-2 rounded-xl text-xs font-medium font-mono-code transition-all ${i === 0 ? 'bg-teal-500 text-slate-950 font-bold active shadow-md shadow-teal-500/20' : 'bg-slate-900/60 hover:bg-slate-800 text-slate-300 border border-slate-800'}" data-category="${cat}">
+                  ${cat}
+                </button>
+              `).join('')}
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="projects-container">
+              ${portfolioData.projects.map(p => renderProjectCardHtml(p)).join('')}
+            </div>
+          </div>
+        </section>
+      `;
+
+      // Skills Constellation
+      document.getElementById('skills-container').innerHTML = `
+        <section id="skills" class="py-24 relative overflow-hidden bg-slate-950/40 border-y border-slate-800/80">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full badge-teal text-xs font-mono-code tracking-widest uppercase">
+                <i data-lucide="cpu" class="w-3.5 h-3.5"></i>
+                <span>Skill Constellation</span>
+              </div>
+              <h2 class="text-3xl sm:text-4xl font-display font-extrabold text-white tracking-tight">
+                Strategic Competency Framework
+              </h2>
+              <p class="text-slate-400 text-base sm:text-lg">
+                A balanced synthesis of analytical market rigor, creative storytelling, and leadership execution.
+              </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-12">
+              ${portfolioData.skills.categories.map(category => `
+                <div class="p-8 rounded-3xl glass-panel border border-slate-800 bg-slate-900/60 hover:bg-slate-900/90 transition-all flex flex-col justify-between">
+                  <div>
+                    <div class="flex items-center justify-between pb-4 mb-6 border-b border-slate-800">
+                      <h3 class="text-xl font-display font-bold text-white flex items-center gap-2.5">
+                        <span class="w-2.5 h-2.5 rounded-full ${category.color === 'teal' ? 'bg-teal-400' : category.color === 'blue' ? 'bg-blue-400' : 'bg-emerald-400'}"></span>
+                        <span>${category.name}</span>
+                      </h3>
+                      <span class="text-[11px] font-mono-code text-slate-500">${category.skills.length} Capabilities</span>
+                    </div>
+
+                    <p class="text-xs text-slate-400 mb-6 leading-relaxed">
+                      ${category.description}
+                    </p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                      ${category.skills.map(skillName => {
+                        const skillObj = portfolioData.skills.allSkillsList.find(s => s.name === skillName) || { name: skillName, icon: "check", description: "" };
+                        return `
+                          <div class="p-3 rounded-xl bg-slate-950/80 border border-slate-800/80 hover:border-teal-500/50 hover:bg-slate-900 transition-all cursor-pointer group">
+                            <div class="flex items-center gap-2.5">
+                              <div class="w-6 h-6 rounded-md bg-slate-800 flex items-center justify-center text-teal-400 group-hover:bg-teal-500/20 group-hover:text-teal-300 transition-colors">
+                                <i data-lucide="${skillObj.icon}" class="w-3.5 h-3.5"></i>
+                              </div>
+                              <span class="text-xs font-semibold text-slate-200 group-hover:text-white transition-colors">
+                                ${skillName}
+                              </span>
+                            </div>
+                            <div class="text-[10px] text-slate-500 mt-1 line-clamp-1 group-hover:text-slate-400">
+                              ${skillObj.description}
+                            </div>
+                          </div>
+                        `;
+                      }).join('')}
+                    </div>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+
+            <div class="p-6 rounded-2xl glass-panel border border-slate-800 text-center max-w-2xl mx-auto text-xs text-slate-400">
+              <span class="text-teal-400 font-mono-code font-bold uppercase">Philosophy:</span> Skills are synergistic forces rather than isolated percentages. Strategy informs creative campaigns, research grounds innovation, and leadership brings ideas to commercial fruition.
+            </div>
+          </div>
+        </section>
+      `;
+
+      // Education & Certifications
+      document.getElementById('education-container').innerHTML = `
+        <section id="education" class="py-24 relative overflow-hidden">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+              
+              <div class="lg:col-span-5 space-y-8">
+                <div class="space-y-3">
+                  <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full badge-teal text-xs font-mono-code tracking-widest uppercase">
+                    <i data-lucide="graduation-cap" class="w-3.5 h-3.5"></i>
+                    <span>Academic Foundation</span>
+                  </div>
+                  <h2 class="text-3xl sm:text-4xl font-display font-extrabold text-white tracking-tight">
+                    Education
+                  </h2>
+                  <p class="text-slate-400 text-sm">
+                    Rigorous business management curriculum focused on analytical marketing, consumer psychology, and strategic positioning.
+                  </p>
+                </div>
+
+                <div class="space-y-6">
+                  ${portfolioData.education.map((edu, idx) => `
+                    <div class="p-6 sm:p-7 rounded-2xl glass-panel border ${idx === 0 ? 'border-teal-500/40 bg-slate-900/80 shadow-xl' : 'border-slate-800 bg-slate-900/40'} relative">
+                      <div class="flex items-center justify-between gap-2 mb-3">
+                        <span class="text-xs font-mono-code ${idx === 0 ? 'text-teal-400 font-bold' : 'text-slate-400'}">
+                          ${edu.period}
+                        </span>
+                        <span class="text-[10px] font-mono-code uppercase px-2 py-0.5 rounded ${idx === 0 ? 'bg-teal-950 text-teal-300 border border-teal-800' : 'bg-slate-800 text-slate-400'}">
+                          ${edu.badge}
+                        </span>
+                      </div>
+                      <h3 class="text-xl font-display font-bold text-white mb-1">${edu.degree}</h3>
+                      <div class="text-sm font-semibold text-teal-300/90 mb-1">${edu.institution}</div>
+                      <div class="text-xs text-slate-400 font-mono-code mb-4">${edu.location}</div>
+                      <ul class="space-y-2 border-t border-slate-800/80 pt-4">
+                        ${edu.highlights.map(h => `
+                          <li class="flex items-start gap-2.5 text-xs text-slate-300 leading-relaxed font-light">
+                            <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-teal-400 shrink-0 mt-0.5"></i>
+                            <span>${h}</span>
+                          </li>
+                        `).join('')}
+                      </ul>
+                    </div>
+                  `).join('')}
+                </div>
+              </div>
+
+              <div class="lg:col-span-7 space-y-8">
+                <div class="flex items-center justify-between">
+                  <div class="space-y-3">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full badge-teal text-xs font-mono-code tracking-widest uppercase">
+                      <i data-lucide="award" class="w-3.5 h-3.5"></i>
+                      <span>Continuous Learning</span>
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl font-display font-extrabold text-white tracking-tight">
+                      Executive & Industry Certifications
+                    </h2>
+                  </div>
+                  <span class="text-xs font-mono-code text-teal-400 px-3 py-1 rounded-lg bg-teal-950 border border-teal-800 hidden sm:inline-block">
+                    ${portfolioData.certifications.length} Credentials
+                  </span>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  ${portfolioData.certifications.map(cert => `
+                    <div class="card-hover-lift p-5 rounded-2xl glass-panel border border-slate-800/80 bg-slate-900/50 hover:bg-slate-900/90 flex flex-col justify-between">
+                      <div>
+                        <div class="flex items-center justify-between gap-2 mb-3">
+                          <span class="text-[10px] font-mono-code uppercase px-2 py-0.5 rounded bg-slate-800 text-teal-400 border border-slate-700">
+                            ${cert.type}
+                          </span>
+                          <span class="text-[11px] font-mono-code text-slate-400">
+                            ${cert.date}
+                          </span>
+                        </div>
+                        <h3 class="text-sm font-display font-bold text-white mb-2 leading-snug">
+                          ${cert.title}
+                        </h3>
+                      </div>
+                      <div class="pt-3 border-t border-slate-800/60 flex items-center justify-between">
+                        <div class="text-xs text-slate-300 font-medium flex items-center gap-1.5">
+                          <i data-lucide="building" class="w-3.5 h-3.5 text-teal-400"></i>
+                          <span>${cert.issuer}</span>
+                        </div>
+                      </div>
+                    </div>
+                  `).join('')}
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+      `;
+
+      // Achievements & Leadership
+      document.getElementById('achievements-container').innerHTML = `
+        <section id="achievements" class="py-24 relative overflow-hidden bg-slate-950/30 border-y border-slate-800/80">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full badge-teal text-xs font-mono-code tracking-widest uppercase">
+                <i data-lucide="trophy" class="w-3.5 h-3.5"></i>
+                <span>Honors & Initiatives</span>
+              </div>
+              <h2 class="text-3xl sm:text-4xl font-display font-extrabold text-white tracking-tight">
+                Recognition & Leadership
+              </h2>
+              <p class="text-slate-400 text-base sm:text-lg">
+                Demonstrated commitment to organizational excellence, campus operations, and competitive distinction.
+              </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+              ${portfolioData.achievements.map((item, idx) => `
+                <div class="p-8 rounded-3xl glass-panel border ${idx === 0 ? 'border-amber-500/40 bg-slate-900/80 shadow-2xl' : 'border-slate-800 bg-slate-900/60'} flex flex-col justify-between">
+                  <div>
+                    <div class="flex items-center justify-between pb-4 mb-4 border-b border-slate-800">
+                      <span class="text-xs font-mono-code font-bold ${idx === 0 ? 'text-amber-400' : 'text-slate-300'} px-3 py-1 rounded-lg bg-slate-950 border border-slate-800">
+                        ${item.awardBadge}
+                      </span>
+                      <span class="text-xs text-slate-500 font-mono-code">${item.issuer}</span>
+                    </div>
+                    <h3 class="text-2xl font-display font-extrabold text-white mb-2">${item.title}</h3>
+                    <p class="text-sm text-slate-300 leading-relaxed font-light">${item.description}</p>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+
+            <div class="space-y-6">
+              <div class="flex items-center justify-between pb-2 border-b border-slate-800">
+                <h3 class="text-sm font-mono-code uppercase tracking-wider text-slate-300 font-bold flex items-center gap-2">
+                  <i data-lucide="users" class="w-4 h-4 text-teal-400"></i>
+                  <span>Leadership, Logistics & Event Coordination</span>
+                </h3>
+                <span class="text-xs text-slate-500 font-mono-code">Campus & National Scale</span>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                ${portfolioData.leadership.map((act) => `
+                  <div class="p-6 rounded-2xl glass-panel border border-slate-800 bg-slate-900/40 hover:bg-slate-900/80 transition-all">
+                    <h4 class="text-base font-display font-bold text-white mb-1">${act.title}</h4>
+                    <div class="text-xs font-mono-code text-teal-400 mb-3">${act.role} • <span class="text-slate-400">${act.org}</span></div>
+                    <p class="text-xs text-slate-300 leading-relaxed font-light">${act.description}</p>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+          </div>
+        </section>
+      `;
+
+      // Interests ("Beyond the Spreadsheet") & Languages
+      document.getElementById('interests-container').innerHTML = `
+        <section id="interests" class="py-24 relative overflow-hidden">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+              
+              <div class="lg:col-span-8 space-y-8">
+                <div class="space-y-3">
+                  <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full badge-teal text-xs font-mono-code tracking-widest uppercase">
+                    <i data-lucide="smile" class="w-3.5 h-3.5"></i>
+                    <span>Human Perspective</span>
+                  </div>
+                  <h2 class="text-3xl sm:text-4xl font-display font-extrabold text-white tracking-tight">
+                    Beyond the Spreadsheet
+                  </h2>
+                  <p class="text-slate-400 text-sm">
+                    Passions, athletic pursuits, and creative curiosities that sharpen my strategic intuition.
+                  </p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                  ${portfolioData.interests.map(item => `
+                    <div class="card-hover-lift p-5 rounded-2xl glass-panel border border-slate-800/80 bg-slate-900/40 hover:bg-slate-900/80 flex flex-col justify-between">
+                      <div>
+                        <div class="text-3xl mb-3">${item.emoji}</div>
+                        <h3 class="text-base font-display font-bold text-white mb-1">${item.name}</h3>
+                        <div class="text-[10px] font-mono-code text-teal-400 uppercase tracking-wider mb-2">${item.category}</div>
+                        <p class="text-xs text-slate-400 leading-relaxed font-light">${item.note}</p>
+                      </div>
+                    </div>
+                  `).join('')}
+                </div>
+              </div>
+
+              <div class="lg:col-span-4 space-y-8">
+                <div class="space-y-3">
+                  <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full badge-teal text-xs font-mono-code tracking-widest uppercase">
+                    <i data-lucide="globe" class="w-3.5 h-3.5"></i>
+                    <span>Communication</span>
+                  </div>
+                  <h2 class="text-3xl sm:text-4xl font-display font-extrabold text-white tracking-tight">
+                    Languages
+                  </h2>
+                  <p class="text-slate-400 text-sm">
+                    Fluent articulation across professional and collaborative settings.
+                  </p>
+                </div>
+
+                <div class="space-y-4">
+                  ${portfolioData.languages.map(lang => `
+                    <div class="p-5 rounded-2xl glass-panel border border-slate-800 bg-slate-900/50 flex items-center justify-between">
+                      <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-teal-500/10 border border-teal-500/30 text-teal-400 flex items-center justify-center font-display font-bold text-sm">
+                          ${lang.language.substring(0, 2).toUpperCase()}
+                        </div>
+                        <div>
+                          <div class="text-base font-display font-bold text-white">${lang.language}</div>
+                          <div class="text-xs text-slate-400">${lang.note}</div>
+                        </div>
+                      </div>
+                      <i data-lucide="check-circle-2" class="w-5 h-5 text-teal-400"></i>
+                    </div>
+                  `).join('')}
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+      `;
+
+      // Brand Statement Banner
+      document.getElementById('brand-statement-container').innerHTML = `
+        <section class="py-28 relative overflow-hidden bg-gradient-to-b from-slate-950 via-slate-900/90 to-slate-950 border-y border-slate-800/80">
+          <div class="bg-ambient-radial w-[600px] h-[600px] bg-teal-500/15 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+          <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-8">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full badge-teal text-xs font-mono-code tracking-widest uppercase">
+              <i data-lucide="quote" class="w-3.5 h-3.5"></i>
+              <span>Core Philosophy</span>
+            </div>
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-display font-extrabold text-white tracking-tight leading-[1.2]">
+              "${portfolioData.personal.brandStatement.quote}"
+            </h2>
+            <p class="text-base sm:text-xl text-slate-300 max-w-3xl mx-auto font-light leading-relaxed">
+              ${portfolioData.personal.brandStatement.description}
+            </p>
+            <div class="pt-4 flex items-center justify-center gap-3">
+              <div class="w-12 h-0.5 bg-teal-500/40"></div>
+              <span class="text-xs font-mono-code uppercase tracking-widest text-teal-400 font-bold">Pranav G. Rawal</span>
+              <div class="w-12 h-0.5 bg-teal-500/40"></div>
+            </div>
+          </div>
+        </section>
+      `;
+
+      // Contact & Recruiter Hub
+      document.getElementById('contact-container').innerHTML = `
+        <section id="contact" class="py-24 relative overflow-hidden">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+              
+              <div class="lg:col-span-6 space-y-8">
+                <div class="space-y-3">
+                  <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full badge-teal text-xs font-mono-code tracking-widest uppercase">
+                    <i data-lucide="send" class="w-3.5 h-3.5"></i>
+                    <span>Get In Touch</span>
+                  </div>
+                  <h2 class="text-3xl sm:text-4xl lg:text-5xl font-display font-extrabold text-white tracking-tight">
+                    Let's build something meaningful.
+                  </h2>
+                  <p class="text-slate-300 text-base sm:text-lg font-light leading-relaxed">
+                    Have a project, opportunity, or interesting business problem? I'd love to connect.
+                  </p>
+                </div>
+
+                <div class="space-y-4">
+                  <div class="p-4 sm:p-5 rounded-2xl glass-panel border border-slate-800 bg-slate-900/60 flex items-center justify-between group hover:border-teal-500/40 transition-all">
+                    <div class="flex items-center gap-3.5 min-w-0">
+                      <div class="w-10 h-10 rounded-xl bg-teal-500/10 border border-teal-500/30 text-teal-400 flex items-center justify-center shrink-0">
+                        <i data-lucide="mail" class="w-5 h-5"></i>
+                      </div>
+                      <div class="min-w-0">
+                        <div class="text-[11px] font-mono-code uppercase text-slate-400">Institutional Email</div>
+                        <a href="mailto:${portfolioData.personal.email}" class="text-sm sm:text-base font-semibold text-white group-hover:text-teal-400 transition-colors truncate block">
+                          ${portfolioData.personal.email}
+                        </a>
+                      </div>
+                    </div>
+                    <button class="copy-btn shrink-0 p-2 rounded-lg bg-slate-800 hover:bg-teal-500/20 text-slate-300 hover:text-teal-300 transition-all" data-copy="${portfolioData.personal.email}" title="Copy Email">
+                      <i data-lucide="copy" class="w-4 h-4"></i>
+                    </button>
+                  </div>
+
+                  <div class="p-4 sm:p-5 rounded-2xl glass-panel border border-slate-800 bg-slate-900/60 flex items-center justify-between group hover:border-teal-500/40 transition-all">
+                    <div class="flex items-center gap-3.5 min-w-0">
+                      <div class="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/30 text-blue-400 flex items-center justify-center shrink-0">
+                        <i data-lucide="linkedin" class="w-5 h-5"></i>
+                      </div>
+                      <div class="min-w-0">
+                        <div class="text-[11px] font-mono-code uppercase text-slate-400">LinkedIn Profile</div>
+                        <a href="${portfolioData.personal.linkedin}" target="_blank" rel="noopener noreferrer" class="text-sm sm:text-base font-semibold text-white group-hover:text-teal-400 transition-colors truncate block">
+                          ${portfolioData.personal.linkedinDisplay}
+                        </a>
+                      </div>
+                    </div>
+                    <a href="${portfolioData.personal.linkedin}" target="_blank" rel="noopener noreferrer" class="shrink-0 p-2 rounded-lg bg-slate-800 hover:bg-blue-500/20 text-slate-300 hover:text-blue-300 transition-all">
+                      <i data-lucide="external-link" class="w-4 h-4"></i>
+                    </a>
+                  </div>
+
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="p-4 rounded-2xl glass-panel border border-slate-800 bg-slate-900/60 flex items-center justify-between">
+                      <div class="flex items-center gap-3">
+                        <div class="w-9 h-9 rounded-lg bg-teal-500/10 text-teal-400 flex items-center justify-center shrink-0">
+                          <i data-lucide="phone" class="w-4 h-4"></i>
+                        </div>
+                        <div>
+                          <div class="text-[10px] font-mono-code uppercase text-slate-400">Phone</div>
+                          <a href="tel:${portfolioData.personal.phone}" class="text-xs sm:text-sm font-semibold text-white hover:text-teal-400 transition-colors">
+                            ${portfolioData.personal.phone}
+                          </a>
+                        </div>
+                      </div>
+                      <button class="copy-btn p-1.5 rounded-lg bg-slate-800 text-slate-300 hover:text-teal-300" data-copy="${portfolioData.personal.phone}">
+                        <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                      </button>
+                    </div>
+
+                    <div class="p-4 rounded-2xl glass-panel border border-slate-800 bg-slate-900/60 flex items-center gap-3">
+                      <div class="w-9 h-9 rounded-lg bg-teal-500/10 text-teal-400 flex items-center justify-center shrink-0">
+                        <i data-lucide="map-pin" class="w-4 h-4"></i>
+                      </div>
+                      <div>
+                        <div class="text-[10px] font-mono-code uppercase text-slate-400">Location</div>
+                        <div class="text-xs sm:text-sm font-semibold text-white">${portfolioData.personal.location}</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="flex flex-wrap items-center gap-3 pt-2">
+                  <a href="mailto:${portfolioData.personal.email}?subject=Opportunity%20Discussion%20-%20Pranav%20G.%20Rawal" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold text-xs uppercase tracking-wider transition-all transform hover:-translate-y-0.5 shadow-lg shadow-teal-500/20">
+                    <span>Let's Connect</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                  </a>
+
+                  <a href="${portfolioData.personal.linkedin}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-200 font-semibold text-xs transition-all">
+                    <span>LinkedIn Profile</span>
+                    <i data-lucide="external-link" class="w-3.5 h-3.5 text-blue-400"></i>
+                  </a>
+
+                  <button id="contact-cv-btn" class="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl bg-slate-900 hover:bg-slate-800 border border-teal-500/40 text-teal-300 font-semibold text-xs transition-all">
+                    <i data-lucide="file-text" class="w-3.5 h-3.5"></i>
+                    <span>Download CV</span>
+                  </button>
+                </div>
+              </div>
+
+              <div class="lg:col-span-6">
+                <div class="p-8 sm:p-10 rounded-3xl glass-panel border border-slate-800 bg-slate-950/80 shadow-2xl relative">
+                  <div class="flex items-center justify-between pb-6 mb-6 border-b border-slate-800">
+                    <div class="flex items-center gap-2.5">
+                      <div class="w-2.5 h-2.5 rounded-full bg-teal-400"></div>
+                      <h3 class="text-base font-display font-bold text-white">Send a Direct Inquiry</h3>
+                    </div>
+                    <span class="text-xs font-mono-code text-teal-400">Fast Response</span>
+                  </div>
+
+                  <form id="contact-form" class="space-y-4">
+                    <div>
+                      <label for="form-name" class="block text-xs font-mono-code text-slate-300 uppercase tracking-wider mb-1.5">Your Name / Organization</label>
+                      <input type="text" id="form-name" required placeholder="e.g. Talent Partner / Hiring Manager" class="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-800 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-teal-500 transition-colors">
+                    </div>
+                    <div>
+                      <label for="form-email" class="block text-xs font-mono-code text-slate-300 uppercase tracking-wider mb-1.5">Your Email</label>
+                      <input type="email" id="form-email" required placeholder="name@company.com" class="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-800 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-teal-500 transition-colors">
+                    </div>
+                    <div>
+                      <label for="form-topic" class="block text-xs font-mono-code text-slate-300 uppercase tracking-wider mb-1.5">Opportunity Topic</label>
+                      <select id="form-topic" class="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-800 text-sm text-white focus:outline-none focus:border-teal-500 transition-colors">
+                        <option value="Marketing & Strategy Internship / Full-Time">Marketing & Strategy Role / Internship</option>
+                        <option value="Market Research & Consumer Insights Project">Market Research & Insights Project</option>
+                        <option value="Brand Management & GTM Consultation">Brand Management & GTM Discussion</option>
+                        <option value="General Professional Networking">General Professional Networking</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label for="form-message" class="block text-xs font-mono-code text-slate-300 uppercase tracking-wider mb-1.5">Message</label>
+                      <textarea id="form-message" rows="4" required placeholder="Hi Pranav, I came across your portfolio and would like to discuss..." class="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-800 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-teal-500 transition-colors resize-none"></textarea>
+                    </div>
+                    <button type="submit" class="w-full py-3.5 rounded-xl bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2 shadow-lg shadow-teal-500/20">
+                      <span>Send Message via Email</span>
+                      <i data-lucide="send" class="w-4 h-4"></i>
+                    </button>
+                  </form>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+      `;
+
+      // Footer
+      document.getElementById('footer-container').innerHTML = `
+        <footer class="py-16 bg-slate-950 border-t border-slate-800/80 relative z-10">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-8 pb-12 border-b border-slate-900">
+              <div class="space-y-2 text-center md:text-left">
+                <div class="flex items-center justify-center md:justify-start gap-3">
+                  <div class="w-8 h-8 rounded-lg bg-teal-500/10 border border-teal-500/30 flex items-center justify-center font-display font-bold text-teal-400 text-sm">
+                    PR
+                  </div>
+                  <span class="font-display font-extrabold text-lg text-white tracking-tight uppercase">
+                    ${portfolioData.personal.name}
+                  </span>
+                </div>
+                <p class="text-xs text-teal-400 font-mono-code">
+                  "Marketing • Strategy • Research • Creativity"
+                </p>
+                <p class="text-xs text-slate-500">
+                  MBA Marketing Candidate @ Woxsen University (${portfolioData.personal.yearOfStudy})
+                </p>
+              </div>
+
+              <div class="flex flex-wrap justify-center items-center gap-6 text-xs font-mono-code text-slate-400">
+                <a href="#hero" class="hover:text-teal-400 transition-colors">Home</a>
+                <span class="text-slate-700">•</span>
+                <a href="#about" class="hover:text-teal-400 transition-colors">About</a>
+                <span class="text-slate-700">•</span>
+                <a href="#case-study" class="hover:text-teal-400 transition-colors">Featured Study</a>
+                <span class="text-slate-700">•</span>
+                <a href="#experience" class="hover:text-teal-400 transition-colors">Experience</a>
+                <span class="text-slate-700">•</span>
+                <a href="#projects" class="hover:text-teal-400 transition-colors">Projects</a>
+                <span class="text-slate-700">•</span>
+                <a href="#skills" class="hover:text-teal-400 transition-colors">Skills</a>
+                <span class="text-slate-700">•</span>
+                <a href="#contact" class="hover:text-teal-400 transition-colors">Contact</a>
+              </div>
+
+              <div class="flex items-center gap-3">
+                <a href="${portfolioData.personal.linkedin}" target="_blank" rel="noopener noreferrer" class="p-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-400 hover:text-teal-400 border border-slate-800 transition-all">
+                  <i data-lucide="linkedin" class="w-4 h-4"></i>
+                </a>
+                <a href="mailto:${portfolioData.personal.email}" class="p-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-400 hover:text-teal-400 border border-slate-800 transition-all">
+                  <i data-lucide="mail" class="w-4 h-4"></i>
+                </a>
+                <a href="tel:${portfolioData.personal.phone}" class="p-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-400 hover:text-teal-400 border border-slate-800 transition-all">
+                  <i data-lucide="phone" class="w-4 h-4"></i>
+                </a>
+              </div>
+            </div>
+
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 font-mono-code gap-4">
+              <div>© 2026 Pranav G. Rawal. All rights reserved.</div>
+              <div class="text-slate-400 text-center sm:text-right">Designed for Strategic Marketing, Brand Management & Market Research Roles.</div>
+            </div>
+          </div>
+        </footer>
+      `;
+
+      // Modal Container
+      document.getElementById('modals-container').innerHTML = `
+        <div id="modal-container" class="fixed inset-0 z-50 hidden items-center justify-center p-4 sm:p-6 overflow-y-auto modal-backdrop">
+          <div id="modal-content" class="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-3xl glass-panel border border-slate-700 bg-slate-950 p-6 sm:p-10 shadow-2xl transition-all my-auto">
+          </div>
+        </div>
+      `;
+    }
+
+    function renderProjectCardHtml(project) {
+      return `
+        <div class="project-card card-hover-lift p-6 sm:p-7 rounded-2xl glass-panel border border-slate-800/80 bg-slate-900/50 hover:bg-slate-900/90 flex flex-col justify-between cursor-pointer group" data-project-id="${project.id}">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-4">
+              <span class="text-xs font-mono-code font-bold text-teal-400 px-2.5 py-1 rounded bg-teal-950/80 border border-teal-800/40">
+                ${project.number}
+              </span>
+              <div class="flex items-center gap-2">
+                ${project.isProjection ? `
+                  <span class="text-[10px] font-mono-code uppercase px-2 py-0.5 rounded bg-amber-950/80 text-amber-300 border border-amber-800/40">
+                    Projected Model
+                  </span>
+                ` : ''}
+                <span class="text-xs font-mono-code text-slate-400 px-2.5 py-0.5 rounded bg-slate-800/60">
+                  ${project.category}
+                </span>
+              </div>
+            </div>
+
+            <h3 class="text-xl font-display font-bold text-white group-hover:text-teal-300 transition-colors mb-1">
+              ${project.title}
+            </h3>
+
+            <div class="text-xs font-mono-code text-teal-400/90 font-medium mb-3">
+              ${project.subtitle}
+            </div>
+
+            <p class="text-xs text-slate-300 leading-relaxed font-light mb-4">
+              ${project.shortDescription}
+            </p>
+          </div>
+
+          <div class="pt-4 border-t border-slate-800/60 space-y-3">
+            <div class="flex flex-wrap gap-1.5">
+              ${project.tags.slice(0, 3).map(tag => `
+                <span class="text-[10px] font-mono-code px-2 py-0.5 rounded bg-slate-950 text-slate-400 border border-slate-800/60">
+                  ${tag}
+                </span>
+              `).join('')}
+            </div>
+            <div class="flex items-center justify-between text-xs font-mono-code text-teal-400 group-hover:text-teal-300 pt-2">
+              <span>View Deep Dive</span>
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform"></i>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    // Modal Content Templates
+    function getProjectModalHtml(project) {
+      return `
+        <div>
+          <div class="flex items-start justify-between gap-4 pb-6 border-b border-slate-800">
+            <div class="space-y-1.5">
+              <div class="flex items-center gap-2">
+                <span class="text-xs font-mono-code font-bold text-teal-400 px-2.5 py-1 rounded bg-teal-950/80 border border-teal-800/40">
+                  Project ${project.number}
+                </span>
+                <span class="text-xs font-mono-code text-slate-400 px-2.5 py-1 rounded bg-slate-900 border border-slate-800">
+                  ${project.category}
+                </span>
+                ${project.isProjection ? `
+                  <span class="text-[10px] font-mono-code uppercase px-2 py-0.5 rounded bg-amber-950/80 text-amber-300 border border-amber-800/40">
+                    Projected Model
+                  </span>
+                ` : ''}
+              </div>
+              <h2 class="text-2xl sm:text-3xl font-display font-extrabold text-white">${project.title}</h2>
+              <p class="text-sm font-semibold text-teal-400/90">${project.subtitle}</p>
+            </div>
+            <button id="close-modal-btn" class="p-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-400 hover:text-white border border-slate-800 transition-all shrink-0">
+              <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+          </div>
+
+          <div class="py-6 space-y-6 text-slate-300">
+            <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800">
+              <div class="text-xs font-mono-code uppercase text-teal-400 tracking-wider font-semibold mb-1">Executive Summary</div>
+              <p class="text-sm text-slate-200 leading-relaxed font-light">${project.shortDescription}</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div class="p-5 rounded-2xl bg-slate-900/40 border border-slate-800">
+                <div class="flex items-center gap-2 text-xs font-mono-code text-amber-400 uppercase tracking-wider font-bold mb-2">
+                  <i data-lucide="alert-circle" class="w-4 h-4"></i>
+                  <span>Strategic Challenge</span>
+                </div>
+                <p class="text-xs sm:text-sm text-slate-300 leading-relaxed font-light">${project.challenge}</p>
+              </div>
+
+              <div class="p-5 rounded-2xl bg-slate-900/40 border border-slate-800">
+                <div class="flex items-center gap-2 text-xs font-mono-code text-teal-400 uppercase tracking-wider font-bold mb-2">
+                  <i data-lucide="check-circle" class="w-4 h-4"></i>
+                  <span>Strategic Approach & Solution</span>
+                </div>
+                <p class="text-xs sm:text-sm text-slate-300 leading-relaxed font-light">${project.solution}</p>
+              </div>
+            </div>
+
+            <div>
+              <div class="text-xs font-mono-code uppercase text-slate-400 tracking-wider font-semibold mb-3">Key Framework Deliverables</div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                ${project.keyElements.map(el => `
+                  <div class="p-3 rounded-xl bg-slate-900/50 border border-slate-800 flex items-start gap-2.5">
+                    <i data-lucide="arrow-right" class="w-4 h-4 text-teal-400 shrink-0 mt-0.5"></i>
+                    <span class="text-xs text-slate-200 leading-snug">${el}</span>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+
+            <div class="p-5 rounded-2xl ${project.isProjection ? 'bg-amber-950/20 border border-amber-500/30' : 'bg-teal-950/20 border border-teal-500/30'}">
+              <div class="text-xs font-mono-code uppercase ${project.isProjection ? 'text-amber-400' : 'text-teal-400'} tracking-wider font-bold mb-1">
+                ${project.isProjection ? 'Projected Outcome (5-Year Strategic Model)' : 'Strategic Outcome & Value Delivery'}
+              </div>
+              <p class="text-sm text-white font-medium">${project.outcome}</p>
+            </div>
+
+            <div class="flex flex-wrap gap-2 pt-2">
+              ${project.tags.map(tag => `
+                <span class="text-xs font-mono-code px-3 py-1 rounded-lg bg-slate-900 text-slate-400 border border-slate-800">
+                  #${tag}
+                </span>
+              `).join('')}
+            </div>
+          </div>
+
+          <div class="pt-6 border-t border-slate-800 flex justify-end">
+            <button id="close-modal-footer-btn" class="px-6 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-300 font-semibold text-xs transition-colors">
+              Close Window
+            </button>
+          </div>
+        </div>
+      `;
+    }
+
+    function getFeaturedCaseStudyModalHtml(study) {
+      return `
+        <div>
+          <div class="flex items-start justify-between gap-4 pb-6 border-b border-slate-800">
+            <div class="space-y-1.5">
+              <div class="flex items-center gap-2">
+                <span class="text-xs font-mono-code font-bold text-teal-400 px-2.5 py-1 rounded bg-teal-950 border border-teal-800">
+                  Featured Case Study
+                </span>
+                <span class="text-xs font-mono-code text-slate-400 px-2.5 py-1 rounded bg-slate-900 border border-slate-800">
+                  Primary Field Research
+                </span>
+              </div>
+              <h2 class="text-2xl sm:text-3xl font-display font-extrabold text-white">${study.title}</h2>
+              <p class="text-sm font-semibold text-teal-400/90">${study.subtitle}</p>
+            </div>
+            <button id="close-modal-btn" class="p-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-400 hover:text-white border border-slate-800 transition-all shrink-0">
+              <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+          </div>
+
+          <div class="py-6 space-y-6 text-slate-300">
+            <div class="p-5 rounded-2xl bg-slate-900/60 border border-slate-800 flex flex-wrap items-center justify-between gap-4">
+              <div>
+                <div class="text-xs font-mono-code text-slate-400 uppercase tracking-wider">Company & Role</div>
+                <div class="text-sm font-bold text-white">${study.client} • ${study.role}</div>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-xs font-mono-code px-3 py-1 rounded bg-slate-800 text-teal-300">${study.period}</span>
+                <span class="text-xs font-mono-code px-3 py-1 rounded bg-slate-800 text-slate-300">${study.location}</span>
+              </div>
+            </div>
+
+            <div class="space-y-3">
+              <div class="text-xs font-mono-code uppercase text-teal-400 tracking-wider font-semibold">Scope & Fieldwork Summary</div>
+              <p class="text-sm text-slate-200 leading-relaxed font-light">"${study.narrative}"</p>
+            </div>
+
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+              ${study.metrics.map(m => `
+                <div class="p-3.5 rounded-xl bg-slate-900/50 border border-slate-800">
+                  <div class="text-2xl font-display font-extrabold text-white mb-0.5">${m.value}</div>
+                  <div class="text-xs text-slate-400 mb-1">${m.label}</div>
+                  <div class="text-[10px] font-mono-code text-teal-400">${m.highlight}</div>
+                </div>
+              `).join('')}
+            </div>
+
+            <div class="p-6 rounded-2xl bg-slate-900/40 border border-slate-800 space-y-4">
+              <div class="text-xs font-mono-code uppercase text-amber-400 tracking-wider font-bold flex items-center gap-2">
+                <i data-lucide="alert-triangle" class="w-4 h-4"></i>
+                <span>Detailed Adoption Barriers Uncovered</span>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                ${study.barriers.map(b => `
+                  <div class="p-4 rounded-xl bg-slate-950/60 border border-slate-800/80">
+                    <div class="text-sm font-bold text-white mb-1">${b.title}</div>
+                    <div class="text-xs text-slate-300 font-light leading-relaxed">${b.description}</div>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+
+            <div class="p-6 rounded-2xl bg-slate-900/40 border border-slate-800 space-y-3">
+              <div class="text-xs font-mono-code uppercase text-blue-400 tracking-wider font-bold flex items-center gap-2">
+                <i data-lucide="crosshair" class="w-4 h-4"></i>
+                <span>Competitive Positioning Benchmark</span>
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                ${study.competitors.map(c => `
+                  <div class="p-3.5 rounded-xl bg-slate-950/60 border border-slate-800">
+                    <div class="text-sm font-bold text-white">${c.name}</div>
+                    <div class="text-xs text-slate-400 mt-0.5">${c.focus}</div>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-teal-950/30 border border-teal-500/40">
+              <div class="text-xs font-mono-code uppercase text-teal-400 tracking-wider font-bold mb-1">Core Strategic Synthesis</div>
+              <p class="text-sm text-slate-200 leading-relaxed italic">"${study.keyTakeaway}"</p>
+            </div>
+          </div>
+
+          <div class="pt-6 border-t border-slate-800 flex justify-end">
+            <button id="close-modal-footer-btn" class="px-6 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-300 font-semibold text-xs transition-colors">
+              Close Window
+            </button>
+          </div>
+        </div>
+      `;
+    }
+
+    function getCVModalHtml() {
+      return `
+        <div id="printable-cv" class="space-y-8">
+          <div class="no-print flex items-center justify-between pb-6 border-b border-slate-800">
+            <div class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-teal-400"></span>
+              <span class="text-xs font-mono-code text-teal-400 uppercase tracking-wider font-bold">Curriculum Vitae</span>
+            </div>
+            
+            <div class="flex items-center gap-3">
+              <button onclick="window.print()" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold text-xs uppercase tracking-wider transition-all shadow-md">
+                <i data-lucide="printer" class="w-3.5 h-3.5"></i>
+                <span>Print / Save as PDF</span>
+              </button>
+              <button id="close-modal-btn" class="p-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-400 hover:text-white border border-slate-800 transition-all">
+                <i data-lucide="x" class="w-5 h-5"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="bg-white text-slate-900 p-8 sm:p-12 rounded-2xl shadow-xl font-sans text-left space-y-6">
+            <div class="border-b-2 border-teal-600 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+              <div>
+                <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 uppercase tracking-tight">
+                  ${portfolioData.personal.name}
+                </h1>
+                <p class="text-sm font-semibold text-teal-700 mt-1">${portfolioData.personal.title}</p>
+              </div>
+              <div class="text-xs text-slate-600 space-y-0.5 sm:text-right font-mono">
+                <div>Email: <a href="mailto:${portfolioData.personal.email}" class="text-teal-700 underline">${portfolioData.personal.email}</a></div>
+                <div>Phone: ${portfolioData.personal.phone}</div>
+                <div>Location: ${portfolioData.personal.location}</div>
+                <div>LinkedIn: <a href="${portfolioData.personal.linkedin}" class="text-teal-700 underline">${portfolioData.personal.linkedinDisplay}</a></div>
+              </div>
+            </div>
+
+            <div>
+              <h2 class="text-xs font-bold uppercase tracking-widest text-teal-800 border-b border-slate-200 pb-1 mb-2">Professional Summary</h2>
+              <p class="text-xs text-slate-700 leading-relaxed">${portfolioData.about.summary}</p>
+            </div>
+
+            <div>
+              <h2 class="text-xs font-bold uppercase tracking-widest text-teal-800 border-b border-slate-200 pb-1 mb-3">Experience</h2>
+              <div class="space-y-4">
+                ${portfolioData.experiences.map(exp => `
+                  <div class="print-break-inside">
+                    <div class="flex justify-between items-baseline">
+                      <div class="font-bold text-xs text-slate-900">${exp.title}</div>
+                      <div class="text-[11px] font-mono text-slate-600">${exp.period}</div>
+                    </div>
+                    <div class="text-[11px] font-semibold text-teal-700 mb-1">${exp.company} • ${exp.location}</div>
+                    <ul class="list-disc list-inside space-y-1 text-xs text-slate-700">
+                      ${exp.highlights.map(h => `<li>${h}</li>`).join('')}
+                    </ul>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+
+            <div>
+              <h2 class="text-xs font-bold uppercase tracking-widest text-teal-800 border-b border-slate-200 pb-1 mb-3">Education</h2>
+              <div class="space-y-3">
+                ${portfolioData.education.map(edu => `
+                  <div class="print-break-inside">
+                    <div class="flex justify-between items-baseline">
+                      <div class="font-bold text-xs text-slate-900">${edu.degree}</div>
+                      <div class="text-[11px] font-mono text-slate-600">${edu.period}</div>
+                    </div>
+                    <div class="text-[11px] font-semibold text-teal-700">${edu.institution}, ${edu.location}</div>
+                    <ul class="list-disc list-inside text-xs text-slate-700 mt-1 space-y-0.5">
+                      ${edu.highlights.map(h => `<li>${h}</li>`).join('')}
+                    </ul>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+
+            <div>
+              <h2 class="text-xs font-bold uppercase tracking-widest text-teal-800 border-b border-slate-200 pb-1 mb-2">Skills & Competencies</h2>
+              <div class="grid grid-cols-3 gap-2 text-xs text-slate-700">
+                <div><strong>Strategy:</strong> Branding, Strategy, Analytics, Research</div>
+                <div><strong>Creative:</strong> Creativity, Storytelling, Communication, Campaigns</div>
+                <div><strong>Leadership:</strong> Leadership, Innovation</div>
+              </div>
+            </div>
+
+            <div>
+              <h2 class="text-xs font-bold uppercase tracking-widest text-teal-800 border-b border-slate-200 pb-1 mb-2">Certifications</h2>
+              <ul class="list-disc list-inside grid grid-cols-1 sm:grid-cols-2 gap-1 text-xs text-slate-700">
+                ${portfolioData.certifications.map(c => `
+                  <li><span class="font-medium">${c.title}</span> — ${c.issuer} (${c.date})</li>
+                `).join('')}
+              </ul>
+            </div>
+
+            <div>
+              <h2 class="text-xs font-bold uppercase tracking-widest text-teal-800 border-b border-slate-200 pb-1 mb-2">Honors & Leadership Activities</h2>
+              <ul class="list-disc list-inside space-y-1 text-xs text-slate-700">
+                ${portfolioData.achievements.map(a => `<li><strong>${a.title}</strong> — ${a.description}</li>`).join('')}
+                ${portfolioData.leadership.map(l => `<li><strong>${l.title}</strong> — ${l.description}</li>`).join('')}
+              </ul>
+            </div>
+
+            <div>
+              <h2 class="text-xs font-bold uppercase tracking-widest text-teal-800 border-b border-slate-200 pb-1 mb-1">Languages</h2>
+              <div class="text-xs text-slate-700">
+                ${portfolioData.languages.map(l => `${l.language} (${l.note})`).join(' • ')}
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    // App Initialization & Interaction Handlers
+    document.addEventListener('DOMContentLoaded', () => {
+      renderApp();
+      if (window.lucide) window.lucide.createIcons();
+
+      // Theme toggle
+      const savedTheme = localStorage.getItem('pranav_portfolio_theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+
+      function toggleTheme() {
+        const current = document.documentElement.getAttribute('data-theme');
+        const next = current === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        localStorage.setItem('pranav_portfolio_theme', next);
+      }
+
+      const themeBtn = document.getElementById('theme-toggle-btn');
+      const mobileThemeBtn = document.getElementById('mobile-theme-btn');
+      if (themeBtn) themeBtn.addEventListener('click', toggleTheme);
+      if (mobileThemeBtn) mobileThemeBtn.addEventListener('click', toggleTheme);
+
+      // Mobile Menu
+      const menuBtn = document.getElementById('mobile-menu-btn');
+      const drawer = document.getElementById('mobile-drawer');
+      if (menuBtn && drawer) {
+        menuBtn.addEventListener('click', () => drawer.classList.toggle('hidden'));
+        drawer.querySelectorAll('a').forEach(l => l.addEventListener('click', () => drawer.classList.add('hidden')));
+      }
+
+      // Modals
+      const modalContainer = document.getElementById('modal-container');
+      const modalContent = document.getElementById('modal-content');
+
+      function openModal(html) {
+        modalContent.innerHTML = html;
+        modalContainer.classList.remove('hidden');
+        modalContainer.classList.add('flex');
+        document.body.style.overflow = 'hidden';
+        if (window.lucide) window.lucide.createIcons();
+      }
+
+      function closeModal() {
+        modalContainer.classList.add('hidden');
+        modalContainer.classList.remove('flex');
+        document.body.style.overflow = '';
+      }
+
+      // CV Buttons
+      ['nav-cv-btn', 'mobile-cv-btn', 'hero-cv-btn', 'contact-cv-btn'].forEach(id => {
+        const btn = document.getElementById(id);
+        if (btn) btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          openModal(getCVModalHtml());
+        });
+      });
+
+      // Featured Study Modal
+      ['open-featured-modal-btn', 'open-featured-modal-btn-2'].forEach(id => {
+        const btn = document.getElementById(id);
+        if (btn) btn.addEventListener('click', () => openModal(getFeaturedCaseStudyModalHtml(portfolioData.signatureCaseStudy)));
+      });
+
+      // Project Cards Modal Trigger
+      document.getElementById('projects-container').addEventListener('click', (e) => {
+        const card = e.target.closest('.project-card');
+        if (!card) return;
+        const project = portfolioData.projects.find(p => p.id === card.dataset.projectId);
+        if (project) openModal(getProjectModalHtml(project));
+      });
+
+      // Modal Close Handlers
+      modalContainer.addEventListener('click', (e) => {
+        if (e.target === modalContainer || e.target.closest('#close-modal-btn') || e.target.closest('#close-modal-footer-btn')) {
+          closeModal();
+        }
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !modalContainer.classList.contains('hidden')) closeModal();
+      });
+
+      // Project Filtering
+      const filterContainer = document.getElementById('project-filters');
+      if (filterContainer) {
+        filterContainer.addEventListener('click', (e) => {
+          const btn = e.target.closest('.project-filter-btn');
+          if (!btn) return;
+          const category = btn.dataset.category;
+          const catLower = category.toLowerCase();
+
+          document.querySelectorAll('.project-filter-btn').forEach(b => {
+            b.classList.remove('bg-teal-500', 'text-slate-950', 'font-bold', 'active', 'shadow-md', 'shadow-teal-500/20');
+            b.classList.add('bg-slate-900/60', 'text-slate-300');
+          });
+
+          btn.classList.remove('bg-slate-900/60', 'text-slate-300');
+          btn.classList.add('bg-teal-500', 'text-slate-950', 'font-bold', 'active', 'shadow-md', 'shadow-teal-500/20');
+
+          const filtered = category === 'All' 
+            ? portfolioData.projects 
+            : portfolioData.projects.filter(p => {
+                if (p.category.toLowerCase() === catLower) return true;
+                if (p.tags.some(t => t.toLowerCase().includes(catLower) || catLower.includes(t.toLowerCase()))) return true;
+                if (catLower === 'branding' && p.tags.some(t => t.toLowerCase().includes('brand'))) return true;
+                if (catLower === 'marketing' && (p.category.toLowerCase().includes('market') || p.tags.some(t => t.toLowerCase().includes('market')))) return true;
+                return false;
+              });
+
+          document.getElementById('projects-container').innerHTML = filtered.map(p => renderProjectCardHtml(p)).join('');
+          document.getElementById('project-count').textContent = filtered.length;
+          if (window.lucide) window.lucide.createIcons();
+        });
+      }
+
+      // Clipboard Copy
+      document.addEventListener('click', (e) => {
+        const copyBtn = e.target.closest('.copy-btn');
+        if (!copyBtn) return;
+        const textToCopy = copyBtn.dataset.copy;
+        if (textToCopy) {
+          navigator.clipboard.writeText(textToCopy).then(() => {
+            const originalHTML = copyBtn.innerHTML;
+            copyBtn.innerHTML = `<span class="text-[10px] font-mono-code text-teal-400 font-bold">Copied!</span>`;
+            setTimeout(() => {
+              copyBtn.innerHTML = originalHTML;
+              if (window.lucide) window.lucide.createIcons();
+            }, 2000);
+          });
+        }
+      });
+
+      // Contact Form Email Composer
+      const contactForm = document.getElementById('contact-form');
+      if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const name = document.getElementById('form-name').value;
+          const email = document.getElementById('form-email').value;
+          const topic = document.getElementById('form-topic').value;
+          const message = document.getElementById('form-message').value;
+          window.location.href = `mailto:${portfolioData.personal.email}?subject=${encodeURIComponent(`[${topic}] from ${name}`)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\nTopic: ${topic}\n\nMessage:\n${message}`)}`;
+          alert(`Thank you, ${name}! Your email client is opening with your pre-filled inquiry for Pranav.`);
+        });
+      }
+
+      // Strategy Engine Nodes
+      const nodes = document.querySelectorAll('.strategy-node');
+      const outputText = document.getElementById('engine-output-text');
+      const stageOutputs = {
+        "1": "Active stage: <strong>Primary Fieldwork</strong> across 66 auto body workshops in Mumbai.",
+        "2": "Active stage: <strong>Customer Needs & Barriers</strong> — Identified colour accuracy & maintenance friction.",
+        "3": "Active stage: <strong>Brand & GTM Architecture</strong> — Differentiated value positioning and channel roadmaps.",
+        "4": "Active stage: <strong>Commercial Execution</strong> — Sustainable revenue models & measurable marketing impact."
+      };
+
+      nodes.forEach(node => {
+        node.addEventListener('click', () => {
+          nodes.forEach(n => {
+            n.classList.remove('active', 'border-teal-500/50', 'bg-teal-950/30');
+            n.classList.add('border-slate-800', 'bg-slate-900/40');
+          });
+          node.classList.add('active', 'border-teal-500/50', 'bg-teal-950/30');
+          node.classList.remove('border-slate-800', 'bg-slate-900/40');
+          const stage = node.dataset.stage;
+          if (outputText && stageOutputs[stage]) outputText.innerHTML = stageOutputs[stage];
+        });
+      });
+
+      // Number Counter
+      const counterEl = document.getElementById('counter-shops');
+      if (counterEl) {
+        let started = false;
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting && !started) {
+              started = true;
+              let current = 0;
+              const target = 66;
+              const stepTime = Math.abs(Math.floor(1200 / target));
+              const timer = setInterval(() => {
+                current += 1;
+                counterEl.textContent = current;
+                if (current >= target) clearInterval(timer);
+              }, stepTime);
+            }
+          });
+        }, { threshold: 0.5 });
+        observer.observe(counterEl);
+      }
+    });
+  </script>
+</body>
+</html>
